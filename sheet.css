@@ -1,0 +1,1350 @@
+/* Fonts */
+
+@import url('https://dl.dafont.com/dl/?f=around');
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,300italic,400,700,400italic,700italic');
+@import url('https://fonts.googleapis.com/css?family=Teko:400,700');
+
+/* Style Variables */
+
+:root {
+    --nearblack: #555;
+    --shadowgray: dimgray;
+    --background: white;
+    --secondarybackground: #ddd;
+    --lightfont: #ddd;
+    --midfont: #888;
+    --tooltipbackground: black;
+    --fieldborder: #ccc;
+    --fieldbackground: #f5f5f5;
+    --buttontop: white;
+    --buttonbottom: #e6e6e6;
+    --npcheader: #b8c7cf;
+    --highlight: darkorange;
+    --highlightText: #d77600;
+    --secondaryHighlightText: #5e009d;
+    --roll20red: #aa1b1b;
+    --roll20green: #71bc7f;
+    --roll20blue: #7190bc;
+}
+
+/* Toggle field visibility between PC & NPC sheets */
+
+div.characterviewer div.charactersheet input[type=checkbox].npctoggle:checked ~ div .pconly {
+    display: none;
+}
+div.characterviewer div.charactersheet input[type=checkbox].npctoggle:not(:checked) ~ div .npconly {
+    display: none;
+}
+div.characterviewer div.charactersheet input[type=checkbox].npctoggle {
+    margin: 4px;
+}
+div.characterviewer div.charactersheet span.npctoggle {
+    margin-left: 4px;
+    margin-top: 1px;
+    color: var(--lightfont);
+}
+div.characterviewer div.charactersheet input[type=checkbox].npctoggle:checked ~ div div.header,
+div.characterviewer div.charactersheet input[type=checkbox].npctoggle:checked ~ div div.footer {
+    background-color: var(--npcheader);
+}
+
+/* Overall Styling & Overriding of Default Roll20 Sheet Formatting */
+
+div#tab-content { /* Overall width limits for the entire sheet itself */
+    max-width: 750pt;
+    min-width: 650pt;
+}
+
+div.charactersheet .incomplete {
+    border: 1px solid red !important; /* Marked as 'important' in order to always override any other border settings */
+}
+
+div.characterviewer div.charactersheet input[type="checkbox"] {
+    accent-color:var(--highlight);
+}
+
+div.characterviewer div.charactersheet {
+    all: initial;
+    padding: 0;
+    line-height: normal;
+    background-color: black;
+}
+div.characterviewer div.charactersheet div.sheetbody {
+    background-color: white;
+}
+
+div.characterviewer div.charactersheet > * {
+    font-family: "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    font-size: small;
+    color: var(--nearblack);
+}
+
+div.characterviewer div.charactersheet select {
+    width: 100%;
+}
+
+div.charactersheet ul.infolist {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+div.charactersheet ul.infolist li {
+    background-color: var(--secondarybackground);
+    padding: 4pt;
+    margin-bottom: 6pt;
+    width: 140px;
+    height: 60px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+div.charactersheet ul.infolist li input {
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+div.characterviewer div.charactersheet label {
+    font-size: small;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: var(--nearblack);
+    width: auto;
+}
+div.characterviewer div.charactersheet span.npctoggle,
+div.charactersheet div.header label,
+div.charactersheet div.footer ul li,
+div.charactersheet div.tabbed-view label.tab-heading,
+div.charactersheet div.skills table td.smalltext,
+div.charactersheet ul.infolist li label,
+div.charactersheet div.gridheadings label,
+div.charactersheet div.abilities label,
+div.charactersheet div.techniques label {
+    font-size: x-small;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+div.characterviewer div.charactersheet input {
+    font-size: small;
+    margin: 0;
+    color: var(--nearblack);
+    width: auto;
+}
+
+div.characterviewer div.charactersheet textarea {
+    all: initial;
+    font-family: "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    font-size: small;
+    border: 2pt solid var(--midfont);
+    padding: 4pt;
+}
+div.characterviewer div.charactersheet div.tooltipcontent textarea {
+    color: var(--lightfont);
+    border: 2pt solid var(--nearblack);
+    min-height: 100px;
+}
+
+div.characterviewer div.charactersheet ul {
+    list-style-type: none;
+    padding: 0;
+    margin: auto;
+}
+
+div.characterviewer div.charactersheet button,
+div.characterviewer div.charactersheet button[type=roll],
+div.characterviewer div.charactersheet button[type=action] {
+    font-weight: normal;
+    font-size: small;
+    margin: 0;
+    border: 1px solid var(--fieldborder);
+    color: var(--nearblack);
+    text-shadow: none;
+    line-height: 1.4em;
+    background-image: linear-gradient(var(--buttontop), var(--buttonbottom));
+    border-radius: 4px;
+    min-height: 24px;
+    padding-left: 8px;
+    padding-right: 8px;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+div.characterviewer div.charactersheet button span,
+div.characterviewer div.charactersheet button[type=roll] span,
+div.characterviewer div.charactersheet button[type=action] span {
+    display: flex;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 1em;
+    margin-left: 6px; /* Make space before the text, for the icon */
+}
+div.characterviewer div.charactersheet button:before {
+    content: "" !important; /* Remove the D20 icon (which is just the letter 't' in a specialist font) from specific buttons */
+}
+div.charactersheet div.stretchyholder {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+}
+div.charactersheet div.stretchyholder button,
+div.charactersheet div.stretchyholder textarea {
+    width: 100%;
+    height: 100%;
+}
+
+div.charactersheet div.singlecolumn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+div.charactersheet div.multicolumn,
+div.charactersheet ul.multicolumn {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+div.charactersheet div.oneline {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+div.charactersheet div.oneline.verticalstretch {
+    align-items: stretch;
+}
+
+div.charactersheet div.section {
+    padding: 8pt;
+    width: 100%;
+    display: inline-block;
+}
+div.charactersheet div.section.bigcolumn {
+    width: 55%;
+}
+div.charactersheet div.section.smallcolumn {
+    width: 40%;
+}
+div.charactersheet div.subsection {
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 18px;
+}
+
+div.charactersheet div.repeatingrow {
+    width: 100%;
+    padding-bottom: 6px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+div.charactersheet div.repeatingrow div.calculation {
+    border: 1px solid var(--fieldborder);
+    background: var(--fieldbackground);
+}
+div.charactersheet div.repeatingrow div.calculation input[readonly] { /* The calculation acts as the field, so remove any styling on fields within it */
+    border: none;
+    background: none;
+}
+div.charactersheet div.gridheadings {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+div.charactersheet div.gridheadings label {
+    text-align: center;
+}
+div.charactersheet div.gridheadings label:first-child {
+    text-align: left;
+}
+div.charactersheet div.gridheadings label:last-child {
+    text-align: right;
+}
+div.charactersheet div.verticalgroup {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.charactersheet input[readonly][type=number]::-webkit-outer-spin-button,
+div.charactersheet input[readonly][type=number]::-webkit-inner-spin-button { /* Hide the 'Spinner' Up/Down arrows for read-only number fields in Chrome, Safari, Edge, and Opera */
+    -webkit-appearance: none;
+    margin: 0;
+}
+div.charactersheet input[readonly][type=number] { /* Hide the 'Spinner' Up/Down arrows for read-only number fields in Firefox */
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+div.charactersheet input[type=number]::-webkit-inner-spin-button,
+div.charactersheet input[type=number]::-webkit-outer-spin-button { /* Always show the 'Spinner' Up/Down arrows for other input fields (the more specific one to hide for read-only will override this where needed) */
+    opacity: 1;
+}
+
+div.characterviewer div.charactersheet div select:has(> option[value="minoraction"]:checked) { /* Color-coding for selected action types */
+    color: var(--highlightText);
+}
+div.characterviewer div.charactersheet div select:has(> option[value="reaction"]:checked) {
+    color: var(--secondaryHighlightText);
+}
+
+div.charactersheet img.icon {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    opacity: 75%;
+}
+
+div.charactersheet button img.icon {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+}
+
+div.charactersheet select {
+    margin: 0;
+}
+
+div.charactersheet .tinyfield {
+    width: 5em;
+}
+div.charactersheet .shortfield {
+    width: 8em;
+}
+div.charactersheet .mediumfield {
+    width: 10em;
+}
+div.charactersheet .longfield {
+    width: 12em;
+}
+
+/* Headings */
+
+div.charactersheet h1 {
+    font-family: "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    font-size: small;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 2px;
+    border-bottom: 2px solid var(--nearblack);
+    margin-bottom: 8px;
+    line-height: 1em;
+}
+div.charactersheet h2 {
+    font-family: "Around", "Teko", "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 0.1rem;
+    color: black;
+    border-bottom: 2px solid var(--nearblack);
+    margin-bottom: 12px;
+    line-height: 1em;
+}
+
+/* Sheet Header & Footer */
+
+div.charactersheet div.header,
+div.charactersheet div.footer {
+    width: 100%;
+    margin: 0;
+    background-color: var(--secondarybackground);
+    color: var(--nearblack);
+    align-items: center;
+}
+div.charactersheet div.header {
+    box-shadow: 0 2px 6px var(--shadowgray);
+    padding-top: 6px;
+    padding-bottom: 12px;
+}
+div.charactersheet div.footer {
+    margin-bottom: 20px;
+    box-shadow: 0 0 6px var(--shadowgray);
+}
+
+div.charactersheet div.header ul,
+div.charactersheet div.footer ul {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    height: 100%;
+}
+div.charactersheet div.header ul {
+    justify-content: center;
+}
+div.charactersheet div.footer ul {
+    justify-content: space-between;
+}
+div.charactersheet div.footer ul li {
+    margin: 8px;
+}
+
+div.charactersheet div.header label {
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+div.charactersheet div.header select.dna,
+div.charactersheet div.header select.creature {
+    width: 12em;
+}
+
+div.charactersheet div.logo {
+    width: 220px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+div.charactersheet div.logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+div.charactersheet div.header input#charname {
+    width: 20em;
+}
+div.charactersheet div.header input#charclass {
+    width: 15em;
+}
+div.charactersheet div.header select#challengerating {
+    width: 6.5em;
+}
+
+div.charactersheet div.footer div.attributions {
+    font-size: x-small;
+    padding: 12px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+/* Tabbed Panels */
+
+div.charactersheet div.tabbed-view {
+    margin: 0;
+    margin-top: 8px;
+    margin-bottom: 12px;
+    background: var(--nearblack); /* Sets the background specifically for the tabs list (which actually continues throughout, because the tabs must be in the same hierarchy as the content they control */
+    display: flex;
+    flex-flow: row wrap;
+    align-items: top;
+    justify-content: center;
+}
+div.charactersheet div.tabbed-view div.tabbed-view-content {
+    width: 100%; /* Ensure that the content section flows past the tabs themselves and wraps onto a new line */
+    background: var(--background); /* Sets the background of the content area (masking the background set above for the tabs list */
+    padding-top: 10px;
+}
+div.charactersheet div.tabbed-view > input[type="radio"] { /* Hide each radio button's 'bullet' */
+    position: absolute;
+    left: -999em;
+    visibility: hidden;
+    display: none;
+}
+
+div.charactersheet div.tabbed-view section.tab-panel { /* Hide all sections by default */
+    display: none;
+}
+
+div.charactersheet div.tabbed-view input#tab1:checked ~ div.tabbed-view-content section#tab-panel1, /* Allows each tab input field to display the corresponding tab panel (linked via IDs) — To enable more than 5 tabs, expand this list */
+div.charactersheet div.tabbed-view input#tab2:checked ~ div.tabbed-view-content section#tab-panel2,
+div.charactersheet div.tabbed-view input#tab3:checked ~ div.tabbed-view-content section#tab-panel3,
+div.charactersheet div.tabbed-view input#tab4:checked ~ div.tabbed-view-content section#tab-panel4,
+div.charactersheet div.tabbed-view input#tab5:checked ~ div.tabbed-view-content section#tab-panel5 {
+    display: block;
+}
+
+div.charactersheet div.tabbed-view label.tab-heading {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    cursor: pointer;
+    min-width: 13em;
+    text-align: center;
+    background: var(--shadowgray);
+    color: var(--lightfont);
+    clip-path: polygon( /* Clips the div's visible path down to a trapezoid, with indentations of 10% width */
+        10% 0,
+        90% 0,
+        100% 100%,
+        0% 100%
+    );
+    border-bottom: 2px solid var(--nearblack);
+}
+
+div.charactersheet div.tabbed-view input:checked + label.tab-heading { /* Style the currently selected tab */
+    background: var(--background);
+    border-bottom: 2px solid var(--background);
+    border-top: 4px solid var(--highlight);
+    color: black;
+}
+div.charactersheet div.tabbed-view label.tab-heading:hover, /* Style tabs when the mouse hovers over them */
+div.charactersheet div.tabbed-view input:focus + label.tab-heading {
+    background: var(--secondarybackground);
+    color: var(--nearblack);
+}
+
+/* Stats */
+
+div.charactersheet ul.stats {
+    list-style-type: none;
+    display: inline-block;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+div.charactersheet ul.stats li {
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+div.charactersheet div.statheader {
+    clip-path: polygon( /* Clips the div's visible path down to a trapezoid, broadest at the top, with indentations of 20% width */
+        0 0,
+        100% 0,
+        80% 100%,
+        20% 100%
+    );
+    padding: 4pt;
+    color: var(--lightfont);
+    background-color: var(--nearblack);
+}
+div.charactersheet div.statheader label {
+    color: var(--lightfont);
+}
+
+div.charactersheet div.statbody {
+    clip-path: polygon( /* Clips the div's visible path down to a basic shield */
+        0 0,
+        100% 0,
+        100% 70%,
+        50% 100%,
+        0 70%
+    );
+    background-color: var(--secondarybackground);
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    padding: 4pt;
+    width: 80pt;
+}
+div.charactersheet div.statbody button {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    width: 80%;
+}
+
+div.charactersheet ul.stats label {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    text-align: center;
+}
+div.charactersheet ul.stats input {
+    margin: 0;
+    padding: 0;
+    width: 40%;
+    text-align: center;
+}
+div.charactersheet ul.stats input.score {
+    margin-top: 2pt;
+}
+div.charactersheet ul.stats input.mod {
+    font-size: large;
+    font-weight: bold;
+    background: none;
+    margin: 4pt;
+    margin-bottom: 8pt;
+}
+
+/* Vitals & Core Info */
+
+div.charactersheet div.vitals h2 {
+    text-align: center;
+}
+
+div.charactersheet div.vitals li {
+    border: 4px solid var(--midfont); /* Just to keep these the same size as those with colored borders */
+}
+div.charactersheet div.vitals li#healthpoints {
+    border-color: var(--roll20red);
+}
+div.charactersheet div.vitals li#abilitypoints {
+    border-color: var(--roll20green);
+}
+div.charactersheet div.vitals li#armorclass {
+    border-color: var(--roll20blue);
+}
+div.charactersheet div.vitals ul li label,
+div.charactersheet div.core ul li label {
+    text-align: center;
+    flex-grow: 1;
+}
+div.charactersheet div.vitals ul li div,
+div.charactersheet div.core ul li div,
+div.charactersheet li.mortality table {
+    flex-grow: 10; /* Expand to fit the rest of the space */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+div.charactersheet div.vitals ul input[readonly],
+div.charactersheet div.core ul input[readonly] {
+    background: none;
+    border: none;
+    width: 30pt;
+}
+
+div.charactersheet div.vitals input[readonly].armorclass,
+div.charactersheet div.core input[readonly].profbonus,
+div.charactersheet div.core input[readonly].passive {
+    background: var(--nearblack);
+    color: var(--lightfont);
+    height: 100%;
+    margin-bottom: 4px;
+}
+div.charactersheet div.vitals input[readonly].armorclass {
+    clip-path: polygon( /* Clips the div's visible path down to a basic shield */
+        0 0,
+        100% 0,
+        100% 70%,
+        50% 100%,
+        0 70%
+    );
+    padding-bottom: 5%;
+}
+div.charactersheet div.core input[readonly].profbonus,
+div.charactersheet div.core input[readonly].passive {
+    clip-path: polygon( /* Clips the div's visible path down to a diamond/rhombus */
+        50% 0%,
+        100% 50%,
+        50% 100%,
+        0% 50%
+    );
+}
+
+div.characterviewer div.core li.hitdice,
+div.characterviewer div.core li.basehp,
+div.characterviewer div.core li.mortality {
+    width: 46.5%;
+}
+div.characterviewer div.core li.basehp input[type=number] {
+    width: 3em;
+}
+div.characterviewer div.core li.basehp div.calculation {
+    height: 0.9em;
+}
+div.characterviewer div.core li.basehp div.result {
+    height: 1em;
+}
+div.characterviewer div.core li.basehp div.calculation input[type=number][readonly] {
+    width: 2.9em;
+}
+div.characterviewer div.core li.basehp div.result input[type=number][readonly] {
+    width: 5em;
+}
+div.characterviewer div.core li.basehp div.calculation input,
+div.characterviewer div.core li.basehp div.calculation span {
+    font-size: small;
+}
+div.characterviewer div.core li.hitdice select {
+    width: 4em;
+}
+div.characterviewer div.core li.hitdice button {
+    width: 6em;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-right: 6px;
+}
+
+div.charactersheet li.mortality table tr {
+    padding: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+div.charactersheet li.mortality table td {
+    margin: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+/* Armor */
+
+div.charactersheet div.armor div {
+    width: 100%;
+    padding-bottom: 6px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+div.charactersheet div.armor div label {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+div.charactersheet div.armor div label.sharedrow.left {
+    margin-right: 20px;
+    justify-content: space-between;
+    width: 60%;
+}
+div.charactersheet div.armor div label.sharedrow.right {
+    justify-content: right;
+}
+div.charactersheet div.armor select {
+    width: 10em;
+    margin-left: 14px;
+}
+div.charactersheet div.armor div input {
+    margin-left: 10px;
+}
+div.charactersheet div.armor div input[type=text] {
+    width: 17em;
+}
+
+/* Resistances and Vulnerabilities */
+
+div.resistances div.repeatingrow select:first-child {
+    margin-right: 6px;
+}
+
+/* Proficiencies */
+
+div.proficiencies div.repeatingrow input {
+    width: 65%;
+    margin-right: 6px;
+}
+div.proficiencies div.repeatingrow select {
+    width: 35%;
+}
+
+/* Skills */
+
+div.charactersheet div.skills table {
+    width: 100%;
+}
+div.charactersheet div.skills table tr {
+    color: var(--nearblack);
+}
+div.charactersheet div.skills table td {
+    padding-bottom: 4px;
+    text-align: center;
+}
+div.charactersheet div.skills table td.first {
+    text-align: left;
+}
+div.charactersheet div.skills table td.last {
+    text-align: right;
+}
+div.charactersheet div.skills table td button[type=roll] {
+    width: 85%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+div.charactersheet div.skills table input[readonly] {
+    font-weight: bold;
+    text-align: center;
+}
+div.charactersheet div.skills table td.smalltext {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* Attacks */
+
+div.charactersheet div.attacks div.repeatingrow {
+    padding-bottom: 12px; /* More than usual, because these rows are double-height in content */
+    border-bottom: 1px solid var(--secondarybackground);
+    margin-bottom: 12px;
+}
+
+div.charactersheet div.attacks div.verticalgroup div.oneline:first-of-type {
+    margin-bottom: 2px;
+}
+
+div.charactersheet div.attacks .hastooltip {
+    padding: 4pt;
+}
+div.charactersheet div.attacks div.description .hastooltip {
+    padding-right: 0;
+}
+div.charactersheet div.attacks div.description input[type=text] {
+    width: 100%; /* Scale to fit the space available (which will typically be less than 100%) */
+    margin: 0;
+}
+div.charactersheet div.attacks .ammo div.stretchyholder,
+div.charactersheet div.abilities .roll div.stretchyholder,
+div.charactersheet div.powers .roll div.stretchyholder {
+    max-width: 45px;
+}
+div.charactersheet div.attacks label.hastooltip {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+div.charactersheet div.attacks div.quantity span,
+div.charactersheet div.abilities div.quantity span,
+div.charactersheet div.techniques div.quantity span,
+div.charactersheet div.inventory div.quantity span {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+div.charactersheet div.attacks div.oneline label.hastooltip,
+div.charactersheet div.abilities div.oneline label.hastooltip,
+div.charactersheet div.techniques div.oneline label.hastooltip,
+div.charactersheet div.inventory div.oneline label.hastooltip {
+    width: auto;
+    margin: 0;
+}
+
+div.charactersheet div.attacks div.attacksgrid {
+    display: grid;
+    grid-template-columns:
+        26%  /* Attack Name */
+        12.5% /* Range */
+        22.5%  /* Ammo */
+        10%  /* Attack */
+        24%; /* Damage */
+}
+div.charactersheet div.attacks div.gridheadings,
+div.charactersheet div.abilities div.gridheadings,
+div.charactersheet div.techniques div.gridheadings,
+div.charactersheet div.inventory div.gridheadings {
+    margin-bottom: 6px;
+}
+
+div.charactersheet div.attacks select:has(> option[value="melee"]:checked) ~ div.ammo {
+    display: none;
+}
+div.charactersheet div.attacks select:not(:has(> option[value="melee"]:checked)) ~ div.ammoplaceholder {
+    display: none;
+}
+div.characterviewer div.charactersheet div.attacks div.ammoplaceholder {
+    color: var(--midfont);
+}
+
+div.charactersheet div.attacks .ammo,
+div.charactersheet div.attacks .attack,
+div.charactersheet div.attacks .damage,
+div.charactersheet div.attacks .type {
+    justify-content: center;
+}
+div.characterviewer div.charactersheet div.attacks .ammo select:has(> option[value="untracked"]:checked) ~ #reloadcount { /* Hide the reload count if it's reloads aren't tracked */
+    display: none;
+}
+div.characterviewer div.charactersheet div.attacks .ammo select:has(> option[value="tracked"]:checked) ~ #unlimitedreloads { /* Hide the infinity icon if reloads are tracked */
+    display: none;
+}
+div.characterviewer div.charactersheet div.attacks .ammo #unlimitedreloads {
+    background: var(--secondarybackground);
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    min-width: 3em;
+    clip-path: polygon(  /* Clips the div's visible path down to a straight-edged 'pill' shape */
+        20% 0,
+        80% 0,
+        100% 50%,
+        80% 100%,
+        20% 100%,
+        0% 50%
+    );
+}
+div.characterviewer div.charactersheet div.attacks .ammo #unlimitedreloads img {
+    max-height: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+div.characterviewer div.charactersheet div.attacks .ammo #reloadcount {
+    width: 3em;
+    min-width: 3em;
+}
+div.charactersheet div.attacks .attack div.calculation span {
+    margin-left: 8px;
+}
+div.charactersheet div.attacks div.ammo select {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+div.charactersheet div.attacks .attack div.singlerow {
+    justify-content: space-between;
+}
+div.charactersheet div.attacks .attack input[readonly] {
+    width: 2.5em;
+}
+div.charactersheet div.attacks .damage input.damagedice {
+    width: 6em;
+    margin-left: 4px;
+}
+div.charactersheet div.attacks .damage input.damagetype {
+    width: 6em;
+}
+
+div.charactersheet div.attacks div.ammo div.oneline {
+    justify-content: center;
+}
+
+div.charactersheet div.attacks div.tooltipcontent div.oneline {
+    justify-content: center;
+    margin-bottom: 6px;
+}
+div.charactersheet div.attacks div.tooltipcontent select {
+    width: 5em;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+div.charactersheet div.attacks div.tooltipcontent input[type=number],
+div.charactersheet div.attacks div.tooltipcontent input[type=checkbox] {
+    margin-left: 6px;
+}
+div.charactersheet div.attacks div.damage div.tooltipcontent input[type=number] {
+    margin-right: 6px;
+}
+div.charactersheet div.attacks div.damage div.tooltipcontent > select:last-of-type {
+    width: 8em;
+}
+
+/* Abilities */
+
+div.charactersheet div.abilities div.description input[type=text],
+div.charactersheet div.techniques div.description input[type=text],
+div.charactersheet div.inventory div.description input[type=text] {
+    width: 100%; /* Scale to fit the space available (which will typically be less than 100%) */
+    margin-right: 6px;
+}
+div.charactersheet div.abilities div.description select,
+div.charactersheet div.powers div.description select {
+    margin-right: 6px;
+}
+
+div.charactersheet div.abilities input[readonly][type=number],
+div.charactersheet div.powers input[readonly][type=number] {
+    text-align: center;
+    font-weight: bold;
+}
+div.charactersheet div.abilities div.abilitiesgrid {
+    display: grid;
+    grid-template-columns:
+        23%  /* Ability & Stat */
+        6%  /* AP Cost */
+        18.5%  /* Target & Range */
+        28.5% /* Charge / Duration / Concentration */
+        19.5%  /* Roll / Modifier / Use */
+}
+
+div.charactersheet div.abilities .description select:last-of-type {
+    width: 4.5em;
+}
+
+div.charactersheet div.abilities .range select:last-of-type,
+div.charactersheet div.powers .range select:last-of-type {
+    width: auto;
+    max-width: 6em;
+}
+
+div.charactersheet div.abilities .duration div.backing,
+div.charactersheet div.powers .duration div.backing {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background: var(--midfont);
+    height: 100%;
+    padding: 7px;
+    clip-path: polygon( /* Clips the div's visible path down to a diamond / rhombus */
+        50% 0%,
+        100% 50%,
+        50% 100%,
+        0% 50%
+    );
+    margin-left: -2px;
+}
+div.charactersheet div.abilities .duration select:last-of-type,
+div.charactersheet div.powers .duration select:last-of-type {
+    width: auto;
+    max-width: 7.5em;
+}
+
+div.charactersheet div.abilities .cost,
+div.charactersheet div.abilities .stat,
+div.charactersheet div.abilities .type,
+div.charactersheet div.abilities .roll,
+div.charactersheet div.powers .discipline
+div.charactersheet div.powers .roll {
+    justify-content: center;
+}
+div.charactersheet div.abilities .roll select,
+div.charactersheet div.abilities .roll input[readonly],
+div.charactersheet div.abilities .range select:first-of-type,
+div.charactersheet div.powers .range select:first-of-type,
+div.charactersheet div.abilities .duration select,
+div.charactersheet div.powers .duration select,
+div.charactersheet div.powers .roll select,
+div.charactersheet div.powers .roll input[readonly] {
+    margin-right: 6px;
+}
+
+/* Techniques */
+
+div.charactersheet div.techniques input[type=number],
+div.charactersheet div.inventory input[type=number] {
+    width: 5em;
+}
+
+div.charactersheet div.techniques div.techniquesgrid {
+    display: grid;
+    grid-template-columns:
+        47%  /* Technique / Bonus */
+        20%  /* Recharge Rate */
+        19% /* Current Amount */
+        8%; /* Describe */
+}
+
+div.charactersheet div.techniques div.oneline.describe,
+div.charactersheet div.inventory div.oneline.describe {
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+/* Psi-Powers */
+
+div.charactersheet div.powers h2 {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.charactersheet ul.powerstats.infolist {
+    margin-bottom: 12px;
+}
+div.charactersheet ul.powerstats.infolist li {
+    width: 47%;
+    height: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+div.charactersheet ul.powerstats.infolist li input {
+    margin-left: 6px;
+    border: none;
+    background: none;
+}
+
+div.charactersheet div.powers div.powersgrid {
+    display: grid;
+    grid-template-columns:
+        32%  /* Psi-Power & Discipline */
+        18.5% /* Target & Range */
+        28.5% /* Charge / Duration / Concentration */
+        15%  /* Roll Type / Use */
+}
+
+div.charactersheet div.powers div.description input[type=text] {
+    width: 100%; /* Scale to fit the space available (which will typically be less than 100%) */
+    margin-right: 4px;
+}
+div.charactersheet div.powers .description select:last-of-type {
+    max-width: 4em;
+}
+
+/* Inventory */
+
+div.charactersheet div.inventory div.inventorygrid {
+    display: grid;
+    grid-template-columns:
+        69%  /* Item */
+        19%  /* Current Amount */
+        8%; /* Describe */
+}
+
+/* Character Notes */
+
+div.charactersheet div.backstory textarea {
+    min-height: 300px;
+}
+div.charactersheet div.developments textarea,
+div.charactersheet div.objectives textarea {
+    min-height: 200px;
+}
+
+/* Tooltips */
+
+div.charactersheet label.hastooltip { /* Style the item which has a tooltip connected to it */
+    width: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+div.charactersheet div.tooltipcontent { /* Style the tooltip itself, and start it off hidden */
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--tooltipbackground);
+    color: var(--lightfont);
+    border-radius: 4pt;
+    width: 200px;
+    margin-left: -200px; /* Pull it to the left (equal to its width), so that it doesn't ever flow over the right-hand side of the sheet */
+    padding: 6pt;
+    top: 100%; /* Position below the parent */
+    z-index: 99;
+}
+div.charactersheet div.tooltipcontent::after { /* The tooltip box's connecting arrow */
+    content: " ";
+    position: absolute;
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 100%; /* Towards the right-hand side (becayse the tooltips are shifted left) */
+    margin-left: -25px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent var(--tooltipbackground) var(--tooltipbackground) transparent; /* Fills in 2 of the 4 border sides, to make a right-angled triangle */
+}
+div.charactersheet div.tooltipcontent textarea {
+    visibility: hidden;
+    opacity: 0;
+}
+div.charactersheet div.tooltipcontent label {
+    color: var(--lightfont);
+}
+
+div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol { /* Ensure that the checkbox controlling tooltip on/off is never actually visible, and have it make the tooltip visible when checked */
+    display:none;
+}
+div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol:checked+div {
+    visibility: visible;
+    opacity: 1;
+}
+div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol:checked+div textarea { /* For some reason, the text areas need special treatment, which other fields in the tooltip appear not to */
+    visibility: visible;
+    opacity: 1;
+}
+
+/*
+Roll Templates
+*/
+
+.sheet-rolltemplate-check,
+.sheet-rolltemplate-attack,
+.sheet-rolltemplate-damage,
+.sheet-rolltemplate-ability,
+.sheet-rolltemplate-hitdie,
+.sheet-rolltemplate-description,
+.sheet-rolltemplate-warning {
+    margin: 0;
+    line-height: normal;
+    font-family: "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    color: var(--nearblack);
+}
+
+.sheet-rolltemplate-check div.sheet-prefix,
+.sheet-rolltemplate-attack div.sheet-prefix,
+.sheet-rolltemplate-damage div.sheet-prefix,
+.sheet-rolltemplate-ability div.sheet-prefix,
+.sheet-rolltemplate-hitdie div.sheet-prefix,
+.sheet-rolltemplate-description div.sheet-prefix,
+.sheet-rolltemplate-warning div.sheet-prefix {
+    padding-top: 6px;
+    padding-bottom: 4px;
+    font-size: small;
+    font-style: italic;
+    font-weight: lighter;
+    opacity: 75%;
+}
+
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-check div.sheet-prefix,
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-attack div.sheet-prefix,
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-damage div.sheet-prefix,
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-ability div.sheet-prefix,
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-hitdie div.sheet-prefix,
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-description div.sheet-prefix,
+.sheet-rolltemplate-darkmode.sheet-rolltemplate-warning div.sheet-prefix { /* Manually account for Dark Mode to adjust the font color on Firefox & Safari */
+    color: #ddd;
+}
+
+.sheet-rolltemplate-check div.sheet-header,
+.sheet-rolltemplate-attack div.sheet-header,
+.sheet-rolltemplate-damage div.sheet-header,
+.sheet-rolltemplate-ability div.sheet-header,
+.sheet-rolltemplate-ability div.sheet-concentration,
+.sheet-rolltemplate-hitdie div.sheet-header,
+.sheet-rolltemplate-description div.sheet-header,
+.sheet-rolltemplate-warning div.sheet-header {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: x-small;
+    text-transform: uppercase;
+    padding: 2px;
+}
+.sheet-rolltemplate-check div.sheet-header {
+    background-color: #555;
+}
+.sheet-rolltemplate-attack div.sheet-header {
+    background-color: darkred;
+}
+.sheet-rolltemplate-damage div.sheet-header {
+    background-color: #d85600;
+}
+.sheet-rolltemplate-ability div.sheet-header {
+    background-color: purple;
+}
+.sheet-rolltemplate-hitdie div.sheet-header {
+    background-color: darkcyan;
+}
+.sheet-rolltemplate-description div.sheet-header {
+    background-color: #5a3c22;
+}
+.sheet-rolltemplate-warning div.sheet-header {
+    background-color: #8f7002;
+}
+.sheet-rolltemplate-check div.sheet-container,
+.sheet-rolltemplate-attack div.sheet-container,
+.sheet-rolltemplate-damage div.sheet-container,
+.sheet-rolltemplate-ability div.sheet-container,
+.sheet-rolltemplate-hitdie div.sheet-container,
+.sheet-rolltemplate-description div.sheet-container,
+.sheet-rolltemplate-warning div.sheet-container {
+    text-align: center;
+    border: 1px solid #555;
+    background-color: #ddd;
+    color: #555;
+}
+.sheet-rolltemplate-ability div.sheet-concentration {
+    margin-top: 4px;
+    color: darkred;
+}
+.sheet-rolltemplate-check div.sheet-content,
+.sheet-rolltemplate-attack div.sheet-content,
+.sheet-rolltemplate-damage div.sheet-content,
+.sheet-rolltemplate-ability div.sheet-content,
+.sheet-rolltemplate-hitdie div.sheet-content,
+.sheet-rolltemplate-description div.sheet-content,
+.sheet-rolltemplate-warning div.sheet-content {
+    padding: 8px;
+}
+
+.sheet-rolltemplate-check div.sheet-checkname,
+.sheet-rolltemplate-attack div.sheet-attackname,
+.sheet-rolltemplate-damage div.sheet-damagetype,
+.sheet-rolltemplate-ability div.sheet-abilityname,
+.sheet-rolltemplate-hitdie div.sheet-dietype,
+.sheet-rolltemplate-description div.sheet-subjectname,
+.sheet-rolltemplate-warning div.sheet-subjectname {
+    font-weight: bold;
+    font-size: medium;
+    text-transform: uppercase;
+}
+.sheet-rolltemplate-check div.sheet-checkmod,
+.sheet-rolltemplate-attack div.sheet-attackmod,
+.sheet-rolltemplate-damage div.sheet-calculation,
+.sheet-rolltemplate-ability div.sheet-abilitymod,
+.sheet-rolltemplate-hitdie div.sheet-endmod,
+.sheet-rolltemplate-description div.sheet-subtype {
+    font-weight: normal;
+    font-size: small;
+    font-style: italic;
+}
+.sheet-rolltemplate-ability div.sheet-abilitystat,
+.sheet-rolltemplate-description div.sheet-amount {
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.sheet-rolltemplate-attack div.sheet-desc,
+.sheet-rolltemplate-ability div.sheet-desc,
+.sheet-rolltemplate-description div.sheet-desc,
+.sheet-rolltemplate-warning div.sheet-desc {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+}
+
+.sheet-rolltemplate-check div.sheet-result,
+.sheet-rolltemplate-attack div.sheet-result,
+.sheet-rolltemplate-damage div.sheet-result,
+.sheet-rolltemplate-ability div.sheet-result,
+.sheet-rolltemplate-hitdie div.sheet-result {
+    margin-top: 4px;
+}
+.sheet-rolltemplate-check span.inlinerollresult,
+.sheet-rolltemplate-attack span.inlinerollresult,
+.sheet-rolltemplate-damage span.inlinerollresult,
+.sheet-rolltemplate-ability span.inlinerollresult,
+.sheet-rolltemplate-ability div.sheet-result span,
+.sheet-rolltemplate-hitdie span.inlinerollresult {
+    color: #555;
+    background: none;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+}
+.sheet-rolltemplate-check span.inlinerollresult.fullcrit,
+.sheet-rolltemplate-attack span.inlinerollresult.fullcrit,
+.sheet-rolltemplate-damage span.inlinerollresult.fullcrit,
+.sheet-rolltemplate-ability span.inlinerollresult.fullcrit,
+.sheet-rolltemplate-hitdie span.inlinerollresult.fullcrit {
+    color: green;
+    border: none;
+}
+.sheet-rolltemplate-check span.inlinerollresult.fullfail,
+.sheet-rolltemplate-attack span.inlinerollresult.fullfail,
+.sheet-rolltemplate-damage span.inlinerollresult.fullfail,
+.sheet-rolltemplate-ability span.inlinerollresult.fullfail,
+.sheet-rolltemplate-hitdie span.inlinerollresult.fullfail {
+    color: darkred;
+    border: none;
+}
+.sheet-rolltemplate-check span.inlinerollresult.importantroll,
+.sheet-rolltemplate-attack span.inlinerollresult.importantroll,
+.sheet-rolltemplate-damage span.inlinerollresult.importantroll,
+.sheet-rolltemplate-ability span.inlinerollresult.importantroll,
+.sheet-rolltemplate-hitdie span.inlinerollresult.importantroll {
+    color: blue;
+    border: none;
+}
