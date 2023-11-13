@@ -151,7 +151,7 @@
                 <label class="statname">
                     Strength
                     <br>
-                    <input type="number" min="0" max="20" value="10" name="attr_str" class="score"/>
+                    <input type="number" min="0" max="30" value="10" name="attr_str" class="score"/>
                 </label>
             </div>
             <div class="statbody">
@@ -172,7 +172,7 @@
                 <label class="statname">
                     Agility
                     <br>
-                    <input type="number" min="0" max="20" value="10" name="attr_agi" class="score"/>
+                    <input type="number" min="0" max="30" value="10" name="attr_agi" class="score"/>
                 </label>
             </div>
             <div class="statbody">
@@ -193,7 +193,7 @@
                 <label class="statname">
                     Endurance
                     <br>
-                    <input type="number" min="0" max="20" value="10" name="attr_end" class="score"/>
+                    <input type="number" min="0" max="30" value="10" name="attr_end" class="score"/>
                 </label>
             </div>
             <div class="statbody">
@@ -214,7 +214,7 @@
                 <label class="statname">
                     Wits
                     <br>
-                    <input type="number" min="0" max="20" value="10" name="attr_wit" class="score"/>
+                    <input type="number" min="0" max="30" value="10" name="attr_wit" class="score"/>
                 </label>
             </div>
             <div class="statbody">
@@ -234,7 +234,7 @@
                 <label class="statname">
                     Knowledge
                     <br>
-                    <input type="number" min="0" max="20" value="10" name="attr_knw" class="score"/>
+                    <input type="number" min="0" max="30" value="10" name="attr_knw" class="score"/>
                 </label>
             </div>
             <div class="statbody">
@@ -255,7 +255,7 @@
                 <label class="statname">
                     Presence
                     <br>
-                    <input type="number" min="0" max="20" value="10" name="attr_prs" class="score"/>
+                    <input type="number" min="0" max="30" value="10" name="attr_prs" class="score"/>
                 </label>
             </div>
             <div class="statbody">
@@ -3870,66 +3870,148 @@
         });
     };
 
-    // Calculations for repeating sections (<fieldset>)
-    // In order to avoid the need to manually pull row IDs, these functions have been kept within the parent listeners - Roll20 handles them automatically within listeners
+    // Bulk calculations for entire repeating sections
+    // These iterate through all rows in a repeating section, tackling each row ID in turn
 
-    // When the proficiency, controlling stat, or other modifier of any attack changes, or if the modifier for a stat changes...
-    // Recalculate the final modifier for each attack, including all factors
-    on("change:repeating_attacks:attack_prof change:repeating_attacks:attack_stat change:repeating_attacks:attack_extra", function() {
+    function recalculateAllAttacks() {
+        getSectionIDs("repeating_attacks", idArray => { // Retrieve all row IDs in the repeating section, and iterate through each one
+            idArray.forEach( (element) => {
+                const rowID = String(element);
+                getAttrs( [
+                    "repeating_attacks_" + rowID + "_attack_stat",
+                    "repeating_attacks_" + rowID + "_attack_damagestat"
+                ], (values) => {
+                    // Calculate & apply the attack modifier
+                    const attackModName = values["repeating_attacks_" + rowID + "_attack_stat"] + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
+                    getAttrs( [
+                        "repeating_attacks_" + rowID + "_attack_prof",
+                        "repeating_attacks_" + rowID + "_attack_extra",
+                        "prof_bonus",
+                        attackModName // E.g. "str_mod"
+                    ], (values) => {
+                        // Calculate & set the final attack modifier, considering all of the contributors
+                        const profBonus = parseInt((values["repeating_attacks_" + rowID + "_attack_prof"] == 0) ? 0 : values.prof_bonus) || 0;
+                        const statModKey = filterDictionaryKeysByString(values, "_mod")[0]; // Work out the name of the modifier's key, to allow retrieval from the values dictionary - seeing as only one key should match, just take the first value
+                        const statMod = parseInt(values[statModKey]) || 0; // Retrieve the corresponding value using the derived key
+                        const extraMod = parseInt(values["repeating_attacks_" + rowID + "_attack_extra"]) || 0;
+                        const attackMod = profBonus + statMod + extraMod;
+                        setAttrs({
+                            ["repeating_attacks_" + rowID + "_attack_mod"]: attackMod
+                        });
+                    });
+                    // Calculate & apply the damage calculation & type
+                    // WARNING: This needs to be done separately from the attack modifier calculation, because the helper functions must receive only 1 item in 'values' which ends in "_mod" - otherwise, they may pick the wrong one
+                    const damageModName = values["repeating_attacks_" + rowID + "_attack_damagestat"] + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
+                    getAttrs( [
+                        "repeating_attacks_" + rowID + "_attack_damagedicecount",
+                        "repeating_attacks_" + rowID + "_attack_damagedicetype",
+                        "repeating_attacks_" + rowID + "_attack_damagetype",
+                        "repeating_attacks_" + rowID + "_attack_damageextra",
+                        damageModName // E.g. "str_mod"
+                    ], (values) => {
+                        // Calculate & apply the final damage calculation & type, considering all of the contributors
+                        const diceCount = parseInt(values["repeating_attacks_" + rowID + "_attack_damagedicecount"]) || 1; // Needs to be at least one die
+                        const diceType = values["repeating_attacks_" + rowID + "_attack_damagedicetype"];
+                        const statModKey = filterDictionaryKeysByString(values, "_mod")[0]; // Work out the name of the modifier's key, to allow retrieval from the values dictionary - seeing as only one key should match, just take the first value
+                        const statMod = parseInt(values[statModKey]) || 0; // Retrieve the corresponding value using the derived key
+                        const extraMod = parseInt(values["repeating_attacks_" + rowID + "_attack_damageextra"]) || 0;
+                        const damageCalc = "" + diceCount + diceType + " + " + (statMod + extraMod);
+                        setAttrs({
+                            ["repeating_attacks_" + rowID + "_attack_damagefinalcalc"]: damageCalc,
+                            ["repeating_attacks_" + rowID + "_attack_damagefinaltype"]: values["repeating_attacks_" + rowID + "_attack_damagetype"]
+                        });
+                    });
+                });
+            });
+        });
+    };
+
+    function recalculateAllAbilities() {
+        getSectionIDs("repeating_abilities", idArray => { // Retrieve all row IDs in the repeating section, and iterate through each one
+            idArray.forEach( (element) => {
+                const rowID = String(element);
+                getAttrs( [
+                    "repeating_abilities_" + rowID + "_ability_stat"
+                ], (values) => {
+                    const modName = values["repeating_abilities_" + rowID + "_ability_stat"] + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
+                    getAttrs( [
+                        "repeating_abilities_" + rowID + "_ability_rolltype",
+                        "prof_bonus",
+                        modName // E.g. "str_mod"
+                    ], (values) => {
+                        const profBonus = parseInt(values.prof_bonus) || 0;
+                        const statModKey = filterDictionaryKeysByString(values, "_mod")[0]; // Work out the name of the modifier's key, to allow retrieval from the values dictionary - seeing as only one key should match, just take the first value
+                        const statMod = parseInt(values[statModKey]) || 0; // Retrieve the corresponding value using the derived key
+                        var finalAmount = 0;
+                        switch (values.repeating_abilities_ability_rolltype) {
+                            case "attack":
+                                finalAmount = statMod + profBonus; // Calculates as an ability attack bonus
+                                break;
+                            case "difficulty":
+                                finalAmount = 8 + statMod + profBonus; // Calculates as an ability DC
+                                break;
+                            default:
+                                finalAmount = 0; // Not relevant
+                                break;
+                        }
+                        setAttrs({
+                            ["repeating_abilities_" + rowID + "_ability_mod"]: finalAmount
+                        });
+                    });
+                });
+            });
+        });
+    };
+
+    // Calculations for individual rows in repeating sections (<fieldset>)
+    // In order to avoid the need to manually pull row IDs, these functions have been kept within the parent listeners - Roll20 handles them automatically within listeners
+    
+    // When ANY attack field changes, even the unrelated ones (to ensure that it's always triggered when a new row is added and the first value specified - Roll20 doesn't have an event for rows being added, because they don't exist until one value is specified)...
+    // Recalculate the final modifier & damage for each attack, including all factors
+    on("change:repeating_attacks:attack_name change:repeating_attacks:attack_desc change:repeating_attacks:attack_type change:repeating_attacks:attack_ammo change:repeating_attacks:attack_ammo_max change:repeating_attacks:attack_ammotracked change:repeating_attacks:attack_ammoreloads change:repeating_attacks:attack_prof change:repeating_attacks:attack_stat change:repeating_attacks:attack_extra change:repeating_attacks:attack_damagedicecount change:repeating_attacks:attack_damagedicetype change:repeating_attacks:attack_damagestat change:repeating_attacks:attack_damageextra change:repeating_attacks:attack_damagetype", function(eventInfo) {
         getAttrs( [
-            "repeating_attacks_attack_stat"
+            "repeating_attacks_attack_stat",
+            "repeating_attacks_attack_damagestat"
         ], (values) => {
-            const modName = values.repeating_attacks_attack_stat + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
+            // Calculate and apply the attack modifier
+            const attackModName = values.repeating_attacks_attack_stat + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
             getAttrs( [
                 "repeating_attacks_attack_prof",
                 "repeating_attacks_attack_extra",
                 "prof_bonus",
-                modName // E.g. "str_mod"
+                attackModName // E.g. "str_mod"
             ], (values) => {
-                // Calculate & apply the final modifier, considering all of the contributors
+                // Calculate & set the final attack modifier, considering all of the contributors
                 const profBonus = parseInt((values.repeating_attacks_attack_prof == 0) ? 0 : values.prof_bonus) || 0;
                 const statModKey = filterDictionaryKeysByString(values, "_mod")[0]; // Work out the name of the modifier's key, to allow retrieval from the values dictionary - seeing as only one key should match, just take the first value
                 const statMod = parseInt(values[statModKey]) || 0; // Retrieve the corresponding value using the derived key
                 const extraMod = parseInt(values.repeating_attacks_attack_extra) || 0;
+                const attackMod = profBonus + statMod + extraMod;
                 setAttrs({
-                    repeating_attacks_attack_mod: profBonus + statMod + extraMod
+                    repeating_attacks_attack_mod: attackMod
                 });
             });
-        });
-    });
-
-    // When the dice type/count, controlling stat, or other modifier of any attack damage changes, or if the modifier for a stat changes...
-    // Recalculate the final damage for each attack, including all factors
-    on("change:repeating_attacks:attack_damagedicecount change:repeating_attacks:attack_damagedicetype change:repeating_attacks:attack_damagestat change:repeating_attacks:attack_damageextra change:str_mod change:agi_mod change:end_mod change:wit_mod change:knw_mod change:prs_mod", function() {
-        getAttrs( [
-            "repeating_attacks_attack_damagestat"
-        ], (values) => {
-            const modName = values.repeating_attacks_attack_damagestat + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
+            // Calculate & apply the damage calculation & type
+            // WARNING: This needs to be done separately from the attack modifier calculation, because the helper functions must receive only 1 item in 'values' which ends in "_mod" - otherwise, they may pick the wrong one
+            const damageModName = values.repeating_attacks_attack_damagestat + "_mod"; // Assemble the corresponding mod field name from the name of the selected stat (e.g. "str_mod")
             getAttrs( [
                 "repeating_attacks_attack_damagedicecount",
                 "repeating_attacks_attack_damagedicetype",
+                "repeating_attacks_attack_damagetype",
                 "repeating_attacks_attack_damageextra",
-                modName // E.g. "str_mod"
+                damageModName // E.g. "str_mod"
             ], (values) => {
+                // Calculate & apply the final damage calculation & type, considering all of the contributors
                 const diceCount = parseInt(values.repeating_attacks_attack_damagedicecount) || 1; // Needs to be at least one die
+                const diceType = values.repeating_attacks_attack_damagedicetype;
                 const statModKey = filterDictionaryKeysByString(values, "_mod")[0]; // Work out the name of the modifier's key, to allow retrieval from the values dictionary - seeing as only one key should match, just take the first value
                 const statMod = parseInt(values[statModKey]) || 0; // Retrieve the corresponding value using the derived key
                 const extraMod = parseInt(values.repeating_attacks_attack_damageextra) || 0;
+                const damageCalc = diceCount + diceType + " + " + (statMod + extraMod);
                 setAttrs({
-                    repeating_attacks_attack_damagefinalcalc: diceCount + values.repeating_attacks_attack_damagedicetype + " + " + (statMod + extraMod)
+                    repeating_attacks_attack_damagefinalcalc: damageCalc,
+                    repeating_attacks_attack_damagefinaltype: values.repeating_attacks_attack_damagetype
                 });
-            });
-        });
-    });
-
-    // When the damage type of any attack changes...
-    // Update the final output label
-    on("change:repeating_attacks:attack_damagetype", function() {
-        getAttrs( [
-            "repeating_attacks_attack_damagetype"
-        ], (values) => {
-            setAttrs({
-                repeating_attacks_attack_damagefinaltype: values.repeating_attacks_attack_damagetype
             });
         });
     });
@@ -3941,16 +4023,16 @@
             "repeating_attacks_attack_ammo",
             "repeating_attacks_attack_ammo_max"
         ], (values) => {
-            let capped_amount = Math.min(values.repeating_attacks_attack_ammo, values.repeating_attacks_attack_ammo_max); // Amount shouldn't ever exceed max
+            let capped_ammo = Math.min(values.repeating_attacks_attack_ammo, values.repeating_attacks_attack_ammo_max); // Amount shouldn't ever exceed max
             setAttrs({
-                repeating_attacks_attack_ammo: capped_amount
+                repeating_attacks_attack_ammo: capped_ammo
             });
         });
     });
 
-    // When the proficiency, parent stat or roll type of any ability changes, or if the modifier for a stat changes...
+    // When ANY ability field changes, even the unrelated ones (to ensure that it's always triggered when a new row is added and the first value specified - Roll20 doesn't have an event for rows being added, because they don't exist until one value is specified)...
     // Recalculate the final modifier for each ability, including all factors
-    on("change:repeating_abilities:ability_stat change:repeating_abilities:ability_rolltype change:prof_bonus change:str_mod change:agi_mod change:end_mod change:wit_mod change:knw_mod change:prs_mod", function() {
+    on("change:repeating_abilities:ability_name change:repeating_abilities:ability_stat change:repeating_abilities:ability_desc change:repeating_abilities:ability_apcost change:repeating_abilities:attack_target change:repeating_abilities:attack_range change:repeating_abilities:ability_chargeup change:repeating_abilities:ability_duration change:repeating_abilities:ability_concentration change:repeating_abilities:ability_rolltype change:repeating_abilities:ability_mod", function() {
         getAttrs( [
             "repeating_abilities_ability_stat"
         ], (values) => {
@@ -4029,23 +4111,26 @@
         recalculateNPCDefaultHealth()
     });
 
+    // When any of the stats are changed
+    on("change:str change:agi change:end change:wit change:knw change:prs", function() {
+        recalculateStatMods();
+    });
+
     // When the character's proficiency bonus is changed
     on("change:prof_bonus", function() {
         recalculateSkillMods();
         recalculatePowerStats();
         recalculateDetermination();
-    });
-
-    // When any of the stat values are changed
-    on("change:str change:agi change:end change:wit change:knw change:prs", function() {
-        recalculateStatMods();
-        recalculateDetermination();
+        recalculateAllAttacks();
+        recalculateAllAbilities();
     });
 
     // When any of the stat modifiers are changed
     on("change:str_mod change:agi_mod change:end_mod change:wit_mod change:knw_mod change:prs_mod", function() {
-        recalculateSkillMods()
+        recalculateSkillMods();
         recalculatePowerStats();
+        recalculateAllAttacks();
+        recalculateAllAbilities();
     });
 
     // When the max or current HP changes
@@ -4090,6 +4175,8 @@
         recalculateArmorClass();
         recalculatePowerStats();
         recalculateDetermination();
+        recalculateAllAttacks();
+        recalculateAllAbilities();
     });
 
 </script>
