@@ -313,11 +313,8 @@
                     <label>
                         Armor Class
                     </label>
-                    <div class="pconly">
+                    <div>
                         <input readonly type="number" min="0" max="30" value="10" name="attr_armorclass" class="armorclass">
-                    </div>
-                    <div class="npconly">
-                        <input type="number" min="0" max="30" value="10" name="attr_armorclass_manual" class="armorclass">
                     </div>
                 </li>
 
@@ -519,31 +516,34 @@
 
                         <!-- Armor -->
 
-                        <div class="subsection armor pconly">
+                        <div class="subsection armor">
 
                             <h2>Armor</h2>
 
-                            <div>
+                            <div class="armorgrid">
                                 <label>
-                                    Equipped Armor
+                                    Armor Name
+                                    <input type="text" name="attr_armor"/>
+                                </label>
+                                <label>
+                                    Base AC
+                                    <input type="number" min="10" max="20" value="10" name="attr_armorbase"/>
+                                </label>
+                            </div>
+
+                            <div class="armorgrid">
+                                <label>
+                                    Armor Type
                                     <select name="attr_armortype">
                                         <option value="none">None</option>
                                         <option value="lgt">Light</option>
                                         <option value="med" selected>Medium</option>
                                         <option value="hvy">Heavy</option>
                                     </select>
-                                    <input type="text" name="attr_armor"/>
                                 </label>
-                            </div>
-
-                            <div>
-                                <label class="sharedrow left">
-                                    Base AC
-                                    <input type="number" min="10" max="20" value="10" name="attr_armorbase"/>
-                                </label>
-                                <label class="sharedrow right">
+                                <label>
                                     Max AGI Bonus
-                                    <select name="attr_armorcap">
+                                    <select name="attr_armorcap" id="armorcap">
                                         <option value="unlimited">&infin;</option>
                                         <option value="2" selected>2</option>
                                         <option value="0">0</option>
@@ -551,12 +551,19 @@
                                 </label>
                             </div>
 
-                            <div>
-                                <label class="sharedrow left">
+                            <div class="armorgrid">
+                                <label>
                                     Additional Armor
-                                    <input type="number" min="0" max="10" value="0" name="attr_armorextra"/>
+                                    <input type="number" min="0" max="20" value="0" name="attr_armorextra"/>
                                 </label>
-                                <label class="sharedrow right">
+                                <label>
+                                    Include END Bonus?
+                                    <input type="checkbox" unchecked name="attr_armorendbonus"/>
+                                </label>
+                            </div>
+
+                            <div class="armorgrid">
+                                <label>
                                     Equipped Shield
                                     <select name="attr_shield">
                                         <option value="none" selected>None</option>
@@ -565,6 +572,7 @@
                                         <option value="shield_p2">Shield +2</option>
                                     </select>
                                 </label>
+                                <div></div> <!-- A blank to occupy the final spot on the grid -->
                             </div>
 
                         </div>
@@ -637,7 +645,7 @@
 
                     <div class="section smallcolumn">
 
-                        <!-- Skills -->
+                        <!-- Defensive Skills -->
                         
                         <div class="subsection skills">
                         
@@ -693,6 +701,8 @@
                             </table>
 
                         </div>
+
+                        <!-- Other Skills -->
 
                         <div class="subsection skills">
                         
@@ -3643,17 +3653,20 @@
             "armorbase",
             "armorcap",
             "armorextra",
+            "armorendbonus",
             "shield",
-            "agi_mod"
+            "agi_mod",
+            "end_mod"
         ], function(values) {
             const baseAC = parseInt(values.armorbase) || 10; // Assume 10 (the foundational AC value) if unable to determine
             const modCap = isNaN(parseInt(values.armorcap)) ? Number.MAX_SAFE_INTEGER : parseInt(values.armorcap); // If unable to get a number from the drop-down, assume it's infinity
             const mod = parseInt(values.agi_mod) || 0;
             const cappedMod = Math.min(mod, modCap); // Use whichever value is lower out of the mod or its cap
             const extra = parseInt(values.armorextra) || 0;
+            const enduranceBonus = ((values.armorendbonus == 0) ? 0 : parseInt(values.end_mod) || 0);
             const shieldBonus = shieldACBonusFor(values.shield);
             setAttrs({
-                armorclass: baseAC + cappedMod + extra + shieldBonus
+                armorclass: baseAC + cappedMod + extra + shieldBonus + enduranceBonus
             });
         });
     };
@@ -4159,7 +4172,7 @@
     });
 
     // When anything related to armor class changes
-    on("change:armorbase change:armorcap change:armorextra change:shield change:agi_mod", function() {
+    on("change:armorbase change:armorcap change:armorextra change:armorendbonus change:shield change:agi_mod change:end_mod", function() {
         recalculateArmorClass()
     });
 

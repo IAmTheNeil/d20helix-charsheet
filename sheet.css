@@ -702,38 +702,32 @@ div.charactersheet li.mortality table td {
 
 /* Armor */
 
-div.charactersheet div.armor div {
-    width: 100%;
-    padding-bottom: 6px;
+div.charactersheet div.armor div.armorgrid {
+    display: grid;
+    grid-template-columns:
+        60%
+        32%;
+    justify-content: space-between;
+}
+div.charactersheet div.armor div.armorgrid:not(:last-of-type) {
+    margin-bottom: 6px;
+}
+
+div.charactersheet div.armor div.armorgrid label {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-}
-div.charactersheet div.armor div label {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
 }
-div.charactersheet div.armor div label.sharedrow.left {
-    margin-right: 20px;
-    justify-content: space-between;
-    width: 60%;
+div.charactersheet div.armor div.armorgrid input[type=text] {
+    width: 15em;
 }
-div.charactersheet div.armor div label.sharedrow.right {
-    justify-content: right;
-}
-div.charactersheet div.armor select {
+div.charactersheet div.armor div.armorgrid select {
     width: 10em;
-    margin-left: 14px;
 }
-div.charactersheet div.armor div input {
-    margin-left: 10px;
-}
-div.charactersheet div.armor div input[type=text] {
-    width: 17em;
+div.charactersheet div.armor div.armorgrid select#armorcap {
+    width: 3.5em;
 }
 
 /* Resistances and Vulnerabilities */
