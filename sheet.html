@@ -1066,34 +1066,34 @@
                                     </select>
             
                                     <!-- Ammo & Reloads -->
-                                    <div class="ammo verticalgroup">
-                                        <div class="oneline verticalstretch">
+                                    <div id="ammo-reloads" class="verticalgroup">
+                                        <div class="oneline verticalstretch ammo">
                                             <div class="oneline quantity">
+                                                <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_ammo.png?raw=true" alt="" class="icon">
                                                 <input type="number" min="0" max="100" value="1" name="attr_attack_ammo"/>
                                                 <span>of</span>
                                                 <input type="number" min="1" max="100" value="1" name="attr_attack_ammo_max"/>
                                             </div>
                                         </div>
-                                        <div class="oneline verticalstretch">
+                                        <div class="oneline verticalstretch reloads">
                                             <div class="stretchyholder">
                                                 <button
                                                     name="act_reload"
                                                     type="action">
                                                     <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_reload.png?raw=true" alt="Reload" class="icon">
+                                                    <span>Reload</span>
                                                 </button>
                                             </div>
-                                            <select name="attr_attack_ammotracked">
-                                                <option value="untracked" selected>Untracked</option>
-                                                <option value="tracked" selected>Tracked</option>
-                                            </select>
-                                            <div id="unlimitedreloads" class="stretchyholder">
-                                                <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_infinity.png?raw=true" alt="Infinite">
-                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_infinity.png?raw=true" alt="Infinite">
+                                            <input type="checkbox" name="attr_attack_unlimited_reloads" unchecked>
                                             <input id="reloadcount" type="number" min="0" max="5" value="0" name="attr_attack_ammoreloads"/>
+                                            <div id="reloadplaceholder" class="stretchyholder placeholder">
+                                                <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_notapplicable.png?raw=true" alt="" class="icon">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="ammoplaceholder verticalgroup">
-                                        <span>[Not Required]</span>
+                                    <div id="ammoplaceholder" class="verticalgroup placeholder">
+                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_notapplicable.png?raw=true" alt="" class="icon">
                                     </div>
             
                                     <!-- Attack -->
@@ -1367,27 +1367,26 @@
                                         </label>
                                     </div>
             
-                                    <div class="oneline recharge">
-                                        <select name="attr_technique_type" class="longfield">
-                                            <option value="shortrest" selected>Short Rest</option>
-                                            <option value="longrest">Long Rest</option>
-                                            <option value="turn">Turn</option>
-                                            <option value="roll3">Roll 3-6</option>
-                                            <option value="roll4">Roll 4-6</option>
-                                            <option value="roll5">Roll 5-6</option>
-                                            <option value="roll6">Roll 6</option>
-                                            <option value="timed">Timed</option>
-                                            <option value="escalating">Escalating Difficulty</option>
-                                            <option value="passive">Passive Bonus</option>
-                                            <option value="apcost">AP Cost</option>
-                                            <option value="unlimited">Unlimited</option>
-                                        </select>
-                                    </div>
+                                    <select id="techniquetype" name="attr_technique_type" class="longfield">
+                                        <option value="shortrest" selected>Short Rest</option>
+                                        <option value="longrest">Long Rest</option>
+                                        <option value="turn">Turn</option>
+                                        <option value="roll3">Roll 3-6</option>
+                                        <option value="roll4">Roll 4-6</option>
+                                        <option value="roll5">Roll 5-6</option>
+                                        <option value="roll6">Roll 6</option>
+                                        <option value="timed">Timed</option>
+                                        <option value="escalating">Escalating Difficulty</option>
+                                        <option value="passive">Passive / Unlimited</option>
+                                    </select>
             
                                     <div class="oneline quantity">
                                         <input type="number" min="0" max="100" value="1" name="attr_technique_amount"/>
                                         <span>of</span>
                                         <input type="number" min="1" max="100" value="1" name="attr_technique_max"/>
+                                    </div>
+                                    <div id="quantityplaceholder" class="verticalgroup placeholder">
+                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_notapplicable.png?raw=true" alt="" class="icon">
                                     </div>
             
                                     <div class="oneline verticalstretch describe">
@@ -1395,7 +1394,7 @@
                                             <button
                                                 name="roll_technique_description"
                                                 type="roll"
-                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{technique_name}}} {{desc=@{technique_desc}}} {{amount=@{technique_amount}}} {{amountmax=@{technique_max}}}">
+                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{technique_name}}} {{desc=@{technique_desc}}}">
                                                 <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_speech.png?raw=true" alt="Describe in Chat" class="icon">
                                             </button>
                                         </div>
@@ -2602,7 +2601,7 @@
                             <div class="inventorygrid gridheadings">
             
                                 <label class="description">Item</label>
-                                <label class="quanity">Current Amount</label>
+                                <label class="quantity">Current Amount</label>
                                 <label class="describe">Describe</label>
             
                             </div>
@@ -2911,14 +2910,14 @@
             "repeating_attacks_attack_type",
             "repeating_attacks_attack_ammo",
             "repeating_attacks_attack_ammo_max",
-            "repeating_attacks_attack_ammotracked",
+            "repeating_attacks_attack_unlimited_reloads",
             "repeating_attacks_attack_ammoreloads",
             "char_name"
         ], (values) => {
             if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo == values.repeating_attacks_attack_ammo_max)) {
                 return; // Melee weapons and weapons with full ammo don't need reloads
             } else {
-                if ((values.repeating_attacks_attack_ammotracked == "tracked") && (values.repeating_attacks_attack_ammoreloads == 0)) {
+                if ((values.attack_unlimited_reloads == 0) && (values.repeating_attacks_attack_ammoreloads == 0)) {
                     // If reloads are tracked and there aren't any left, the reload can't happen
                     startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to reload: No reloads remaining!}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat    

@@ -194,8 +194,9 @@ div.charactersheet div.stretchyholder {
     width: 100%;
     height: 100%;
 }
-div.charactersheet div.stretchyholder button,
-div.charactersheet div.stretchyholder textarea {
+div.charactersheet div.stretchyholder > button,
+div.charactersheet div.stretchyholder > textarea,
+div.charactersheet div.stretchyholder > span {
     width: 100%;
     height: 100%;
 }
@@ -279,6 +280,11 @@ div.charactersheet div.verticalgroup {
     justify-content: space-between;
     align-items: center;
 }
+div.charactersheet div.quantity,
+div.charactersheet label.quantity {
+    max-width: 160px;
+}
+
 
 div.charactersheet input[readonly][type=number]::-webkit-outer-spin-button,
 div.charactersheet input[readonly][type=number]::-webkit-inner-spin-button { /* Hide the 'Spinner' Up/Down arrows for read-only number fields in Chrome, Safari, Edge, and Opera */
@@ -308,12 +314,19 @@ div.charactersheet img.icon {
     min-height: 20px;
     opacity: 75%;
 }
-
 div.charactersheet button img.icon {
     width: 18px;
     height: 18px;
     min-width: 18px;
     min-height: 18px;
+}
+div.characterviewer div.charactersheet div.placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 1px solid var(--nearblack);
+    border-radius: 3px;
+    opacity: 25%;
 }
 
 div.charactersheet select {
@@ -829,7 +842,7 @@ div.charactersheet div.attacks div.attacksgrid {
     grid-template-columns:
         26%  /* Attack Name */
         12.5% /* Range */
-        22.5%  /* Ammo */
+        21%  /* Ammo */
         10%  /* Attack */
         24%; /* Damage */
 }
@@ -840,14 +853,17 @@ div.charactersheet div.inventory div.gridheadings {
     margin-bottom: 6px;
 }
 
-div.charactersheet div.attacks select:has(> option[value="melee"]:checked) ~ div.ammo {
+div.charactersheet div.attacks select:has(> option[value="melee"]:checked) ~ div#ammo-reloads {
     display: none;
 }
-div.charactersheet div.attacks select:not(:has(> option[value="melee"]:checked)) ~ div.ammoplaceholder {
+div.charactersheet div.attacks select:not(:has(> option[value="melee"]:checked)) ~ div#ammoplaceholder {
     display: none;
 }
-div.characterviewer div.charactersheet div.attacks div.ammoplaceholder {
-    color: var(--midfont);
+div.characterviewer div.charactersheet div.attacks .reloads input[type=checkbox]:checked ~ input#reloadcount { /* Hide the reload count if it's reloads aren't tracked */
+    display: none;
+}
+div.characterviewer div.charactersheet div.attacks .reloads input[type=checkbox]:not(:checked) ~ div#reloadplaceholder {
+    display: none;
 }
 
 div.charactersheet div.attacks .ammo,
@@ -856,60 +872,86 @@ div.charactersheet div.attacks .damage,
 div.charactersheet div.attacks .type {
     justify-content: center;
 }
-div.characterviewer div.charactersheet div.attacks .ammo select:has(> option[value="untracked"]:checked) ~ #reloadcount { /* Hide the reload count if it's reloads aren't tracked */
-    display: none;
+
+div.characterviewer div.charactersheet div.attacks div.ammo img.icon {
+    width: 28px;
+    height: 28px;
+    margin-right: 4px;
 }
-div.characterviewer div.charactersheet div.attacks .ammo select:has(> option[value="tracked"]:checked) ~ #unlimitedreloads { /* Hide the infinity icon if reloads are tracked */
-    display: none;
+
+div.characterviewer div.charactersheet div.attacks div.reloads button {
+    margin-right: 4px;
 }
-div.characterviewer div.charactersheet div.attacks .ammo #unlimitedreloads {
+div.characterviewer div.charactersheet div.attacks div.reloads #unlimitedreloads {
     background: var(--secondarybackground);
     justify-content: center;
     align-items: center;
-    width: 3em;
-    min-width: 3em;
+    width: 5.5em;
+    min-width: 5.5em;
+    margin-left: 4px;
+    margin-right: 4px;
     clip-path: polygon(  /* Clips the div's visible path down to a straight-edged 'pill' shape */
-        20% 0,
-        80% 0,
+        15% 0,
+        85% 0,
         100% 50%,
-        80% 100%,
-        20% 100%,
+        85% 100%,
+        15% 100%,
         0% 50%
     );
 }
-div.characterviewer div.charactersheet div.attacks .ammo #unlimitedreloads img {
+div.characterviewer div.charactersheet div.attacks div.reloads img:not(.icon) {
     max-height: 12px;
     padding-top: 8px;
     padding-bottom: 8px;
-    padding-left: 4px;
-    padding-right: 4px;
 }
-div.characterviewer div.charactersheet div.attacks .ammo #reloadcount {
+div.characterviewer div.charactersheet div.attacks div.reloads input[type=checkbox] {
+    margin-left: 2px;
+}
+div.characterviewer div.charactersheet div.attacks div.reloads input#reloadcount {
+    margin-left: 6px;
     width: 3em;
     min-width: 3em;
 }
-div.charactersheet div.attacks .attack div.calculation span {
+div.characterviewer div.charactersheet div.attacks div.reloads div#reloadplaceholder {
+    margin-left: 6px;
+    width: 3em;
+    min-width: 3em;
+    height: 26px;
+}
+div.characterviewer div.charactersheet div.attacks div#ammoplaceholder img {
+    max-height: 42px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+div.characterviewer div.charactersheet div.attacks div.reloads div#reloadplaceholder img {
+    max-height: 22px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+div.charactersheet div.attacks div.calculation span {
     margin-left: 8px;
 }
 div.charactersheet div.attacks div.ammo select {
     margin-left: 6px;
     margin-right: 6px;
 }
-div.charactersheet div.attacks .attack div.singlerow {
+div.charactersheet div.attacks div.singlerow {
     justify-content: space-between;
 }
-div.charactersheet div.attacks .attack input[readonly] {
+div.charactersheet div.attacks input[readonly] {
     width: 2.5em;
 }
-div.charactersheet div.attacks .damage input.damagedice {
+div.charactersheet div.attacks div.damage input.damagedice {
     width: 6em;
     margin-left: 4px;
 }
-div.charactersheet div.attacks .damage input.damagetype {
+div.charactersheet div.attacks div.damage input.damagetype {
     width: 6em;
 }
 
-div.charactersheet div.attacks div.ammo div.oneline {
+div.charactersheet div.attacks div.ammo div.oneline,
+div.charactersheet div.attacks div.reloads div.oneline {
     justify-content: center;
 }
 
@@ -1033,6 +1075,18 @@ div.charactersheet div.techniques div.oneline.describe,
 div.charactersheet div.inventory div.oneline.describe {
     justify-content: stretch;
     align-items: stretch;
+}
+
+div.charactersheet div.techniques select#techniquetype:has(> option[value="passive"]:checked) ~ div.quantity {
+    display: none;
+}
+div.charactersheet div.techniques select#techniquetype:not(:has(> option[value="passive"]:checked)) ~ div#quantityplaceholder {
+    display: none;
+}
+div.characterviewer div.charactersheet div.techniques div#quantityplaceholder img {
+    max-height: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 /* Psi-Powers */
