@@ -1,3 +1,15 @@
+/* Browser-Specific Logic */
+
+@supports not (selector(:has(*))) { /* More basic settings for browsers that don't support the 'has' selector for dynamically displaying/hiding elements based on user selection (such as Firefox ~v119 and earlier) */
+
+    div.characterviewer div.charactersheet div.attacks div#ammoplaceholder { /* Just fully hide the placeholders which can't be switched in & out */
+        display: none;
+    }
+    div.characterviewer div.charactersheet div.techniques div#quantityplaceholder { /* Just fully hide the placeholders which can't be switched in & out */
+        display: none;
+    }
+}
+
 /* Fonts */
 
 @import url('https://dl.dafont.com/dl/?f=around');
@@ -665,34 +677,34 @@ div.charactersheet div.core input[readonly].passive {
     );
 }
 
-div.characterviewer div.core li.hitdice,
-div.characterviewer div.core li.basehp,
-div.characterviewer div.core li.mortality {
+div.charactersheet div.core li.hitdice,
+div.charactersheet div.core li.basehp,
+div.charactersheet div.core li.mortality {
     width: 46.5%;
 }
-div.characterviewer div.core li.basehp input[type=number] {
+div.charactersheet div.core li.basehp input[type=number] {
     width: 3em;
 }
-div.characterviewer div.core li.basehp div.calculation {
+div.charactersheet div.core li.basehp div.calculation {
     height: 0.9em;
 }
-div.characterviewer div.core li.basehp div.result {
+div.charactersheet div.core li.basehp div.result {
     height: 1em;
 }
-div.characterviewer div.core li.basehp div.calculation input[type=number][readonly] {
+div.charactersheet div.core li.basehp div.calculation input[type=number][readonly] {
     width: 2.9em;
 }
-div.characterviewer div.core li.basehp div.result input[type=number][readonly] {
+div.charactersheet div.core li.basehp div.result input[type=number][readonly] {
     width: 5em;
 }
-div.characterviewer div.core li.basehp div.calculation input,
-div.characterviewer div.core li.basehp div.calculation span {
+div.charactersheet div.core li.basehp div.calculation input,
+div.charactersheet div.core li.basehp div.calculation span {
     font-size: small;
 }
-div.characterviewer div.core li.hitdice select {
+div.charactersheet div.core li.hitdice select {
     width: 4em;
 }
-div.characterviewer div.core li.hitdice button {
+div.charactersheet div.core li.hitdice button {
     width: 6em;
     padding-left: 6px;
     padding-right: 6px;
@@ -859,10 +871,10 @@ div.charactersheet div.attacks select:has(> option[value="melee"]:checked) ~ div
 div.charactersheet div.attacks select:not(:has(> option[value="melee"]:checked)) ~ div#ammoplaceholder {
     display: none;
 }
-div.characterviewer div.charactersheet div.attacks .reloads input[type=checkbox]:checked ~ input#reloadcount { /* Hide the reload count if it's reloads aren't tracked */
+div.charactersheet div.attacks .reloads input[type=checkbox]:checked ~ input#reloadcount { /* Hide the reload count if it's reloads aren't tracked */
     display: none;
 }
-div.characterviewer div.charactersheet div.attacks .reloads input[type=checkbox]:not(:checked) ~ div#reloadplaceholder {
+div.charactersheet div.attacks .reloads input[type=checkbox]:not(:checked) ~ div#reloadplaceholder {
     display: none;
 }
 
@@ -873,16 +885,16 @@ div.charactersheet div.attacks .type {
     justify-content: center;
 }
 
-div.characterviewer div.charactersheet div.attacks div.ammo img.icon {
+div.charactersheet div.attacks div.ammo img.icon {
     width: 28px;
     height: 28px;
     margin-right: 4px;
 }
 
-div.characterviewer div.charactersheet div.attacks div.reloads button {
+div.charactersheet div.attacks div.reloads button {
     margin-right: 4px;
 }
-div.characterviewer div.charactersheet div.attacks div.reloads #unlimitedreloads {
+div.charactersheet div.attacks div.reloads #unlimitedreloads {
     background: var(--secondarybackground);
     justify-content: center;
     align-items: center;
@@ -899,31 +911,31 @@ div.characterviewer div.charactersheet div.attacks div.reloads #unlimitedreloads
         0% 50%
     );
 }
-div.characterviewer div.charactersheet div.attacks div.reloads img:not(.icon) {
+div.charactersheet div.attacks div.reloads img:not(.icon) {
     max-height: 12px;
     padding-top: 8px;
     padding-bottom: 8px;
 }
-div.characterviewer div.charactersheet div.attacks div.reloads input[type=checkbox] {
+div.charactersheet div.attacks div.reloads input[type=checkbox] {
     margin-left: 2px;
 }
-div.characterviewer div.charactersheet div.attacks div.reloads input#reloadcount {
+div.charactersheet div.attacks div.reloads input#reloadcount {
     margin-left: 6px;
     width: 3em;
     min-width: 3em;
 }
-div.characterviewer div.charactersheet div.attacks div.reloads div#reloadplaceholder {
+div.charactersheet div.attacks div.reloads div#reloadplaceholder {
     margin-left: 6px;
     width: 3em;
     min-width: 3em;
     height: 26px;
 }
-div.characterviewer div.charactersheet div.attacks div#ammoplaceholder img {
+div.charactersheet div.attacks div#ammoplaceholder img {
     max-height: 42px;
     padding-top: 8px;
     padding-bottom: 8px;
 }
-div.characterviewer div.charactersheet div.attacks div.reloads div#reloadplaceholder img {
+div.charactersheet div.attacks div.reloads div#reloadplaceholder img {
     max-height: 22px;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -1083,7 +1095,7 @@ div.charactersheet div.techniques select#techniquetype:has(> option[value="passi
 div.charactersheet div.techniques select#techniquetype:not(:has(> option[value="passive"]:checked)) ~ div#quantityplaceholder {
     display: none;
 }
-div.characterviewer div.charactersheet div.techniques div#quantityplaceholder img {
+div.charactersheet div.techniques div#quantityplaceholder img {
     max-height: 20px;
     padding-top: 3px;
     padding-bottom: 3px;
