@@ -116,7 +116,7 @@
                     </select>
                 </label>
             </li>
-            
+
             <li class="npconly">
                 <label>
                     Personality
@@ -273,103 +273,95 @@
 
     </ul>
 
-    <!-- 
-        Top Section (One Column)
-    -->
+    <!-- Vitals -->
 
-    <div class="singlecolumn">
+    <div class="section vitals">
 
-        <!-- Vitals -->
+        <h1>Vitals</h1>
 
-        <div class="section vitals">
+        <ul class="infolist">
 
-            <h1>Vitals</h1>
+            <li id="healthpoints">
+                <label>
+                    Health Points
+                </label>
+                <div>
+                    <input type="number" min="0" max="1000" value="8" name="attr_hp"/>
+                    of
+                    <input type="number" min="1" max="1000" value="8" name="attr_hp_max"/>
+                </div>
+            </li>
 
-            <ul class="infolist">
+            <li id="abilitypoints">
+                <label>
+                    Ability Points
+                </label>
+                <div>
+                    <input type="number" min="0" max="20" value="1" name="attr_ap"/>
+                    of
+                    <input readonly type="number" min="1" value="1" name="attr_ap_max"/>
+                </div>
+            </li>
 
-                <li id="healthpoints">
-                    <label>
-                        Health Points
-                    </label>
-                    <div>
-                        <input type="number" min="0" max="1000" value="8" name="attr_hp"/>
-                        of
-                        <input type="number" min="1" max="1000" value="8" name="attr_hp_max"/>
-                    </div>
-                </li>
+            <li id="stundamage">
+                <label>
+                    Stun Damage
+                    <button
+                        type="action"
+                        name="act_clearstun">
+                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_refresh.png?raw=true" alt="Clear 1 Round of Stun Damage" class="icon">
+                    </button>
+                </label>
+                <div>
+                    <input type="number" min="0" value="0" name="attr_stundamage"/>
+                    of
+                    <input readonly type="number" min="0" value="0" name="attr_stundamage_max"/>
+                </div>
+            </li>
 
-                <li id="abilitypoints">
-                    <label>
-                        Ability Points
-                    </label>
-                    <div>
-                        <input type="number" min="0" max="20" value="1" name="attr_ap"/>
-                        of
-                        <input readonly type="number" min="1" value="1" name="attr_ap_max"/>
-                    </div>
-                </li>
+            <li id="armorclass">
+                <label>
+                    Armor Class
+                </label>
+                <div>
+                    <input readonly type="number" min="0" max="30" value="10" name="attr_armorclass" class="armorclass">
+                </div>
+            </li>
 
-                <li id="armorclass">
-                    <label>
-                        Armor Class
-                    </label>
-                    <div>
-                        <input readonly type="number" min="0" max="30" value="10" name="attr_armorclass" class="armorclass">
-                    </div>
-                </li>
+            <li class="pconly">
+                <label>
+                    Inspiration
+                </label>
+                <div>
+                    <input type="number" min="0" max="3" value="0" name="attr_inspiration">
+                </div>
+            </li>
 
-                <li>
-                    <label>
-                        Speed
-                    </label>
-                    <div>
-                        <input type="number" min="0" max="20" value="6" name="attr_speed">
-                        m
-                    </div>
-                </li>
+            <li id="determination" class="npconly">
+                <label>
+                    Determination
+                </label>
+                <div>
+                    <input readonly type="number" min="1" max="20" value="1" name="attr_npc_determination" class="determination"/>
+                </div>
+            </li>
 
-                <li class="pconly">
-                    <label>
-                        Inspiration
-                    </label>
-                    <div>
-                        <input type="number" min="0" max="3" value="0" name="attr_inspiration">
-                    </div>
-                </li>
-
-                <li class="determination npconly">
-                    <div>
-                        <button
-                            name="roll_determination"
-                            type="roll"
-                            value="&{template:check} {{charname=@{char_name}}} {{checktype=Special}} {{checkname=Determination}} {{checkmod=@{npc_determination}}} {{theroll=[[1d20+@{npc_determination}]]}}">
-                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_roll.png?raw=true" alt="Make a Roll" class="icon">
-                            <span>Determination</span>
-                        </button>
-                    </div>
-                    <div>
-                        <input readonly type="number" min="1" max="20" value="1" name="attr_npc_determination"/>
-                    </div>
-                </li>
-
-            </ul>
-
-        </div>
+        </ul>
 
     </div>
 
     <!-- Tabbed Sections -->
 
     <div class="tabbed-view">
-        
+
         <!-- Tab List -->
 
         <input type="radio" name="tabset" id="tab1" aria-controls="tab-panel1" checked>
         <label class="tab-heading" for="tab1">Core Info & Skills</label>
-        
+
         <input type="radio" name="tabset" id="tab2" aria-controls="tab-panel2">
         <label class="tab-heading" for="tab2">Attacks & Abilities</label>
-        
+
         <input type="radio" name="tabset" id="tab3" aria-controls="tab-panel3">
         <label class="tab-heading" for="tab3">Psi-Powers</label>
 
@@ -378,7 +370,7 @@
 
         <input type="radio" name="tabset" id="tab5" aria-controls="tab-panel5">
         <label class="tab-heading" for="tab5">Character Notes</label>
-        
+
         <!-- Tabbed Content Panels -->
 
         <div class="tabbed-view-content">
@@ -389,7 +381,7 @@
 
                 <div class="multicolumn">
 
-                    <!-- 
+                    <!--
                         Left Column
                     -->
 
@@ -398,7 +390,7 @@
                         <!-- Core Info -->
 
                         <div class="subsection core">
-                                
+
                             <h2>Core Info</h2>
 
                             <ul class="infolist">
@@ -481,6 +473,16 @@
                                             </td>
                                         </tr>
                                     </table>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        Speed
+                                    </label>
+                                    <div>
+                                        <input type="number" min="0" max="20" value="6" name="attr_speed">
+                                        m
+                                    </div>
                                 </li>
 
                                 <li>
@@ -577,10 +579,10 @@
 
                         </div>
 
-                        <!-- Resistances and Vulnerabilaties -->
+                        <!-- Resistances & Vulnerabilaties -->
 
                         <div class="subsection resistances">
-                            
+
                             <h2>Resistances and Vulnerabilaties</h2>
 
                             <fieldset class="repeating_resistances">
@@ -616,7 +618,7 @@
                         <!-- Proficiencies -->
 
                         <div class="subsection proficiencies pconly">
-                            
+
                             <h2>Tool Proficiencies</h2>
 
                             <fieldset class="repeating_toolproficiencies">
@@ -639,20 +641,20 @@
 
                     </div>
 
-                    <!-- 
+                    <!--
                         Right Column
                     -->
 
                     <div class="section smallcolumn">
 
                         <!-- Defensive Skills -->
-                        
+
                         <div class="subsection skills">
-                        
+
                             <h2>Defensive Skills</h2>
 
                             <table>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_constitution_prof" unchecked></td>
                                     <td><button
@@ -667,7 +669,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_constitution_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_constitution_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_evasion_prof" unchecked></td>
                                     <td><button
@@ -682,7 +684,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_evasion_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_evasion_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_mentaldefense_prof" unchecked></td>
                                     <td><button
@@ -697,19 +699,19 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_mentaldefense_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_mentaldefense_mod"/></td>
                                 </tr>
-                        
+
                             </table>
 
                         </div>
 
-                        <!-- Other Skills -->
+                        <!-- Practical Skills -->
 
                         <div class="subsection skills">
-                        
-                            <h2>Other Skills</h2>
-                        
+
+                            <h2>Practical Skills</h2>
+
                             <table>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_athletics_prof" unchecked></td>
                                     <td><button
@@ -724,7 +726,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_athletics_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_athletics_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_acrobatics_prof" unchecked></td>
                                     <td><button
@@ -739,7 +741,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_acrobatics_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_acrobatics_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_creaturehandling_prof" unchecked></td>
                                     <td><button
@@ -769,7 +771,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_culture_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_culture_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_deception_prof" unchecked></td>
                                     <td><button
@@ -784,7 +786,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_deception_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_deception_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_driving_prof" unchecked></td>
                                     <td><button
@@ -799,7 +801,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_driving_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_driving_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_fasthands_prof" unchecked></td>
                                     <td><button
@@ -814,7 +816,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_fasthands_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_fasthands_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_history_prof" unchecked></td>
                                     <td><button
@@ -829,7 +831,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_history_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_history_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_insight_prof" unchecked></td>
                                     <td><button
@@ -844,7 +846,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_insight_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_insight_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_intimidation_prof" unchecked></td>
                                     <td><button
@@ -859,7 +861,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_intimidation_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_intimidation_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_investigation_prof" unchecked></td>
                                     <td><button
@@ -874,7 +876,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_investigation_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_investigation_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_medicine_prof" unchecked></td>
                                     <td><button
@@ -889,7 +891,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_medicine_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_medicine_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_nature_prof" unchecked></td>
                                     <td><button
@@ -904,7 +906,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_nature_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_nature_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_perception_prof" unchecked></td>
                                     <td><button
@@ -919,7 +921,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_perception_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_perception_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_persuasion_prof" unchecked></td>
                                     <td><button
@@ -934,7 +936,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_persuasion_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_persuasion_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_psionics_prof" unchecked></td>
                                     <td><button
@@ -949,7 +951,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_psionics_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_psionics_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_stealth_prof" unchecked></td>
                                     <td><button
@@ -964,7 +966,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_stealth_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_stealth_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_survival_prof" unchecked></td>
                                     <td><button
@@ -979,7 +981,7 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_survival_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_survival_mod"/></td>
                                 </tr>
-                        
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_technology_prof" unchecked></td>
                                     <td><button
@@ -994,11 +996,11 @@
                                     <td><input type="number" min="-10" max="10" value="0" name="attr_technology_extra"/></td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_technology_mod"/></td>
                                 </tr>
-                        
+
                             </table>
-                        
+
                         </div>
-                        
+
                     </div>
 
                 </div>
@@ -1008,33 +1010,33 @@
             <!-- Tab Panel 2: Attacks & Abilities -->
 
             <section id="tab-panel2" class="tab-panel">
-                
+
                 <div class="singlecolumn">
 
                     <div class="section">
-            
+
                         <!-- Attacks -->
-            
+
                         <div class="subsection attacks">
-            
+
                             <h2>Attacks</h2>
-            
+
                             <div class="attacksgrid gridheadings">
-            
+
                                 <label class="description">Attack</label>
                                 <label class="Range">Range</label>
                                 <label class="ammo">Ammo & Reloads</label>
                                 <label class="attack">Attack</label>
                                 <label class="damage">Damage</label>
-            
+
                             </div>
-            
+
                             <fieldset class="repeating_attacks">
-            
+
                                 <div class="repeatingrow attacksgrid">
-            
+
                                     <!-- Attack Name -->
-                                        
+
                                     <div class="oneline description">
                                         <input type="text" name="attr_attack_name" placeholder="Attack Name"/>
                                         <label class="hastooltip">
@@ -1064,7 +1066,7 @@
                                         <option value="30_120">30m / 120m</option>
                                         <option value="40_160">40m / 160m</option>
                                     </select>
-            
+
                                     <!-- Ammo & Reloads -->
                                     <div id="ammo-reloads" class="verticalgroup">
                                         <div class="oneline verticalstretch ammo">
@@ -1095,39 +1097,41 @@
                                     <div id="ammoplaceholder" class="verticalgroup placeholder">
                                         <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_notapplicable.png?raw=true" alt="" class="icon">
                                     </div>
-            
+
                                     <!-- Attack -->
                                     <div class="attack verticalgroup">
-                                        <div class="oneline calculation">
-                                            <div class="oneline">
-                                                <span>+</span>
-                                                <input readonly type="number" value="0" name="attr_attack_mod"/>
-                                            </div>
-                                            <label class="hastooltip">
-                                                <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_disclosure.png?raw=true" alt="Expand" class="icon">
-                                                <input type="checkbox" class="tooltipcontrol" unchecked>
-                                                <div class="tooltipcontent">
-                                                    <div class="oneline">
-                                                        <label>
-                                                            Proficient?
-                                                            <input type="checkbox" name="attr_attack_prof" checked>
-                                                        </label>
-                                                    </div>
-                                                    <div class="oneline">
-                                                        <select name="attr_attack_stat">
-                                                            <option value="none">None</option>
-                                                            <option value="str">STR</option>
-                                                            <option value="agi" selected>AGI</option>
-                                                            <option value="end">END</option>
-                                                            <option value="wit">WIT</option>
-                                                            <option value="knw">KNW</option>
-                                                            <option value="prs">PRS</option>
-                                                        </select>
-                                                        +
-                                                        <input type="number" min="-20" max="20" value="0" name="attr_attack_extra"/>
-                                                    </div>
+                                        <div class="stretchyholder"> <!-- To ensure width exactly matches the button below -->
+                                            <div class="oneline calculation">
+                                                <div class="oneline">
+                                                    <span>+</span>
+                                                    <input readonly type="number" value="0" name="attr_attack_mod"/>
                                                 </div>
-                                            </label>
+                                                <label class="hastooltip">
+                                                    <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_disclosure.png?raw=true" alt="Expand" class="icon">
+                                                    <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                    <div class="tooltipcontent">
+                                                        <div class="oneline">
+                                                            <label>
+                                                                Proficient?
+                                                                <input type="checkbox" name="attr_attack_prof" checked>
+                                                            </label>
+                                                        </div>
+                                                        <div class="oneline">
+                                                            <select name="attr_attack_stat">
+                                                                <option value="none">None</option>
+                                                                <option value="str">STR</option>
+                                                                <option value="agi" selected>AGI</option>
+                                                                <option value="end">END</option>
+                                                                <option value="wit">WIT</option>
+                                                                <option value="knw">KNW</option>
+                                                                <option value="prs">PRS</option>
+                                                            </select>
+                                                            +
+                                                            <input type="number" min="-20" max="20" value="0" name="attr_attack_extra"/>
+                                                        </div>
+                                                    </div>
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="stretchyholder">
                                             <button
@@ -1138,57 +1142,61 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                     <!-- Damage -->
                                     <div class="damage verticalgroup">
-                                        <div class="oneline calculation">
-                                            <input readonly type="text" value="" name="attr_attack_damagefinalcalc" class="damagedice"/>
-                                            <input readonly type="text" value="" name="attr_attack_damagefinaltype" class="damagetype"/>
-                                            <label class="hastooltip">
-                                                <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_disclosure.png?raw=true" alt="Expand" class="icon">
-                                                <input type="checkbox" class="tooltipcontrol" unchecked>
-                                                <div class="tooltipcontent">
-                                                    <div class="oneline">
-                                                        <input type="number" min="1" max="20" value="1" name="attr_attack_damagedicecount"/>
-                                                        &times;
-                                                        <select name="attr_attack_damagedicetype">
-                                                            <option value="d4">d4</option>
-                                                            <option value="d6" selected>d6</option>
-                                                            <option value="d8">d8</option>
-                                                            <option value="d10">d10</option>
-                                                            <option value="d12">d12</option>
-                                                            <option value="d20">d20</option>
-                                                        </select>
-                                                    </div>
+                                        <div class="stretchyholder"> <!-- To ensure width exactly matches the button below -->
+                                            <div class="oneline calculation">
+                                                <input readonly type="text" value="" name="attr_attack_damagefinalcalc" class="damagedice"/>
+                                                <input readonly type="text" value="" name="attr_attack_damagefinaltype" class="damagetype"/>
+                                                <label class="hastooltip">
+                                                    <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_disclosure.png?raw=true" alt="Expand" class="icon">
+                                                    <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                    <div class="tooltipcontent">
                                                         <div class="oneline">
-                                                        +
-                                                        <select name="attr_attack_damagestat">
-                                                            <option value="none">None</option>
-                                                            <option value="str">STR</option>
-                                                            <option value="agi" selected>AGI</option>
-                                                            <option value="end">END</option>
-                                                            <option value="wit">WIT</option>
-                                                            <option value="knw">KNW</option>
-                                                            <option value="prs">PRS</option>
-                                                        </select>
-                                                        +
-                                                        <input type="number" min="-20" max="20" value="0" name="attr_attack_damageextra"/>
+                                                            <input type="number" min="1" max="20" value="1" name="attr_attack_damagedicecount"/>
+                                                            &times;
+                                                            <select name="attr_attack_damagedicetype">
+                                                                <option value="d4">d4</option>
+                                                                <option value="d6" selected>d6</option>
+                                                                <option value="d8">d8</option>
+                                                                <option value="d10">d10</option>
+                                                                <option value="d12">d12</option>
+                                                                <option value="d20">d20</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="oneline">
+                                                            +
+                                                            <select name="attr_attack_damagestat">
+                                                                <option value="none">None</option>
+                                                                <option value="str">STR</option>
+                                                                <option value="agi" selected>AGI</option>
+                                                                <option value="end">END</option>
+                                                                <option value="wit">WIT</option>
+                                                                <option value="knw">KNW</option>
+                                                                <option value="prs">PRS</option>
+                                                            </select>
+                                                            +
+                                                            <input type="number" min="-20" max="20" value="0" name="attr_attack_damageextra"/>
+                                                        </div>
+                                                        <div class="oneline">
+                                                            <select id="damagetype" name="attr_attack_damagetype">
+                                                                <option value="ballistic" selected>Ballistic</option>
+                                                                <option value="blunt force">Blunt Force</option>
+                                                                <option value="chemical">Chemical</option>
+                                                                <option value="cold">Cold</option>
+                                                                <option value="electrical">Electrical</option>
+                                                                <option value="fire">Fire</option>
+                                                                <option value="psi">Psi</option>
+                                                                <option value="slashing">Slashing</option>
+                                                                <option value="sonic">Sonic</option>
+                                                                <option value="stun">Stun</option>
+                                                                <option value="toxic">Toxic</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                    <select name="attr_attack_damagetype">
-                                                        <option value="ballistic" selected>Ballistic</option>
-                                                        <option value="blunt force">Blunt Force</option>
-                                                        <option value="chemical">Chemical</option>
-                                                        <option value="cold">Cold</option>
-                                                        <option value="electrical">Electrical</option>
-                                                        <option value="fire">Fire</option>
-                                                        <option value="psi">Psi</option>
-                                                        <option value="slashing">Slashing</option>
-                                                        <option value="sonic">Sonic</option>
-                                                        <option value="stun">Stun</option>
-                                                        <option value="toxic">Toxic</option>
-                                                    </select>
-                                                </div>
-                                            </label>
+                                                </label>
+                                            </div>
                                         </div>
                                         <div class="stretchyholder">
                                             <button
@@ -1200,33 +1208,33 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
-            
+
                         <!-- Abilities -->
-            
+
                         <div class="subsection abilities pconly">
-            
+
                             <h2>Abilities</h2>
-            
+
                             <div class="abilitiesgrid gridheadings">
-            
+
                                 <label class="description">Ability & Stat</label>
                                 <label class="cost">AP Cost</label>
                                 <label class="range">Target & Range</label>
                                 <label class="duration">Charge / Duration / Concentration</label>
                                 <label class="roll">Roll / Modifier / Use</label>
-            
+
                             </div>
-            
+
                             <fieldset class="repeating_abilities">
-            
+
                                 <div class="repeatingrow abilitiesgrid">
-                                    
+
                                     <div class="oneline description">
                                         <input type="text" name="attr_ability_name" placeholder="Ability Name"/>
                                         <select name="attr_ability_stat">
@@ -1247,7 +1255,7 @@
                                             </div>
                                         </label>
                                     </div>
-            
+
                                     <div class="oneline cost">
                                         <input type="number" min="0" max="20" value="1" name="attr_ability_apcost"/>
                                     </div>
@@ -1312,7 +1320,7 @@
                                             <input type="checkbox" name="attr_ability_concentration" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_ability_rolltype">
                                             <option value="attack" selected>Attack</option>
@@ -1328,32 +1336,32 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
-            
+
                         <!-- Techniques & Bonuses -->
-            
+
                         <div class="subsection techniques">
-            
+
                             <h2>Techniques and Bonuses</h2>
-            
+
                             <div class="techniquesgrid gridheadings">
-            
+
                                 <label class="description">Technique / Bonus</label>
                                 <label class="recharge">Recharge Rate</label>
                                 <label class="quantity">Current Amount</label>
                                 <label class="describe">Describe</label>
-            
+
                             </div>
-            
+
                             <fieldset class="repeating_techniques">
-            
+
                                 <div class="repeatingrow techniquesgrid">
-            
+
                                     <div class="oneline description">
                                         <input type="text" name="attr_technique_name" placeholder="Technique / Bonus Name"/>
                                         <label class="hastooltip">
@@ -1366,7 +1374,7 @@
                                             </div>
                                         </label>
                                     </div>
-            
+
                                     <select id="techniquetype" name="attr_technique_type" class="longfield">
                                         <option value="shortrest" selected>Short Rest</option>
                                         <option value="longrest">Long Rest</option>
@@ -1379,7 +1387,7 @@
                                         <option value="escalating">Escalating Difficulty</option>
                                         <option value="passive">Passive / Unlimited</option>
                                     </select>
-            
+
                                     <div class="oneline quantity">
                                         <input type="number" min="0" max="100" value="1" name="attr_technique_amount"/>
                                         <span>of</span>
@@ -1388,7 +1396,7 @@
                                     <div id="quantityplaceholder" class="verticalgroup placeholder">
                                         <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_notapplicable.png?raw=true" alt="" class="icon">
                                     </div>
-            
+
                                     <div class="oneline verticalstretch describe">
                                         <div class="stretchyholder">
                                             <button
@@ -1399,15 +1407,15 @@
                                             </button>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
-            
+
                     </div>
-            
+
                 </div>
 
             </section>
@@ -1415,7 +1423,7 @@
             <!-- Tab Panel 3: Psi-Powers -->
 
             <section id="tab-panel3" class="tab-panel">
-                
+
                 <div class="singlecolumn">
 
                     <div class="section powers">
@@ -1436,7 +1444,7 @@
                         </ul>
 
                         <!-- Field Headings -->
-            
+
                         <div class="subsection powerheadings">
 
                             <div class="powersgrid gridheadings">
@@ -1449,25 +1457,69 @@
                         </div>
 
                         <!-- Base Tier -->
-            
+
                         <div class="subsection tier0">
-            
+
                             <h2><span>Base Tier</span><span>AP Cost: None</span></h2>
-            
+
                             <fieldset class="repeating_powers0">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline0" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline0" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline0" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline0" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline0" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline0" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name0" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline0">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -1539,7 +1591,7 @@
                                             <input type="checkbox" name="attr_power_concentration0" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype0">
                                             <option value="attack" selected>Attack</option>
@@ -1554,33 +1606,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
-                        
+
                         <!-- Tier 1 -->
-            
+
                         <div class="subsection tier1">
-            
+
                             <h2><span>Tier 1</span><span>AP Cost: 1</span></h2>
-            
+
                             <fieldset class="repeating_powers1">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline1" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline1" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline1" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline1" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline1" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline1" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name1" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline1">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -1652,7 +1748,7 @@
                                             <input type="checkbox" name="attr_power_concentration1" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype1">
                                             <option value="attack" selected>Attack</option>
@@ -1667,33 +1763,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 2 -->
-            
+
                         <div class="subsection tier2">
-            
+
                             <h2><span>Tier 2</span><span>AP Cost: 3</span></h2>
-            
+
                             <fieldset class="repeating_powers2">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline2" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline2" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline2" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline2" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline2" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline2" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name2" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline2">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -1765,7 +1905,7 @@
                                             <input type="checkbox" name="attr_power_concentration2" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype2">
                                             <option value="attack" selected>Attack</option>
@@ -1780,33 +1920,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 3 -->
-            
+
                         <div class="subsection tier3">
-            
+
                             <h2><span>Tier 3</span><span>AP Cost: 5</span></h2>
-            
+
                             <fieldset class="repeating_powers3">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline3" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline3" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline3" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline3" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline3" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline3" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name3" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline3">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -1878,7 +2062,7 @@
                                             <input type="checkbox" name="attr_power_concentration3" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype3">
                                             <option value="attack" selected>Attack</option>
@@ -1893,33 +2077,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 4 -->
-            
+
                         <div class="subsection tier4">
-            
+
                             <h2><span>Tier 4</span><span>AP Cost: 7</span></h2>
-            
+
                             <fieldset class="repeating_powers4">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline4" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline4" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline4" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline4" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline4" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline4" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+                                        
                                         <input type="text" name="attr_power_name4" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline4">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -1991,7 +2219,7 @@
                                             <input type="checkbox" name="attr_power_concentration4" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype4">
                                             <option value="attack" selected>Attack</option>
@@ -2006,33 +2234,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 5 -->
-            
+
                         <div class="subsection tier5">
-            
+
                             <h2><span>Tier 5</span><span>AP Cost: 9</span></h2>
-            
+
                             <fieldset class="repeating_powers5">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline5" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline5" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline5" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline5" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline5" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline5" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name5" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline5">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -2104,7 +2376,7 @@
                                             <input type="checkbox" name="attr_power_concentration5" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype5">
                                             <option value="attack" selected>Attack</option>
@@ -2119,33 +2391,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 6 -->
-            
+
                         <div class="subsection tier6">
-            
+
                             <h2><span>Tier 6</span><span>AP Cost: 11</span></h2>
-            
+
                             <fieldset class="repeating_powers6">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline6" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline6" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline6" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline6" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline6" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline6" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name6" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline6">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -2217,7 +2533,7 @@
                                             <input type="checkbox" name="attr_power_concentration6" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype6">
                                             <option value="attack" selected>Attack</option>
@@ -2232,33 +2548,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 7 -->
-            
+
                         <div class="subsection tier7">
-            
+
                             <h2><span>Tier 7</span><span>AP Cost: 13</span></h2>
-            
+
                             <fieldset class="repeating_powers7">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline7" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline7" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline7" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline7" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline7" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline7" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name7" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline7">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -2330,7 +2690,7 @@
                                             <input type="checkbox" name="attr_power_concentration7" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype7">
                                             <option value="attack" selected>Attack</option>
@@ -2345,33 +2705,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 8 -->
-            
+
                         <div class="subsection tier8">
-            
+
                             <h2><span>Tier 8</span><span>AP Cost: 15</span></h2>
-            
+
                             <fieldset class="repeating_powers8">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline8" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline8" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline8" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline8" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline8" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline8" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name8" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline8">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -2443,7 +2847,7 @@
                                             <input type="checkbox" name="attr_power_concentration8" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype8">
                                             <option value="attack" selected>Attack</option>
@@ -2458,33 +2862,77 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
 
                         <!-- Tier 9 -->
-            
+
                         <div class="subsection tier9">
-            
+
                             <h2><span>Tier 9</span><span>AP Cost: 17</span></h2>
-            
+
                             <fieldset class="repeating_powers9">
-            
+
                                 <div class="repeatingrow powersgrid">
-                                    
+
                                     <div class="oneline description">
+
+                                        <label class="hasoptions">
+                                            <input type="checkbox" class="optioncontrol" unchecked>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_expand.png?raw=true" alt="" class="icon expander"/>
+                                            <div class="optionscontent">
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline9" value="generic" checked>
+                                                    <label for="generic">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_generic.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Generic</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline9" value="cognition">
+                                                    <label for="cognition">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_cognition.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Cognition</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline9" value="corruption">
+                                                    <label for="corruption">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_corruption.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Corruption</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline9" value="elementalism">
+                                                    <label for="elementalism">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_elementalism.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Elementalism</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline9" value="kinesis">
+                                                    <label for="kinesis">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_kinesis.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Kinesis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="singleoption">
+                                                    <input type="radio" name="attr_psidiscipline9" value="manipulation">
+                                                    <label for="manipulation">
+                                                        <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_manipulation.png?raw=true" alt="" class="icon selectable"/>
+                                                        <span>Manipulation</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_psidiscipline_selection.png?raw=true" alt="" class="icon optionplaceholder"/>
+                                        </label>
+
                                         <input type="text" name="attr_power_name9" placeholder="Psi-Power Name"/>
-                                        <select name="attr_power_discipline9">
-                                            <option value="generic">&ndash;</option>
-                                            <option value="cognition">&#x1F9E0;</option> <!-- U+1F9E0 = Brain -->
-                                            <option value="corruption">&#x1F480;</option> <!-- U+1F480 = Skull -->
-                                            <option value="elementalism">&#x1F525;</option> <!-- U+1F525 = Fire -->
-                                            <option value="kinesis">&#x2194;&#xfe0f;</option> <!-- U+2194 = Left-Right Arrow; FE0F = Emoji-Style Specifically -->
-                                            <option value="manipulation">&#x1F4AC;</option> <!-- U+1F4AC = Speech Balloon -->
-                                        </select>
+
                                         <label class="hastooltip">
                                             <img src="https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/img/icon_info.png?raw=true" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
@@ -2556,7 +3004,7 @@
                                             <input type="checkbox" name="attr_power_concentration9" unchecked>
                                         </div>
                                     </div>
-            
+
                                     <div class="oneline roll">
                                         <select name="attr_power_rolltype9">
                                             <option value="attack" selected>Attack</option>
@@ -2571,15 +3019,15 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
-            
+
                     </div>
-            
+
                 </div>
 
             </section>
@@ -2587,29 +3035,29 @@
             <!-- Tab Panel 4: Inventory -->
 
             <section id="tab-panel4" class="tab-panel">
-                
+
                 <div class="singlecolumn">
 
                     <div class="section">
-            
+
                         <!-- Inventory -->
-            
+
                         <div class="subsection inventory">
-            
+
                             <h2>Inventory</h2>
-            
+
                             <div class="inventorygrid gridheadings">
-            
+
                                 <label class="description">Item</label>
                                 <label class="quantity">Current Amount</label>
                                 <label class="describe">Describe</label>
-            
+
                             </div>
-            
+
                             <fieldset class="repeating_inventory">
-            
+
                                 <div class="repeatingrow inventorygrid">
-            
+
                                     <div class="oneline description">
                                         <input type="text" name="attr_inventory_name" placeholder="Item Name"/>
                                         <label class="hastooltip">
@@ -2622,13 +3070,13 @@
                                             </div>
                                         </label>
                                     </div>
-            
+
                                     <div class="oneline quantity">
                                         <input type="number" min="0" max="100" value="1" name="attr_inventory_amount"/>
                                         <span>of</span>
                                         <input type="number" min="1" max="100" value="1" name="attr_inventory_amount_max"/>
                                     </div>
-            
+
                                     <div class="oneline describe">
                                         <div class="stretchyholder">
                                             <button
@@ -2639,15 +3087,15 @@
                                             </button>
                                         </div>
                                     </div>
-            
+
                                 </div>
-            
+
                             </fieldset>
-            
+
                         </div>
-            
+
                     </div>
-            
+
                 </div>
 
             </section>
@@ -2659,21 +3107,21 @@
                 <div class="singlecolumn">
 
                     <div class="section">
-            
+
                         <!-- Backstory -->
-            
+
                         <div class="subsection backstory">
-            
+
                             <h2>Backstory</h2>
 
                             <div class="stretchyholder">
                                 <textarea name="attr_char_backstory" placeholder="Here you can enter your character's backstory..."></textarea>
                             </div>
-            
+
                         </div>
 
                         <!-- Character Developments -->
-            
+
                         <div class="subsection developments">
 
                             <h2>Character Developments</h2>
@@ -2681,35 +3129,35 @@
                             <div class="stretchyholder">
                                 <textarea name="attr_char_developments" placeholder="Here you can enter any significant developments for your character since you started playing..."></textarea>
                             </div>
-            
+
                         </div>
 
                         <!-- Personal Objectives -->
-            
+
                         <div class="subsection objectives">
-            
+
                             <h2>Personal Objectives</h2>
 
                             <div class="stretchyholder">
                                 <textarea name="attr_char_objectives" placeholder="Here you can enter any personal objectives your character may currently have..."></textarea>
                             </div>
-            
+
                         </div>
-            
+
                     </div>
-            
+
                 </div>
 
             </section>
 
         </div>
-        
+
     </div>
 
     <!-- Footer -->
-            
+
     <div class="footer">
-            
+
         <ul>
             <li>d20 Helix System</li>
             <li>Character Sheet v1.0.0</li>
@@ -2854,7 +3302,7 @@
     // Action Buttons
 
     // Using Hit Dice
-    on("clicked:usehitdie", function() {
+    on("clicked:usehitdie", (eventInfo) => {
         getAttrs( [
             "hitdice",
             "hitdice_type",
@@ -2866,19 +3314,31 @@
                     hitdice: Math.max(0, (values.hitdice - 1)) // Reduce the hit dice count by 1
                 });
                 startRoll("&{template:hitdie} {{charname=" + values.char_name + "}} {{dietype=" + values.hitdice_type + "}} {{endmod=" + values.end_mod + "}} {{theroll=[[1" + values.hitdice_type + "+" + values.end_mod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             } else {
                 // Not enough Hit Dice to make the roll
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=Hit Dice}} {{desc=Unable roll a hit die: None left!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
 
+    // Clearing Stun Damage
+    on("clicked:clearstun", (eventInfo) => {
+        getAttrs( [
+            "stundamage",
+            "hp_max"
+        ], (values) => {
+            setAttrs({
+                stundamage: Math.max(0, (values.stundamage - Math.ceil(values.hp_max/2))) // Reduce the stun damage by up to half the character's total HP
+            });
+        });
+    });
+
     // Attacking
-    on("clicked:repeating_attacks:useattack", function() {
+    on("clicked:repeating_attacks:useattack", (eventInfo) => {
         getAttrs( [
             "repeating_attacks_attack_name",
             "repeating_attacks_attack_desc",
@@ -2892,19 +3352,19 @@
                     repeating_attacks_attack_ammo: Math.max(0, (values.repeating_attacks_attack_ammo - 1)) // Reduce the ammo amount by 1
                 });
                 startRoll("&{template:attack} {{charname=" + values.char_name + "}} {{attackname=" + values.repeating_attacks_attack_name + "}} {{attackdesc=" + values.repeating_attacks_attack_desc + "}} {{attackmod=" + values.repeating_attacks_attack_mod + "}} {{theroll=[[1d20+" + values.repeating_attacks_attack_mod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             } else {
                 // Not enough ammo to make the attack
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to attack: No ammo loaded!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
 
     // Reloading
-    on("clicked:repeating_attacks:reload", function() {
+    on("clicked:repeating_attacks:reload", (eventInfo) => {
         getAttrs( [
             "repeating_attacks_attack_name",
             "repeating_attacks_attack_type",
@@ -2917,10 +3377,10 @@
             if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo == values.repeating_attacks_attack_ammo_max)) {
                 return; // Melee weapons and weapons with full ammo don't need reloads
             } else {
-                if ((values.attack_unlimited_reloads == 0) && (values.repeating_attacks_attack_ammoreloads == 0)) {
+                if ((values.repeating_attacks_attack_unlimited_reloads == 0) && (values.repeating_attacks_attack_ammoreloads == 0)) {
                     // If reloads are tracked and there aren't any left, the reload can't happen
                     startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to reload: No reloads remaining!}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat    
+                        finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                 } else {
                     setAttrs({
@@ -2933,7 +3393,7 @@
     });
 
     // Performing abilities
-    on("clicked:repeating_abilities:useability", function() {
+    on("clicked:repeating_abilities:useability", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_abilities_ability_name",
@@ -2953,25 +3413,25 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitymod=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}} {{theroll=[[1d20+" + values.repeating_abilities_ability_mod + "]]}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydc=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         //Assume 'none' if not a recognised value
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                 }
             } else {
                 // Not enough AP to use the ability
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_abilities_ability_name + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
@@ -2979,7 +3439,7 @@
 
     // Performing psi-powers
     // Includes one function for each psi-power tier, because they are implmented as different repeating sections
-    on("clicked:repeating_powers0:usepower0", function() {
+    on("clicked:repeating_powers0:usepower0", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers0_power_name0",
@@ -2995,25 +3455,25 @@
                 case "attack":
                     // Attack
                     startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_power_discipline0 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat    
+                        finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
                 case "difficulty":
                     // Difficulty Check
                     startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_power_discipline0 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat    
+                        finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
                 default:
                     // Description only
                     startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_power_discipline0 + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat    
+                        finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
             }
         });
     });
-    on("clicked:repeating_powers1:usepower1", function() {
+    on("clicked:repeating_powers1:usepower1", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers1_power_name1",
@@ -3034,31 +3494,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_power_discipline1 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_power_discipline1 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_power_discipline1 + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers1_power_name1 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers2:usepower2", function() {
+    on("clicked:repeating_powers2:usepower2", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers2_power_name2",
@@ -3079,31 +3539,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_power_discipline2 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_power_discipline2 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_power_discipline2 + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers2_power_name2 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers3:usepower3", function() {
+    on("clicked:repeating_powers3:usepower3", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers3_power_name3",
@@ -3124,31 +3584,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_power_discipline3 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_power_discipline3 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_power_discipline3 + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers3_power_name3 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers4:usepower4", function() {
+    on("clicked:repeating_powers4:usepower4", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers4_power_name4",
@@ -3169,31 +3629,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_power_discipline4 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_power_discipline4 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_power_discipline4 + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers4_power_name4 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers5:usepower5", function() {
+    on("clicked:repeating_powers5:usepower5", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers5_power_name5",
@@ -3214,31 +3674,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_power_discipline5 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_power_discipline5 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_power_discipline5 + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers5_power_name5 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers6:usepower6", function() {
+    on("clicked:repeating_powers6:usepower6", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers6_power_name6",
@@ -3259,31 +3719,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_power_discipline6 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_power_discipline6 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_power_discipline6 + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers6_power_name6 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers7:usepower7", function() {
+    on("clicked:repeating_powers7:usepower7", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers7_power_name7",
@@ -3304,31 +3764,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_power_discipline7 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_power_discipline7 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_power_discipline7 + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers7_power_name7 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers8:usepower8", function() {
+    on("clicked:repeating_powers8:usepower8", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers8_power_name8",
@@ -3349,31 +3809,31 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_power_discipline8 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_power_discipline8 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_power_discipline8 + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers8_power_name8 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
     });
-    on("clicked:repeating_powers9:usepower9", function() {
+    on("clicked:repeating_powers9:usepower9", (eventInfo) => {
         getAttrs( [
             "ap",
             "repeating_powers9_power_name9",
@@ -3394,26 +3854,26 @@
                     case "attack":
                         // Attack
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_power_discipline9 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_power_discipline9 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
                         startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_power_discipline9 + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat    
+                            finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
                 startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers9_power_name9 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat    
+                    finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
         });
@@ -3607,6 +4067,17 @@
         });
     };
 
+    // Recalculate the Stun Damage max
+    function recalculateMaxStunDamage() {
+        getAttrs( [
+            "hp"
+        ], function(values) {
+            setAttrs({
+                stundamage_max: values.hp // Stun damage always goes up to the character's current HP
+            });
+        });
+    };
+
     // Ensure that current AP never exceeds the max
     function capCurrentAP() {
         getAttrs( [
@@ -3642,6 +4113,19 @@
             let current_hp = Math.min(values.hp_max, values.hp); // Current shouldn't ever exceed max
             setAttrs({
                 hp: current_hp
+            });
+        });
+    };
+
+    // Ensure that current Stun Damage never exceeds the max
+    function capCurrentStunDamage() {
+        getAttrs( [
+            "stundamage_max",
+            "stundamage"
+        ], function(values) {
+            let current_stundamage = Math.min(values.stundamage_max, values.stundamage); // Current shouldn't ever exceed max
+            setAttrs({
+                stundamage: current_stundamage
             });
         });
     };
@@ -3690,7 +4174,7 @@
                 values.prs_mod
             );
             setAttrs({
-                npc_determination: maxMod + values.prof_bonus
+                npc_determination: 10 + maxMod + values.prof_bonus
             });
         });
     };
@@ -3707,7 +4191,7 @@
                 power_attackbonus: witMod + profBonus, // Standard psi-power attack mod calculation
                 power_dc: 8 + witMod + profBonus // Standard psi-power DC calculation
             });
-        });  
+        });
     };
 
     // Calculate the correct modifiers for each skill
@@ -3977,7 +4461,7 @@
 
     // Calculations for individual rows in repeating sections (<fieldset>)
     // In order to avoid the need to manually pull row IDs, these functions have been kept within the parent listeners - Roll20 handles them automatically within listeners
-    
+
     // When ANY attack field changes, even the unrelated ones (to ensure that it's always triggered when a new row is added and the first value specified - Roll20 doesn't have an event for rows being added, because they don't exist until one value is specified)...
     // Recalculate the final modifier & damage for each attack, including all factors
     on("change:repeating_attacks:attack_name change:repeating_attacks:attack_desc change:repeating_attacks:attack_type change:repeating_attacks:attack_ammo change:repeating_attacks:attack_ammo_max change:repeating_attacks:attack_ammotracked change:repeating_attacks:attack_ammoreloads change:repeating_attacks:attack_prof change:repeating_attacks:attack_stat change:repeating_attacks:attack_extra change:repeating_attacks:attack_damagedicecount change:repeating_attacks:attack_damagedicetype change:repeating_attacks:attack_damagestat change:repeating_attacks:attack_damageextra change:repeating_attacks:attack_damagetype", function(eventInfo) {
@@ -4147,32 +4631,38 @@
 
     // When the max or current HP changes
     on("change:hp_max change:hp", function() {
-        capCurrentHP()
+        capCurrentHP();
+        recalculateMaxStunDamage();
     });
 
     // When the max or current Hit Dice changes
     on("change:hitdice_max change:hitdice", function() {
-        capCurrentHitDice()
+        capCurrentHitDice();
     });
 
     // When the max or current AP changes
     on("change:ap_max change:ap", function() {
-        capCurrentAP()
+        capCurrentAP();
+    });
+
+    // When the max or current Stun Damage changes
+    on("change:stundamage_max change:stundamage", function() {
+        capCurrentStunDamage();
     });
 
     // When any skill proficiencies change
     on("change:athletics_prof change:acrobatics_prof change:constitution_prof change:creaturehandling_prof change:culture_prof change:deception_prof change:driving_prof change:evasion_prof change:fasthands_prof change:history_prof change:insight_prof change:intimidation_prof change:investigation_prof change:medicine_prof change:mentaldefense_prof change:nature_prof change:perception_prof change:persuasion_prof change:psionics_prof change:stealth_prof change:survival_prof change:technology_prof", function() {
-        recalculateSkillMods()
+        recalculateSkillMods();
     });
 
     // When any skill extra bonuses change
     on("change:athletics_extra change:acrobatics_extra change:constitution_extra change:creaturehandling_extra change:culture_extra change:deception_extra change:driving_extra change:evasion_extra change:fasthands_extra change:history_extra change:insight_extra change:intimidation_extra change:investigation_extra change:medicine_extra change:mentaldefense_extra change:nature_extra change:perception_extra change:persuasion_extra change:psionics_extra change:stealth_extra change:survival_extra change:technology_extra", function() {
-        recalculateSkillMods()
+        recalculateSkillMods();
     });
 
     // When anything related to armor class changes
     on("change:armorbase change:armorcap change:armorextra change:armorendbonus change:shield change:agi_mod change:end_mod", function() {
-        recalculateArmorClass()
+        recalculateArmorClass();
     });
 
     // When the sheet opens
@@ -4181,6 +4671,7 @@
         recalculateProfBonus();
         recalculateSkillMods();
         recalculateMaxAP();
+        recalculateMaxStunDamage();
         recalculateHitDiceType();
         recalculateNPCDefaultHealth();
         recalculateMaxHitDice();

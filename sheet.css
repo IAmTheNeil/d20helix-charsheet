@@ -12,9 +12,23 @@
 
 /* Fonts */
 
+@font-face {
+    font-family: 'lionandhare-bold';
+    font-style: normal;
+    font-weight: normal;
+    src: url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff2?raw=true') format('woff2'),
+         url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff?raw=true') format('woff');
+}
+@font-face {
+    font-family: 'lionandhare-bold';
+    font-style: normal;
+    font-weight: bold;
+    src: url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff2?raw=true') format('woff2'),
+         url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff?raw=true') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,300italic,400,400italic,700,700italic');
 @import url('https://dl.dafont.com/dl/?f=around');
-@import url('https://fonts.googleapis.com/css?family=Rubik:300,300italic,400,700,400italic,700italic');
-@import url('https://fonts.googleapis.com/css?family=Teko:400,700');
 
 /* Style Variables */
 
@@ -28,8 +42,14 @@
     --tooltipbackground: black;
     --fieldborder: #ccc;
     --fieldbackground: #f5f5f5;
-    --buttontop: white;
-    --buttonbottom: #e6e6e6;
+    --buttontop: #f5f5f5;
+    --buttonbottom: #ddd;
+    --buttonactivetop: #ffdcb0;
+    --buttonactivebottom: #f2bc7b;
+    --buttondangertop: #e19191;
+    --buttondangerbottom: #f34646;
+    --buttondangeractivetop: red;
+    --buttondangeractivebottom: darkred;
     --npcheader: #b8c7cf;
     --highlight: darkorange;
     --highlightText: #d77600;
@@ -71,7 +91,8 @@ div.charactersheet .incomplete {
     border: 1px solid red !important; /* Marked as 'important' in order to always override any other border settings */
 }
 
-div.characterviewer div.charactersheet input[type="checkbox"] {
+div.characterviewer div.charactersheet input[type="checkbox"],
+div.characterviewer div.charactersheet input[type='radio'] {
     accent-color:var(--highlight);
 }
 
@@ -154,11 +175,6 @@ div.characterviewer div.charactersheet textarea {
     border: 2pt solid var(--midfont);
     padding: 4pt;
 }
-div.characterviewer div.charactersheet div.tooltipcontent textarea {
-    color: var(--lightfont);
-    border: 2pt solid var(--nearblack);
-    min-height: 100px;
-}
 
 div.characterviewer div.charactersheet ul {
     list-style-type: none;
@@ -169,6 +185,7 @@ div.characterviewer div.charactersheet ul {
 div.characterviewer div.charactersheet button,
 div.characterviewer div.charactersheet button[type=roll],
 div.characterviewer div.charactersheet button[type=action] {
+    cursor: pointer;
     font-weight: normal;
     font-size: small;
     margin: 0;
@@ -177,15 +194,73 @@ div.characterviewer div.charactersheet button[type=action] {
     text-shadow: none;
     line-height: 1.4em;
     background-image: linear-gradient(var(--buttontop), var(--buttonbottom));
-    border-radius: 4px;
+    background-position: top;
+    background-repeat: no-repeat;
+    border-radius: 3px;
     min-height: 24px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1px;
+    padding-bottom: 1px;
     display: inline-flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
+    -ms-touch-action: none;
+    touch-action: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+div.characterviewer div.charactersheet button.btn-danger,
+div.characterviewer div.charactersheet button[type=roll].btn-danger,
+div.characterviewer div.charactersheet button[type=action].btn-danger {
+    background-image: linear-gradient(var(--buttondangertop), var(--buttondangerbottom));
+    border: 1px solid var(--buttondangerbottom);
+    color: black;
+    min-width: 6em;
+    z-index: 99;
+}
+div.characterviewer div.charactersheet button.repcontrol_add,
+div.characterviewer div.charactersheet button.repcontrol_edit,
+div.characterviewer div.charactersheet button.repcontrol_modify {
+    min-width: 6em;
+}
+div.characterviewer div.charactersheet button:hover,
+div.characterviewer div.charactersheet button[type=roll]:hover,
+div.characterviewer div.charactersheet button[type=action]:hover,
+div.characterviewer div.charactersheet button:focus,
+div.characterviewer div.charactersheet button[type=roll]:focus,
+div.characterviewer div.charactersheet button[type=action]:focus,
+div.characterviewer div.charactersheet button.focus,
+div.characterviewer div.charactersheet button[type=roll].focus,
+div.characterviewer div.charactersheet button[type=action].focus {
+    background-image: linear-gradient(var(--buttonactivetop), var(--buttonactivebottom));
+    background-position: top;
+    color: var(--highlightText);
+    border: 1px solid var(--highlight);
+    transition: none;
+    outline: none;
+    outline-offset: 0;
+    text-decoration: inherit;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+div.characterviewer div.charactersheet button.btn-danger:hover,
+div.characterviewer div.charactersheet button[type=roll].btn-danger:hover,
+div.characterviewer div.charactersheet button[type=action].btn-danger:hover,
+div.characterviewer div.charactersheet button.btn-danger:focus,
+div.characterviewer div.charactersheet button[type=roll].btn-danger:focus,
+div.characterviewer div.charactersheet button[type=action].btn-danger:focus,
+div.characterviewer div.charactersheet button.btn-danger.focus,
+div.characterviewer div.charactersheet button[type=roll].btn-danger.focus,
+div.characterviewer div.charactersheet button[type=action].btn-danger.focus {
+    background-image: linear-gradient(var(--buttondangeractivetop), var(--buttondangeractivebottom));
+    background-position: top;
+    color: white;
+    border: 1px solid red;
 }
 div.characterviewer div.charactersheet button span,
 div.characterviewer div.charactersheet button[type=roll] span,
@@ -264,10 +339,13 @@ div.charactersheet div.repeatingrow {
 div.charactersheet div.repeatingrow div.calculation {
     border: 1px solid var(--fieldborder);
     background: var(--fieldbackground);
+    border-radius: 3px;
 }
 div.charactersheet div.repeatingrow div.calculation input[readonly] { /* The calculation acts as the field, so remove any styling on fields within it */
     border: none;
     background: none;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 div.charactersheet div.gridheadings {
     width: 100%;
@@ -372,16 +450,201 @@ div.charactersheet h1 {
     line-height: 1em;
 }
 div.charactersheet h2 {
-    font-family: "Around", "Teko", "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
-    font-size: x-large;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-family: "lionandhare-bold", "Around", "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    font-size: xx-large;
+    font-style: normal;
+    font-weight: normal;
     text-align: left;
-    letter-spacing: 0.1rem;
     color: black;
     border-bottom: 2px solid var(--nearblack);
     margin-bottom: 12px;
-    line-height: 1em;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+/* Tooltips & Custom Sub-Windows */
+
+div.characterviewer div.charactersheet label.hastooltip { /* Style the item which has a tooltip connected to it */
+    width: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+div.characterviewer div.charactersheet div.tooltipcontent, /* Style the tooltip itself */
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent { /* Enlarge the options section when expanded (as it is just the icon) */
+    transition: opacity 0.5s;
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-align: center;
+    background-color: var(--tooltipbackground);
+    border-radius: 6px;
+    padding: 6pt;
+    top: 100%; /* Position below the parent */
+    z-index: 99;
+}
+div.characterviewer div.charactersheet div.tooltipcontent > *, /* Style the tooltip itself */
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent > * {
+    color: var(--lightfont);
+}
+
+div.characterviewer div.charactersheet label.hastooltip div.tooltipcontent label,
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent label {
+    color: var(--lightfont);
+}
+div.characterviewer div.charactersheet div.tooltipcontent textarea {
+    color: var(--lightfont);
+    border: 2pt solid var(--nearblack);
+    min-height: 100px;
+}
+div.characterviewer div.charactersheet div.tooltipcontent { /* Position the tooltip and start it off hidden */
+    visibility: hidden;
+    opacity: 0;
+    justify-content: center;
+    width: 200px;
+    margin-left: -200px; /* Pull it to the left (equal to its width), so that it doesn't ever flow over the right-hand side of the sheet */
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent { /* Position the full version of the options window */
+    width: 550px;
+    margin-right: -550px; /* Pull it to the left (equal to its width), so that it doesn't ever flow over the right-hand side of the sheet */
+}
+div.characterviewer div.charactersheet div.tooltipcontent::after,
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent::after { /* The tooltip box's connecting arrow */
+    content: " ";
+    position: absolute;
+    border-style: solid;
+    border-width: 10px;
+}
+div.characterviewer div.charactersheet div.tooltipcontent::after {
+    bottom: 100%;  /* At the top of the tooltip */
+    left: 100%; /* Towards the right-hand side (becayse the tooltips are shifted left) */
+    margin-left: -25px;
+    border-color: transparent var(--tooltipbackground) var(--tooltipbackground) transparent; /* Fills in 2 of the 4 border sides, to make a right-angled triangle */
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent::after {
+    bottom: 100%;  /* At the top of the tooltip */
+    right: 100%; /* Towards the left-hand side (becayse the options windows are shifted left) */
+    margin-right: -25px;
+    border-color: transparent transparent var(--tooltipbackground) var(--tooltipbackground); /* Fills in 2 of the 4 border sides, to make a right-angled triangle */
+}
+div.characterviewer div.charactersheet div.tooltipcontent textarea {
+    visibility: hidden;
+    opacity: 0;
+}
+
+div.characterviewer div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol { /* Ensure that the checkbox controlling tooltip on/off is never actually visible, and have it make the tooltip visible when checked */
+    display:none;
+}
+div.characterviewer div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol:checked+div {
+    visibility: visible;
+    opacity: 1;
+}
+div.characterviewer div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol:checked+div textarea { /* For some reason, the text areas need special treatment, which other fields in the tooltip appear not to */
+    visibility: visible;
+    opacity: 1;
+}
+
+div.characterviewer div.charactersheet label.hasoptions {
+    border: 1px solid var(--fieldborder);
+    border-radius: 3px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    padding-left: 2px;
+    height: 26px;
+    margin-right: 6px;
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol { /* Ensure that the checkbox controlling tooltip on/off is never actually visible, and have it make the tooltip visible when checked */
+    display:none;
+}
+ 
+div.characterviewer div.charactersheet label.hasoptions img.icon {
+    width: 24px;
+    height: 24px;
+}
+ 
+div.characterviewer div.charactersheet div.optionscontent {
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+div.characterviewer div.charactersheet div.optionscontent div.singleoption {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+div.characterviewer div.charactersheet div.optionscontent div.singleoption label {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+div.characterviewer div.charactersheet label.hasoptions div.optionscontent input[type=radio], /* Always hide the radio buttons when not expanded */
+div.characterviewer div.charactersheet label.hasoptions div.optionscontent input[type=radio]+label span, /* Hide the label text when not expanded - just show the selected icon */
+div.characterviewer div.charactersheet label.hasoptions div.optionscontent input[type=radio]:not(:checked)+label { /* Hide the full label (including icon) for anything not selected */
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+ 
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent img.selectable { /* Style the icons to better suit the expanded section */
+    margin: 4px;
+    margin-top: 6px;
+    filter: invert(100%); /* Switch over the blacks & whites */
+}
+div.characterviewer div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent input[type=radio] {
+    margin-top: 3px;
+}
+div.characterviewer div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent input[type=radio]:checked+label {
+    color: var(--highlight);
+}
+ 
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent input[type=radio], /* Show all radio buttons when expanded */
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent input[type=radio]+label, /* Show all labels (including icon) when expanded */
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent input[type=radio]+label span { /* Explicitly show all label text when expanded */
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent input[type=radio]+label {
+    min-width: 85px;
+}
+
+div.characterviewer div.charactersheet label.hasoptions img.optionplaceholder { /* Hide the placeholder (for during selection) when not expanded */
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ img.optionplaceholder {
+    display: inline-block;
+    visibility: visible;
+    opacity: 1;
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ img.optionplaceholder {
+    opacity: 35%;
+}
+div.characterviewer div.charactersheet label.hasoptions img.icon.expander {
+    display: inline-block;
+    width: 8px;
+    min-width: 8px;
+    max-width: 8px;
+    height: 8px;
+    min-height: 8px;
+    max-height: 8px;
+    opacity: 60%;
+    margin-right: 2px;
+}
+div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ img.icon.expander {
+    rotate: 90deg;
 }
 
 /* Sheet Header & Footer */
@@ -524,6 +787,7 @@ div.charactersheet div.tabbed-view input:checked + label.tab-heading { /* Style 
     border-bottom: 2px solid var(--background);
     border-top: 4px solid var(--highlight);
     color: black;
+    margin-bottom: -1px; /* To cover the full bottom border of what's below */
 }
 div.charactersheet div.tabbed-view label.tab-heading:hover, /* Style tabs when the mouse hovers over them */
 div.charactersheet div.tabbed-view input:focus + label.tab-heading {
@@ -612,6 +876,21 @@ div.charactersheet ul.stats input.mod {
 
 /* Vitals & Core Info */
 
+div.charactersheet div.vitals {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0;
+    width: auto;
+    margin: 10px;
+    margin-bottom: 18px;
+}
+div.charactersheet div.vitals ul {
+    width: 100%;
+}
+div.charactersheet div.vitals ul li {
+    margin: 0;
+}
+
 div.charactersheet div.vitals h2 {
     text-align: center;
 }
@@ -625,7 +904,7 @@ div.charactersheet div.vitals li#healthpoints {
 div.charactersheet div.vitals li#abilitypoints {
     border-color: var(--roll20green);
 }
-div.charactersheet div.vitals li#armorclass {
+div.charactersheet div.vitals li#stundamage {
     border-color: var(--roll20blue);
 }
 div.charactersheet div.vitals ul li label,
@@ -650,6 +929,7 @@ div.charactersheet div.core ul input[readonly] {
 }
 
 div.charactersheet div.vitals input[readonly].armorclass,
+div.charactersheet div.vitals input[readonly].determination,
 div.charactersheet div.core input[readonly].profbonus,
 div.charactersheet div.core input[readonly].passive {
     background: var(--nearblack);
@@ -665,7 +945,30 @@ div.charactersheet div.vitals input[readonly].armorclass {
         50% 100%,
         0 70%
     );
-    padding-bottom: 5%;
+    padding-bottom: 10%;
+}
+div.charactersheet div.vitals input[readonly].determination {
+    clip-path: polygon( /* Clips the div's visible path down to a 'stop-sign'-style octagon */
+        25% 0%,
+        75% 0%,
+        100% 25%,
+        100% 75%,
+        75% 100%,
+        25% 100%,
+        0% 75%,
+        0% 25%
+    );
+}
+div.charactersheet div.vitals li#stundamage button {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-left: 6px;
+}
+div.charactersheet div.vitals li#stundamage label {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: start;
 }
 div.charactersheet div.core input[readonly].profbonus,
 div.charactersheet div.core input[readonly].passive {
@@ -677,11 +980,6 @@ div.charactersheet div.core input[readonly].passive {
     );
 }
 
-div.charactersheet div.core li.hitdice,
-div.charactersheet div.core li.basehp,
-div.charactersheet div.core li.mortality {
-    width: 46.5%;
-}
 div.charactersheet div.core li.basehp input[type=number] {
     width: 3em;
 }
@@ -706,9 +1004,12 @@ div.charactersheet div.core li.hitdice select {
 }
 div.charactersheet div.core li.hitdice button {
     width: 6em;
-    padding-left: 6px;
-    padding-right: 6px;
-    margin-right: 6px;
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-right: 4px;
+}
+div.charactersheet div.core li.hitdice button span {
+    margin-left: 2px;
 }
 
 div.charactersheet li.mortality table tr {
@@ -755,7 +1056,7 @@ div.charactersheet div.armor div.armorgrid select#armorcap {
     width: 3.5em;
 }
 
-/* Resistances and Vulnerabilities */
+/* Resistances & Vulnerabilities */
 
 div.resistances div.repeatingrow select:first-child {
     margin-right: 6px;
@@ -811,8 +1112,9 @@ div.charactersheet div.attacks div.repeatingrow {
     margin-bottom: 12px;
 }
 
-div.charactersheet div.attacks div.verticalgroup div.oneline:first-of-type {
-    margin-bottom: 2px;
+div.charactersheet div.attacks div.verticalgroup > div.oneline:first-of-type,
+div.charactersheet div.attacks div.verticalgroup > div.stretchyholder:first-of-type {
+    margin-bottom: 4px;
 }
 
 div.charactersheet div.attacks .hastooltip {
@@ -975,6 +1277,9 @@ div.charactersheet div.attacks div.tooltipcontent select {
     width: 5em;
     margin-left: 6px;
     margin-right: 6px;
+}
+div.charactersheet div.attacks div.tooltipcontent select#damagetype {
+    width: 8em;
 }
 div.charactersheet div.attacks div.tooltipcontent input[type=number],
 div.charactersheet div.attacks div.tooltipcontent input[type=checkbox] {
@@ -1144,6 +1449,34 @@ div.charactersheet div.powers .description select:last-of-type {
     max-width: 4em;
 }
 
+div.charactersheet .hasoptions input[type=checkbox].optioncontrol { /* Ensure that the checkbox controlling tooltip on/off is never actually visible, and have it make the tooltip visible when checked */
+    display:none;
+}
+
+div.charactersheet div.optionscontent {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+div.charactersheet div.optionscontent input[type=radio]:not(:checked),
+div.charactersheet div.optionscontent input[type=radio]:not(:checked)+label {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked+div.optionscontent input[type=radio]:checked,
+div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked+div.optionscontent input[type=radio]:checked+label {
+    visibility: visible;
+    opacity: 1;
+}
+div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked+div.optionscontent input[type=radio],
+div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked+div.optionscontent label {
+    visibility: visible;
+    opacity: 1;
+}
+
 /* Inventory */
 
 div.charactersheet div.inventory div.inventorygrid {
@@ -1162,63 +1495,6 @@ div.charactersheet div.backstory textarea {
 div.charactersheet div.developments textarea,
 div.charactersheet div.objectives textarea {
     min-height: 200px;
-}
-
-/* Tooltips */
-
-div.charactersheet label.hastooltip { /* Style the item which has a tooltip connected to it */
-    width: auto;
-    display: inline-block;
-    text-align: center;
-}
-
-div.charactersheet div.tooltipcontent { /* Style the tooltip itself, and start it off hidden */
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: var(--tooltipbackground);
-    color: var(--lightfont);
-    border-radius: 4pt;
-    width: 200px;
-    margin-left: -200px; /* Pull it to the left (equal to its width), so that it doesn't ever flow over the right-hand side of the sheet */
-    padding: 6pt;
-    top: 100%; /* Position below the parent */
-    z-index: 99;
-}
-div.charactersheet div.tooltipcontent::after { /* The tooltip box's connecting arrow */
-    content: " ";
-    position: absolute;
-    bottom: 100%;  /* At the top of the tooltip */
-    left: 100%; /* Towards the right-hand side (becayse the tooltips are shifted left) */
-    margin-left: -25px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent var(--tooltipbackground) var(--tooltipbackground) transparent; /* Fills in 2 of the 4 border sides, to make a right-angled triangle */
-}
-div.charactersheet div.tooltipcontent textarea {
-    visibility: hidden;
-    opacity: 0;
-}
-div.charactersheet div.tooltipcontent label {
-    color: var(--lightfont);
-}
-
-div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol { /* Ensure that the checkbox controlling tooltip on/off is never actually visible, and have it make the tooltip visible when checked */
-    display:none;
-}
-div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol:checked+div {
-    visibility: visible;
-    opacity: 1;
-}
-div.charactersheet .hastooltip input[type=checkbox].tooltipcontrol:checked+div textarea { /* For some reason, the text areas need special treatment, which other fields in the tooltip appear not to */
-    visibility: visible;
-    opacity: 1;
 }
 
 /*
