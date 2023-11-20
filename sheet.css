@@ -13,18 +13,11 @@
 /* Fonts */
 
 @font-face {
-    font-family: 'lionandhare-bold';
-    font-style: normal;
-    font-weight: normal;
-    src: url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff2?raw=true') format('woff2'),
-         url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff?raw=true') format('woff');
-}
-@font-face {
-    font-family: 'lionandhare-bold';
+    font-family: 'Lion-and-Hare';
     font-style: normal;
     font-weight: bold;
-    src: url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff2?raw=true') format('woff2'),
-         url('https://github.com/IAmTheNeil/d20helix-charsheet/blob/main/font/lionandhare-bold.woff?raw=true') format('woff');
+    src: url('https://www.d20helix.com/font/lionandhare-bold.woff2') format('woff2'),
+         url('https://www.d20helix.com/font/lionandhare-bold.woff') format('woff');
 }
 
 @import url('https://fonts.googleapis.com/css?family=Rubik:300,300italic,400,400italic,700,700italic');
@@ -450,7 +443,7 @@ div.charactersheet h1 {
     line-height: 1em;
 }
 div.charactersheet h2 {
-    font-family: "lionandhare-bold", "Around", "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
+    font-family: "Lion-and-Hare", "Around", "Rubik", "Trebuchet MS", "Tahoma", sans-serif;
     font-size: xx-large;
     font-style: normal;
     font-weight: normal;
@@ -640,7 +633,7 @@ div.characterviewer div.charactersheet label.hasoptions img.icon.expander {
     height: 8px;
     min-height: 8px;
     max-height: 8px;
-    opacity: 60%;
+    opacity: 50%;
     margin-right: 2px;
 }
 div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ img.icon.expander {
