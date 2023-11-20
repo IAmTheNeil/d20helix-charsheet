@@ -20,7 +20,51 @@
          url('https://www.d20helix.com/font/lionandhare-bold.woff') format('woff');
 }
 
-@import url('https://fonts.googleapis.com/css?family=Rubik:300,300italic,400,400italic,700,700italic');
+
+@font-face {
+    font-display: swap;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: lighter;
+    src: url('https://www.d20helix.com/font/rubik-300.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Rubik';
+    font-style: italic;
+    font-weight: lighter;
+    src: url('https://www.d20helix.com/font/rubik-300italic.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: normal;
+    src: url('https://www.d20helix.com/font/rubik-regular.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Rubik';
+    font-style: italic;
+    font-weight: normal;
+    src: url('https://www.d20helix.com/font/rubik-italic.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: bold;
+    src: url('https://www.d20helix.com/font/rubik-700.woff2') format('woff2');
+}
+@font-face {
+    font-display: swap;
+    font-family: 'Rubik';
+    font-style: italic;
+    font-weight: bold;
+    src: url('https://www.d20helix.com/font/rubik-700italic.woff2') format('woff2');
+}
+/* @import url('https://fonts.googleapis.com/css?family=Rubik:300,300italic,400,400italic,700,700italic'); */
+
 @import url('https://dl.dafont.com/dl/?f=around');
 
 /* Style Variables */
