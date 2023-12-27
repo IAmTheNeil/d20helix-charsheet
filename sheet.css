@@ -1463,7 +1463,7 @@ div.charactersheet ul.powerstats.infolist li {
     justify-content: center;
     align-items: center;
 }
-div.charactersheet ul.powerstats.infolist li input {
+div.charactersheet ul.powerstats.infolist li input[readonly] {
     margin-left: 6px;
     border: none;
     background: none;

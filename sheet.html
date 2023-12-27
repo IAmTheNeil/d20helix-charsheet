@@ -1433,13 +1433,17 @@
                                 <label>
                                     Attack Bonus
                                     <input readonly type="number" value="0" name="attr_power_attackbonus"/>
+                                    +
                                 </label>
+                                <input type="number" min="-10" max="10" value="0" name="attr_power_attackbonus_extra"/>
                             </li>
                             <li>
                                 <label>
                                     Difficulty Class (DC)
                                     <input readonly type="number" value="0" name="attr_power_dc"/>
+                                    +
                                 </label>
+                                <input type="number" min="-10" max="10" value="0" name="attr_power_dc_extra"/>
                             </li>
                         </ul>
 
@@ -3448,19 +3452,23 @@
             "repeating_powers0_power_rolltype0",
             "repeating_powers0_power_concentration0",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             switch (values.repeating_powers0_power_rolltype0) {
                 case "attack":
                     // Attack
-                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
                 case "difficulty":
                     // Difficulty Check
-                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
@@ -3482,9 +3490,13 @@
             "repeating_powers1_power_rolltype1",
             "repeating_powers1_power_concentration1",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 1; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3493,13 +3505,13 @@
                 switch (values.repeating_powers1_power_rolltype1) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3527,9 +3539,13 @@
             "repeating_powers2_power_rolltype2",
             "repeating_powers2_power_concentration2",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 3; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3538,13 +3554,13 @@
                 switch (values.repeating_powers2_power_rolltype2) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3572,9 +3588,13 @@
             "repeating_powers3_power_rolltype3",
             "repeating_powers3_power_concentration3",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 5; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3583,13 +3603,13 @@
                 switch (values.repeating_powers3_power_rolltype3) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3617,9 +3637,13 @@
             "repeating_powers4_power_rolltype4",
             "repeating_powers4_power_concentration4",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 7; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3628,13 +3652,13 @@
                 switch (values.repeating_powers4_power_rolltype4) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3662,9 +3686,13 @@
             "repeating_powers5_power_rolltype5",
             "repeating_powers5_power_concentration5",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 9; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3673,13 +3701,13 @@
                 switch (values.repeating_powers5_power_rolltype5) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3707,9 +3735,13 @@
             "repeating_powers6_power_rolltype6",
             "repeating_powers6_power_concentration6",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 11; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3718,13 +3750,13 @@
                 switch (values.repeating_powers6_power_rolltype6) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3752,9 +3784,13 @@
             "repeating_powers7_power_rolltype7",
             "repeating_powers7_power_concentration7",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 13; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3763,13 +3799,13 @@
                 switch (values.repeating_powers7_power_rolltype7) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3797,9 +3833,13 @@
             "repeating_powers8_power_rolltype8",
             "repeating_powers8_power_concentration8",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 15; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3808,13 +3848,13 @@
                 switch (values.repeating_powers8_power_rolltype8) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
@@ -3842,9 +3882,13 @@
             "repeating_powers9_power_rolltype9",
             "repeating_powers9_power_concentration9",
             "power_attackbonus",
+            "power_attackbonus_extra",
             "power_dc",
+            "power_dc_extra",
             "char_name"
         ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             const apCost = 17; // The appropriate AP cost for this tier
             if (values.ap >= apCost) {
                 setAttrs({
@@ -3853,13 +3897,13 @@
                 switch (values.repeating_powers9_power_rolltype9) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitymod=" + values.power_attackbonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{theroll=[[1d20+" + values.power_attackbonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydc=" + values.power_dc + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
