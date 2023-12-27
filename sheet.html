@@ -319,12 +319,12 @@
                 </div>
             </li>
 
-            <li id="armorclass">
+            <li id="defense">
                 <label>
                     Defense
                 </label>
                 <div>
-                    <input readonly type="number" min="0" max="30" value="10" name="attr_armorclass" class="armorclass">
+                    <input readonly type="number" min="0" max="30" value="10" name="attr_defense" class="defense">
                 </div>
             </li>
 
@@ -3920,8 +3920,8 @@
         return Math.floor((statScore - 10) / 2) || 0; // Default to 0 for anything invalid
     };
 
-    // Get the armor class bonus for each shield
-    function shieldACBonusFor(shieldName) {
+    // Get the defense bonus for each shield
+    function shieldDefenseBonusFor(shieldName) {
         switch(shieldName) {
             case "shield_p0": return 2;
             case "shield_p1": return 3;
@@ -4130,8 +4130,8 @@
         });
     };
 
-    // Recalculate the final armor class value
-    function recalculateArmorClass() {
+    // Recalculate the final defense value
+    function recalculateDefense() {
         getAttrs( [
             "armorbase",
             "armorcap",
@@ -4141,15 +4141,15 @@
             "agi_mod",
             "end_mod"
         ], function(values) {
-            const baseAC = parseInt(values.armorbase) || 10; // Assume 10 (the foundational AC value) if unable to determine
+            const baseDef = parseInt(values.armorbase) || 10; // Assume 10 (the foundational defense value) if unable to determine
             const modCap = isNaN(parseInt(values.armorcap)) ? Number.MAX_SAFE_INTEGER : parseInt(values.armorcap); // If unable to get a number from the drop-down, assume it's infinity
             const mod = parseInt(values.agi_mod) || 0;
             const cappedMod = Math.min(mod, modCap); // Use whichever value is lower out of the mod or its cap
             const extra = parseInt(values.armorextra) || 0;
             const enduranceBonus = ((values.armorendbonus == 0) ? 0 : parseInt(values.end_mod) || 0);
-            const shieldBonus = shieldACBonusFor(values.shield);
+            const shieldBonus = shieldDefenseBonusFor(values.shield);
             setAttrs({
-                armorclass: baseAC + cappedMod + extra + shieldBonus + enduranceBonus
+                defense: baseDef + cappedMod + extra + shieldBonus + enduranceBonus
             });
         });
     };
@@ -4662,7 +4662,7 @@
 
     // When anything related to armor class changes
     on("change:armorbase change:armorcap change:armorextra change:armorendbonus change:shield change:agi_mod change:end_mod", function() {
-        recalculateArmorClass();
+        recalculateDefense();
     });
 
     // When the sheet opens
@@ -4675,7 +4675,7 @@
         recalculateHitDiceType();
         recalculateNPCDefaultHealth();
         recalculateMaxHitDice();
-        recalculateArmorClass();
+        recalculateDefense();
         recalculatePowerStats();
         recalculateDetermination();
         recalculateAllAttacks();

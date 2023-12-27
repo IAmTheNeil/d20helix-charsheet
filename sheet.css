@@ -965,7 +965,7 @@ div.charactersheet div.core ul input[readonly] {
     width: 30pt;
 }
 
-div.charactersheet div.vitals input[readonly].armorclass,
+div.charactersheet div.vitals input[readonly].defense,
 div.charactersheet div.vitals input[readonly].determination,
 div.charactersheet div.core input[readonly].profbonus,
 div.charactersheet div.core input[readonly].passive {
@@ -974,7 +974,7 @@ div.charactersheet div.core input[readonly].passive {
     height: 100%;
     margin-bottom: 4px;
 }
-div.charactersheet div.vitals input[readonly].armorclass {
+div.charactersheet div.vitals input[readonly].defense {
     clip-path: polygon( /* Clips the div's visible path down to a basic shield */
         0 0,
         100% 0,
