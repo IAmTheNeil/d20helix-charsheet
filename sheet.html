@@ -1280,11 +1280,11 @@
 
                         </div>
 
-                        <!-- Techniques & Bonuses -->
+                        <!-- Techniques -->
 
                         <div class="subsection techniques">
 
-                            <h2>Techniques & Bonuses</h2>
+                            <h2>Techniques</h2>
 
                             <div class="techniquesgrid gridheadings">
 
@@ -1322,7 +1322,7 @@
                                         <option value="roll6">Roll 6</option>
                                         <option value="timed">Timed</option>
                                         <option value="escalating">Escalating Difficulty</option>
-                                        <option value="passive">Passive / Unlimited</option>
+                                        <option value="unlimited">Unlimited</option>
                                     </select>
 
                                     <div class="oneline quantity">
@@ -1340,6 +1340,61 @@
                                                 name="roll_technique_description"
                                                 type="roll"
                                                 value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{technique_name}}} {{desc=@{technique_desc}}}">
+                                                <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </fieldset>
+
+                        </div>
+
+                        <!-- Passive Bonuses -->
+
+                        <div class="subsection passives">
+
+                            <h2>Passive Bonuses</h2>
+
+                            <div class="passivesgrid gridheadings">
+
+                                <label class="description">Source</label>
+                                <label class="recharge">Passive Bonus</label>
+                                <label class="describe">Describe</label>
+
+                            </div>
+
+                            <fieldset class="repeating_passives">
+
+                                <div class="repeatingrow passivesgrid">
+
+                                    <select name="attr_passive_source" class="longfield">
+                                        <option value="class" selected>Class Bonus</option>
+                                        <option value="dna">DNA Bonus</option>
+                                        <option value="feat">Feat</option>
+                                        <option value="augmentation">Augmentation</option>
+                                    </select>
+
+                                    <div class="oneline description">
+                                        <input type="text" name="attr_passive_name" placeholder="Passive Bonus Name"/>
+                                        <label class="hastooltip">
+                                            <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                            <input type="checkbox" class="tooltipcontrol" unchecked>
+                                            <div class="tooltipcontent">
+                                                <div class="stretchyholder">
+                                                    <textarea name="attr_passive_desc" placeholder="Enter a description"></textarea>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <div class="oneline verticalstretch describe">
+                                        <div class="stretchyholder">
+                                            <button
+                                                name="roll_passive_description"
+                                                type="roll"
+                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{passive_name}}} {{subtype=@{passive_source} Bonus}} {{desc=@{passive_desc}}}">
                                                 <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
                                             </button>
                                         </div>

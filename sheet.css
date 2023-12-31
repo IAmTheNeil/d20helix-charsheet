@@ -200,7 +200,8 @@ div.charactersheet ul.armor li > label,
 div.charactersheet ul.weapons li label,
 div.charactersheet div.gridheadings label,
 div.charactersheet div.abilities label,
-div.charactersheet div.techniques label {
+div.charactersheet div.techniques label,
+div.charactersheet div.passives label {
     font-size: x-small;
     font-weight: bold;
     text-transform: uppercase;
@@ -401,6 +402,7 @@ div.charactersheet div.gridheadings {
 }
 div.charactersheet div.gridheadings label {
     text-align: center;
+    margin-bottom: 6px;
 }
 div.charactersheet div.gridheadings label:first-child {
     text-align: left;
@@ -1181,13 +1183,6 @@ div.charactersheet div.attacks div.attacksgrid {
         10%  /* Attack */
         24%; /* Damage */
 }
-div.charactersheet div.attacks div.gridheadings,
-div.charactersheet div.abilities div.gridheadings,
-div.charactersheet div.techniques div.gridheadings,
-div.charactersheet div.mods div.gridheadings,
-div.charactersheet div.inventory div.gridheadings {
-    margin-bottom: 6px;
-}
 
 div.charactersheet div.attacks select:has(> option[value="melee"]:checked) ~ div#ammo-reloads {
     display: none;
@@ -1410,6 +1405,17 @@ div.charactersheet div.techniques div.techniquesgrid {
         19% /* Current Amount */
         8%; /* Describe */
 }
+div.charactersheet div.passives div.passivesgrid {
+    display: grid;
+    grid-template-columns:
+        40%  /* Source */
+        45%  /* Passive Bonus */
+        8%; /* Describe */
+}
+div.charactersheet div.passives input[type=text] {
+    width: 100%;
+    margin-right: 6px;
+}
 
 div.charactersheet div.techniques div.oneline.describe,
 div.charactersheet div.inventory div.oneline.describe {
@@ -1417,10 +1423,10 @@ div.charactersheet div.inventory div.oneline.describe {
     align-items: stretch;
 }
 
-div.charactersheet div.techniques select#techniquetype:has(> option[value="passive"]:checked) ~ div.quantity {
+div.charactersheet div.techniques select#techniquetype:has(> option[value="unlimited"]:checked) ~ div.quantity {
     display: none;
 }
-div.charactersheet div.techniques select#techniquetype:not(:has(> option[value="passive"]:checked)) ~ div#quantityplaceholder {
+div.charactersheet div.techniques select#techniquetype:not(:has(> option[value="unlimited"]:checked)) ~ div#quantityplaceholder {
     display: none;
 }
 div.charactersheet div.techniques div#quantityplaceholder img {
@@ -1465,6 +1471,9 @@ div.charactersheet div.powers div.powersgrid {
         18.5% /* Target & Range */
         28.5% /* Charge / Duration / Concentration */
         15%  /* Roll Type / Use */
+}
+div.charactersheet div.powers div.gridheadings label {
+    margin-bottom: 0;
 }
 
 div.charactersheet div.powers div.description input[type=text] {
