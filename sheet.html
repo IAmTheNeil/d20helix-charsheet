@@ -516,69 +516,6 @@
 
                         </div>
 
-                        <!-- Armor -->
-
-                        <div class="subsection armor">
-
-                            <h2>Armor</h2>
-
-                            <div class="armorgrid">
-                                <label>
-                                    Armor Name
-                                    <input type="text" name="attr_armor"/>
-                                </label>
-                                <label>
-                                    Base Defense
-                                    <input type="number" min="10" max="20" value="10" name="attr_armorbase"/>
-                                </label>
-                            </div>
-
-                            <div class="armorgrid">
-                                <label>
-                                    Armor Type
-                                    <select name="attr_armortype">
-                                        <option value="none" selected>None</option>
-                                        <option value="lgt">Light</option>
-                                        <option value="med">Medium</option>
-                                        <option value="hvy">Heavy</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    Max AGI Bonus
-                                    <select name="attr_armorcap" id="armorcap">
-                                        <option value="unlimited" selected>&infin;</option>
-                                        <option value="2">2</option>
-                                        <option value="0">0</option>
-                                    </select>
-                                </label>
-                            </div>
-
-                            <div class="armorgrid">
-                                <label>
-                                    Additional Armor
-                                    <input type="number" min="0" max="20" value="0" name="attr_armorextra"/>
-                                </label>
-                                <label>
-                                    Include END Bonus?
-                                    <input type="checkbox" unchecked name="attr_armorendbonus"/>
-                                </label>
-                            </div>
-
-                            <div class="armorgrid">
-                                <label>
-                                    Equipped Shield
-                                    <select name="attr_shield">
-                                        <option value="none" selected>None</option>
-                                        <option value="shield_p0">Standard Shield</option>
-                                        <option value="shield_p1">Shield +1</option>
-                                        <option value="shield_p2">Shield +2</option>
-                                    </select>
-                                </label>
-                                <div></div> <!-- A blank to occupy the final spot on the grid -->
-                            </div>
-
-                        </div>
-
                         <!-- Resistances & Vulnerabilaties -->
 
                         <div class="subsection resistances">
@@ -1042,7 +979,7 @@
                                         <label class="hastooltip">
                                             <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
-                                            <div class="tooltipcontent">
+                                            <div class="tooltipcontent leanright">
                                                 <div class="stretchyholder">
                                                     <textarea name="attr_attack_desc" placeholder="Enter a description"></textarea>
                                                 </div>
@@ -1248,7 +1185,7 @@
                                         <label class="hastooltip">
                                             <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
-                                            <div class="tooltipcontent">
+                                            <div class="tooltipcontent leanright">
                                                 <div class="stretchyholder">
                                                     <textarea name="attr_ability_desc" placeholder="Enter a description"></textarea>
                                                 </div>
@@ -1367,7 +1304,7 @@
                                         <label class="hastooltip">
                                             <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
                                             <input type="checkbox" class="tooltipcontrol" unchecked>
-                                            <div class="tooltipcontent">
+                                            <div class="tooltipcontent leanright">
                                                 <div class="stretchyholder">
                                                     <textarea name="attr_technique_desc" placeholder="Enter a description"></textarea>
                                                 </div>
@@ -3040,15 +2977,332 @@
 
             <section id="tab-panel4" class="tab-panel">
 
+                <!-- Money -->
+
                 <div class="singlecolumn">
+
+                    <div class="section money">
+
+                        <ul class="money infolist">
+                            <li>
+                                <label>
+                                    <span>Personal Money</span>
+                                    <input type="number" value="0" name="attr_money_amount"/>
+                                    <select name="attr_money_type">
+                                        <option value="credits" selected>Credits</option>
+                                        <option value="dollars">Dollars</option>
+                                        <option value="euros">Euros</option>
+                                        <option value="gold">Gold</option>
+                                        <option value="pound">Pounds</option>
+                                        <option value="salvage">Salvage</option>
+                                        <option value="yen">Yen</option>
+                                    </select>
+                                </label>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <!-- Two Columns -->
+
+                <div class="multicolumn">
+
+                    <!--
+                        Left Column
+                    -->
 
                     <div class="section">
 
-                        <!-- Inventory -->
+                        <!-- Armor -->
+
+                        <div class="subsection armor">
+
+                            <h2>Armor</h2>
+
+                            <ul class="armor">
+
+                                <li>
+                                    <label>
+                                        Main Armor
+                                    </label>
+                                    <div>
+                                        <div class="armorgrid">
+                                            <label>
+                                                Type
+                                                <select name="attr_armortype">
+                                                    <option value="none" selected>None</option>
+                                                    <option value="lgt">Light</option>
+                                                    <option value="med">Medium</option>
+                                                    <option value="hvy">Heavy</option>
+                                                </select>
+                                            </label>
+                                            <label>
+                                                Name
+                                                <input type="text" name="attr_armor"/>
+                                            </label>
+                                        </div>
+                                        <div class="armorgrid">
+                                            <label>
+                                                Base Defense
+                                                <input type="number" min="10" max="20" value="10" name="attr_armorbase"/>
+                                            </label>
+                                            <label>
+                                                Max AGI Bonus
+                                                <select name="attr_armorcap" id="armorcap">
+                                                    <option value="unlimited" selected>&infin;</option>
+                                                    <option value="2">2</option>
+                                                    <option value="0">0</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        Additional Defense
+                                    </label>
+                                    <div>
+                                        <div class="armorgrid">
+                                            <label>
+                                                Extra Armor
+                                                <input type="number" min="0" max="20" value="0" name="attr_armorextra"/>
+                                            </label>
+                                            <label>
+                                                Shield
+                                                <select name="attr_shield">
+                                                    <option value="none" selected>None</option>
+                                                    <option value="shield_p0">Standard Shield</option>
+                                                    <option value="shield_p1">Shield +1</option>
+                                                    <option value="shield_p2">Shield +2</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                        <div class="armorgrid">
+                                            <label>
+                                                Include END Bonus?
+                                                <input type="checkbox" unchecked name="attr_armorendbonus"/>
+                                            </label>
+                                            <div></div> <!-- A blank to occupy the final spot on the grid -->
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- Mods -->
+
+                        <div class="subsection mods">
+
+                            <h2>Mods</h2>
+
+                            <div class="modsgrid gridheadings">
+
+                                <label class="description">Mod</label>
+                                <label class="type">Mod Type</label>
+                                <label class="type">Attached To</label>
+                                <label class="describe">Describe</label>
+
+                            </div>
+
+                            <fieldset class="repeating_mods">
+
+                                <div class="repeatingrow modsgrid">
+
+                                    <div class="oneline description">
+                                        <input type="text" name="attr_mod_name" placeholder="Mod Name"/>
+                                        <label class="hastooltip">
+                                            <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                            <input type="checkbox" class="tooltipcontrol" unchecked>
+                                            <div class="tooltipcontent leanright">
+                                                <div class="stretchyholder">
+                                                    <textarea name="attr_mod_desc" placeholder="Enter a description"></textarea>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+
+                                    <select name="attr_mod_type">
+                                        <option value="weapon" selected>Weapon</option>
+                                        <option value="armor">Armor</option>
+                                    </select>
+
+                                    <input type="text" name="attr_mod_target" placeholder=""/>
+
+                                    <div class="oneline describe">
+                                        <div class="stretchyholder">
+                                            <button
+                                                name="roll_mod_description"
+                                                type="roll"
+                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{mod_name}}} {{subtype=@{mod_type} Mod}} {{desc=@{mod_desc}}} {{amount=}} {{amountmax=}}">
+                                                <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </fieldset>
+
+                        </div>
+
+                    </div>
+
+                    <!--
+                        Right Column
+                    -->
+
+                    <div class="section">
+
+                        <!-- Weapons -->
+
+                        <div class="subsection weapons">
+
+                            <h2>Weapons</h2>
+
+                            <ul class="weapons">
+
+                                <li>
+                                    <label>
+                                        Melee Weapons
+                                    </label>
+                                    <div>
+                                        <div class="oneline description">
+                                            <input type="text" name="attr_weapon_melee1_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_melee1_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="oneline description">
+                                            <input type="text" name="attr_weapon_melee2_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_melee2_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        Handguns
+                                    </label>
+                                    <div>
+                                        <div>
+                                            <input type="text" name="attr_weapon_handgun1_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_handgun1_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="attr_weapon_handgun2_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_handgun2_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        Long Guns
+                                    </label>
+                                    <div>
+                                        <div>
+                                            <input type="text" name="attr_weapon_long1_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_long1_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="attr_weapon_long2_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_long2_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <label>
+                                        Heavy/Special Weapons
+                                    </label>
+                                    <div>
+                                        <div>
+                                            <input type="text" name="attr_weapon_heavy1_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_heavy1_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div>
+                                            <input type="text" name="attr_weapon_heavy2_name"/>
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent">
+                                                    <div class="stretchyholder">
+                                                        <textarea name="attr_weapon_heavy2_desc" placeholder="Enter a description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- Other Items -->
 
                         <div class="subsection inventory">
 
-                            <h2>Inventory</h2>
+                            <h2>Other Items</h2>
 
                             <div class="inventorygrid gridheadings">
 
@@ -3164,7 +3418,7 @@
 
         <ul>
             <li>d20 Helix System</li>
-            <li>Character Sheet v1.0.0</li>
+            <li>Character Sheet v1.1.0</li>
         </ul>
         <div class="attributions">
             <span>This work includes material taken from the System Reference Document 5.1 (“SRD 5.1”) by Wizards of the Coast LLC, available at https://dnd.wizards.com/resources/systems-reference-document.</span>

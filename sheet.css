@@ -153,20 +153,26 @@ div.characterviewer div.charactersheet select {
     width: 100%;
 }
 
-div.charactersheet ul.infolist {
+div.charactersheet ul.infolist,
+div.charactersheet ul.armor,
+div.charactersheet ul.weapons {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
 }
-div.charactersheet ul.infolist li {
+div.charactersheet ul.infolist li,
+div.charactersheet ul.armor li,
+div.charactersheet ul.weapons li {
     background-color: var(--secondarybackground);
     padding: 4pt;
     margin-bottom: 6pt;
-    width: 140px;
-    height: 60px;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
+}
+div.charactersheet ul.infolist li {
+    width: 140px;
+    height: 60px;
 }
 div.charactersheet ul.infolist li input {
     text-align: center;
@@ -190,6 +196,8 @@ div.charactersheet div.footer ul li,
 div.charactersheet div.tabbed-view label.tab-heading,
 div.charactersheet div.skills table td.smalltext,
 div.charactersheet ul.infolist li label,
+div.charactersheet ul.armor li > label,
+div.charactersheet ul.weapons li label,
 div.charactersheet div.gridheadings label,
 div.charactersheet div.abilities label,
 div.charactersheet div.techniques label {
@@ -505,6 +513,7 @@ div.characterviewer div.charactersheet label.hastooltip { /* Style the item whic
     width: auto;
     display: inline-block;
     text-align: center;
+    position: relative; /* This allows the tooltip content (with 'absolute' positioning) to use this element as its acnhor */
 }
 
 div.characterviewer div.charactersheet div.tooltipcontent, /* Style the tooltip itself */
@@ -518,7 +527,7 @@ div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].opt
     background-color: var(--tooltipbackground);
     border-radius: 6px;
     padding: 6pt;
-    top: 100%; /* Position below the parent */
+    top: 150%; /* Position below the parent */
     z-index: 99;
 }
 div.characterviewer div.charactersheet div.tooltipcontent > *, /* Style the tooltip itself */
@@ -542,6 +551,10 @@ div.characterviewer div.charactersheet div.tooltipcontent { /* Position the tool
     width: 200px;
     margin-left: -200px; /* Pull it to the left (equal to its width), so that it doesn't ever flow over the right-hand side of the sheet */
 }
+div.characterviewer div.charactersheet div.tooltipcontent.leanright { /* A more-specific version for when tooltips need to go the other way */
+    margin-left: 0;
+    margin-right: -200px; /* Pull it to the right (equal to its width), so that it doesn't ever flow over the left-hand side of the sheet */
+}
 div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent { /* Position the full version of the options window */
     width: 550px;
     margin-right: -550px; /* Pull it to the left (equal to its width), so that it doesn't ever flow over the right-hand side of the sheet */
@@ -556,13 +569,14 @@ div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].opt
 div.characterviewer div.charactersheet div.tooltipcontent::after {
     bottom: 100%;  /* At the top of the tooltip */
     left: 100%; /* Towards the right-hand side (becayse the tooltips are shifted left) */
+    right: auto;
     margin-left: -25px;
+    margin-right: -25px;
     border-color: transparent var(--tooltipbackground) var(--tooltipbackground) transparent; /* Fills in 2 of the 4 border sides, to make a right-angled triangle */
 }
-div.characterviewer div.charactersheet label.hasoptions input[type=checkbox].optioncontrol:checked ~ div.optionscontent::after {
-    bottom: 100%;  /* At the top of the tooltip */
-    right: 100%; /* Towards the left-hand side (becayse the options windows are shifted left) */
-    margin-right: -25px;
+div.characterviewer div.charactersheet div.tooltipcontent.leanright::after {
+    left: auto;
+    right: 100%; /* Towards the right-hand side (becayse the tooltips are shifted left) */
     border-color: transparent transparent var(--tooltipbackground) var(--tooltipbackground); /* Fills in 2 of the 4 border sides, to make a right-angled triangle */
 }
 div.characterviewer div.charactersheet div.tooltipcontent textarea {
@@ -1063,36 +1077,6 @@ div.charactersheet li.mortality table td {
     padding-bottom: 2px;
 }
 
-/* Armor */
-
-div.charactersheet div.armor div.armorgrid {
-    display: grid;
-    grid-template-columns:
-        60%
-        32%;
-    justify-content: space-between;
-}
-div.charactersheet div.armor div.armorgrid:not(:last-of-type) {
-    margin-bottom: 6px;
-}
-
-div.charactersheet div.armor div.armorgrid label {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-div.charactersheet div.armor div.armorgrid input[type=text] {
-    width: 15em;
-}
-div.charactersheet div.armor div.armorgrid select {
-    width: 10em;
-}
-div.charactersheet div.armor div.armorgrid select#armorcap {
-    width: 3.5em;
-}
-
 /* Resistances & Vulnerabilities */
 
 div.resistances div.repeatingrow select:first-child {
@@ -1200,6 +1184,7 @@ div.charactersheet div.attacks div.attacksgrid {
 div.charactersheet div.attacks div.gridheadings,
 div.charactersheet div.abilities div.gridheadings,
 div.charactersheet div.techniques div.gridheadings,
+div.charactersheet div.mods div.gridheadings,
 div.charactersheet div.inventory div.gridheadings {
     margin-bottom: 6px;
 }
@@ -1333,6 +1318,7 @@ div.charactersheet div.attacks div.damage div.tooltipcontent > select:last-of-ty
 
 div.charactersheet div.abilities div.description input[type=text],
 div.charactersheet div.techniques div.description input[type=text],
+div.charactersheet div.mods div.description input[type=text],
 div.charactersheet div.inventory div.description input[type=text] {
     width: 100%; /* Scale to fit the space available (which will typically be less than 100%) */
     margin-right: 6px;
@@ -1455,13 +1441,16 @@ div.charactersheet div.powers h2 {
 div.charactersheet ul.powerstats.infolist {
     margin-bottom: 12px;
 }
-div.charactersheet ul.powerstats.infolist li {
-    width: 47%;
+div.charactersheet ul.powerstats.infolist li,
+div.charactersheet ul.money.infolist li {
     height: 30px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+}
+div.charactersheet ul.powerstats.infolist li {
+    width: 47%;
 }
 div.charactersheet ul.powerstats.infolist li input[readonly] {
     margin-left: 6px;
@@ -1516,12 +1505,109 @@ div.charactersheet .hasoptions input[type=checkbox].optioncontrol:checked+div.op
 
 /* Inventory */
 
+div.charactersheet ul.armor li,
+div.charactersheet ul.weapons li {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+div.charactersheet ul.armor li,
+div.charactersheet ul.weapons li {
+    align-items: center;
+}
+div.charactersheet ul.armor li,
+div.charactersheet ul.weapons li {
+    height: 90px;
+}
+div.charactersheet ul.weapons li {
+    width: 45%;
+}
+div.charactersheet ul.armor li {
+    width: 100%;
+}
+div.charactersheet ul.armor li > div,
+div.charactersheet ul.weapons li > div {
+    width: 100%;
+}
+div.charactersheet ul.armor li div div,
+div.charactersheet ul.weapons li div div {
+    margin-bottom: 5px;
+}
+div.charactersheet ul.weapons li div div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+div.charactersheet ul.weapons li input {
+    width: 100%;
+    margin-right: 6px;
+}
+
+div.charactersheet div.armor div.armorgrid {
+    display: grid;
+    grid-template-columns:
+        37%
+        57%;
+    justify-content: space-between;
+}
+div.charactersheet div.armor div.armorgrid:not(:last-of-type) {
+    margin-bottom: 6px;
+}
+div.charactersheet div.armor input,
+div.charactersheet div.armor select {
+    margin-left: 10px;
+}
+
+div.charactersheet div.armor div.armorgrid label {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 28px;
+}
+div.charactersheet div.armor div.armorgrid input[type=text],
+div.charactersheet div.armor div.armorgrid select {
+    width: 100%;
+}
+div.charactersheet div.armor div.armorgrid select#armorcap {
+    width: 3.5em;
+}
+
+div.charactersheet ul.money.infolist li {
+    width: 100%;
+}
+div.charactersheet div.money label {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+div.charactersheet div.money label span {
+    width: 10em;
+}
+div.charactersheet div.money input[type=number] {
+    width: 10em;
+}
+div.charactersheet div.money select {
+    width: 8em;
+}
+
+div.charactersheet div.mods div.modsgrid {
+    display: grid;
+    grid-template-columns:
+        35%  /* Mod */
+        19%  /* Type */
+        25%  /* Attached To */
+        12%; /* Describe */
+}
+
 div.charactersheet div.inventory div.inventorygrid {
     display: grid;
     grid-template-columns:
-        69%  /* Item */
-        19%  /* Current Amount */
-        8%; /* Describe */
+        50%  /* Item */
+        30%  /* Current Amount */
+        12%; /* Describe */
 }
 
 /* Character Notes */
@@ -1660,6 +1746,7 @@ Roll Templates
     font-style: italic;
 }
 .sheet-rolltemplate-ability div.sheet-abilitystat,
+.sheet-rolltemplate-description div.sheet-subtype,
 .sheet-rolltemplate-description div.sheet-amount {
     font-weight: bold;
     font-style: italic;
