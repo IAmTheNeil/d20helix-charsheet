@@ -1359,8 +1359,8 @@
 
                             <div class="passivesgrid gridheadings">
 
-                                <label class="description">Source</label>
                                 <label class="recharge">Passive Bonus</label>
+                                <label class="description">Source</label>
                                 <label class="describe">Describe</label>
 
                             </div>
@@ -1369,6 +1369,19 @@
 
                                 <div class="repeatingrow passivesgrid">
 
+                                    <div class="oneline description">
+                                        <input type="text" name="attr_passive_name" placeholder="Passive Bonus Name"/>
+                                        <label class="hastooltip">
+                                            <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                            <input type="checkbox" class="tooltipcontrol" unchecked>
+                                            <div class="tooltipcontent leanright">
+                                                <div class="stretchyholder">
+                                                    <textarea name="attr_passive_desc" placeholder="Enter a description"></textarea>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+
                                     <select name="attr_passive_source" class="longfield">
                                         <option value="class" selected>Class Bonus</option>
                                         <option value="dna">DNA Bonus</option>
@@ -1376,19 +1389,6 @@
                                         <option value="augmentation">Augmentation</option>
                                         <option value="other">Other Bonus</option>
                                     </select>
-
-                                    <div class="oneline description">
-                                        <input type="text" name="attr_passive_name" placeholder="Passive Bonus Name"/>
-                                        <label class="hastooltip">
-                                            <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
-                                            <input type="checkbox" class="tooltipcontrol" unchecked>
-                                            <div class="tooltipcontent">
-                                                <div class="stretchyholder">
-                                                    <textarea name="attr_passive_desc" placeholder="Enter a description"></textarea>
-                                                </div>
-                                            </div>
-                                        </label>
-                                    </div>
 
                                     <div class="oneline verticalstretch describe">
                                         <div class="stretchyholder">

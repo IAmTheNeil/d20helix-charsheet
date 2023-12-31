@@ -1408,8 +1408,8 @@ div.charactersheet div.techniques div.techniquesgrid {
 div.charactersheet div.passives div.passivesgrid {
     display: grid;
     grid-template-columns:
-        40%  /* Source */
         45%  /* Passive Bonus */
+        40%  /* Source */
         8%; /* Describe */
 }
 div.charactersheet div.passives input[type=text] {
