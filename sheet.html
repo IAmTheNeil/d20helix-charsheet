@@ -158,7 +158,7 @@
                 <button
                     type="roll"
                     name="roll_str"
-                    value="&{template:check} {{charname=@{char_name}}} {{checktype=Stat}} {{checkname=Strength}} {{checkmod=@{str_mod}}} {{theroll=[[1d20+@{str_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Strength}} {{checkmod=@{str_mod}}} {{theroll=[[1d20+@{str_mod}]]}}"> <!-- Uses the Roll20 Journal's default character_name field (the one shown to players), rather than the more 'secret' one on the custom sheet itself -->
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>STR</span>
                 </button>
@@ -179,7 +179,7 @@
                 <button
                     type="roll"
                     name="roll_agi"
-                    value="&{template:check} {{charname=@{char_name}}} {{checktype=Stat}} {{checkname=Agility}} {{checkmod=@{agi_mod}}} {{theroll=[[1d20+@{agi_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Agility}} {{checkmod=@{agi_mod}}} {{theroll=[[1d20+@{agi_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>AGI</span>
                 </button>
@@ -200,7 +200,7 @@
                 <button
                     type="roll"
                     name="roll_end"
-                    value="&{template:check} {{charname=@{char_name}}} {{checktype=Stat}} {{checkname=Endurance}} {{checkmod=@{end_mod}}} {{theroll=[[1d20+@{end_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Endurance}} {{checkmod=@{end_mod}}} {{theroll=[[1d20+@{end_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>END</span>
                 </button>
@@ -221,7 +221,7 @@
                 <button
                     type="roll"
                     name="roll_wit"
-                    value="&{template:check} {{charname=@{char_name}}} {{checktype=Stat}} {{checkname=Wits}} {{checkmod=@{wit_mod}}} {{theroll=[[1d20+@{wit_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Wits}} {{checkmod=@{wit_mod}}} {{theroll=[[1d20+@{wit_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>WIT</span>
                 </button>
@@ -241,7 +241,7 @@
                 <button
                     type="roll"
                     name="roll_knw"
-                    value="&{template:check} {{charname=@{char_name}}} {{checktype=Stat}} {{checkname=Knowledge}} {{checkmod=@{knw_mod}}} {{theroll=[[1d20+@{knw_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Knowledge}} {{checkmod=@{knw_mod}}} {{theroll=[[1d20+@{knw_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>KNW</span>
                 </button>
@@ -262,7 +262,7 @@
                 <button
                     type="roll"
                     name="roll_prs"
-                    value="&{template:check} {{charname=@{char_name}}} {{checktype=Stat}} {{checkname=Presence}} {{checkmod=@{prs_mod}}} {{theroll=[[1d20+@{prs_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Presence}} {{checkmod=@{prs_mod}}} {{theroll=[[1d20+@{prs_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>PRS</span>
                 </button>
@@ -597,7 +597,7 @@
                                     <td><button
                                         name="roll_constitution"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Constitution}} {{checkmod=@{constitution_mod}}} {{theroll=[[1d20+@{constitution_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Constitution}} {{checkmod=@{constitution_mod}}} {{theroll=[[1d20+@{constitution_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Constitution</span>
                                     </button></td>
@@ -612,7 +612,7 @@
                                     <td><button
                                         name="roll_evasion"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Evasion}} {{checkmod=@{evasion_mod}}} {{theroll=[[1d20+@{evasion_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Evasion}} {{checkmod=@{evasion_mod}}} {{theroll=[[1d20+@{evasion_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Evasion</span>
                                     </button></td>
@@ -627,7 +627,7 @@
                                     <td><button
                                         name="roll_mentaldefense"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Mental Defense}} {{checkmod=@{mentaldefense_mod}}} {{theroll=[[1d20+@{mentaldefense_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Mental Defense}} {{checkmod=@{mentaldefense_mod}}} {{theroll=[[1d20+@{mentaldefense_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Mental Defense</span>
                                     </button></td>
@@ -654,7 +654,7 @@
                                     <td><button
                                         name="roll_athletics"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Athletics}} {{checkmod=@{athletics_mod}}} {{theroll=[[1d20+@{athletics_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Athletics}} {{checkmod=@{athletics_mod}}} {{theroll=[[1d20+@{athletics_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Athletics</span>
                                     </button></td>
@@ -669,7 +669,7 @@
                                     <td><button
                                         name="roll_acrobatics"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Acrobatics}} {{checkmod=@{acrobatics_mod}}} {{theroll=[[1d20+@{acrobatics_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Acrobatics}} {{checkmod=@{acrobatics_mod}}} {{theroll=[[1d20+@{acrobatics_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Acrobatics</span>
                                     </button></td>
@@ -684,7 +684,7 @@
                                     <td><button
                                         name="roll_creaturehandling"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Creature Handling}} {{checkmod=@{creaturehandling_mod}}} {{theroll=[[1d20+@{creaturehandling_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Creature Handling}} {{checkmod=@{creaturehandling_mod}}} {{theroll=[[1d20+@{creaturehandling_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Creature Handling</span>
                                     </button></td>
@@ -699,7 +699,7 @@
                                     <td><button
                                         name="roll_culture"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Culture}} {{checkmod=@{culture_mod}}} {{theroll=[[1d20+@{culture_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Culture}} {{checkmod=@{culture_mod}}} {{theroll=[[1d20+@{culture_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Culture</span>
                                     </button></td>
@@ -714,7 +714,7 @@
                                     <td><button
                                         name="roll_deception"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Deception}} {{checkmod=@{deception_mod}}} {{theroll=[[1d20+@{deception_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Deception}} {{checkmod=@{deception_mod}}} {{theroll=[[1d20+@{deception_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Deception</span>
                                     </button></td>
@@ -729,7 +729,7 @@
                                     <td><button
                                         name="roll_driving"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Driving}} {{checkmod=@{driving_mod}}} {{theroll=[[1d20+@{driving_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Driving}} {{checkmod=@{driving_mod}}} {{theroll=[[1d20+@{driving_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Driving</span>
                                     </button></td>
@@ -744,7 +744,7 @@
                                     <td><button
                                         name="roll_fasthands"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Fast Hands}} {{checkmod=@{fasthands_mod}}} {{theroll=[[1d20+@{fasthands_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Fast Hands}} {{checkmod=@{fasthands_mod}}} {{theroll=[[1d20+@{fasthands_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Fast Hands</span>
                                     </button></td>
@@ -759,7 +759,7 @@
                                     <td><button
                                         name="roll_history"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=History}} {{checkmod=@{history_mod}}} {{theroll=[[1d20+@{history_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=History}} {{checkmod=@{history_mod}}} {{theroll=[[1d20+@{history_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>History</span>
                                     </button></td>
@@ -774,7 +774,7 @@
                                     <td><button
                                         name="roll_insight"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Insight}} {{checkmod=@{insight_mod}}} {{theroll=[[1d20+@{insight_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Insight}} {{checkmod=@{insight_mod}}} {{theroll=[[1d20+@{insight_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Insight</span>
                                     </button></td>
@@ -789,7 +789,7 @@
                                     <td><button
                                         name="roll_intimidation"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Intimidation}} {{checkmod=@{intimidation_mod}}} {{theroll=[[1d20+@{intimidation_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Intimidation}} {{checkmod=@{intimidation_mod}}} {{theroll=[[1d20+@{intimidation_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Intimidation</span>
                                     </button></td>
@@ -804,7 +804,7 @@
                                     <td><button
                                         name="roll_investigation"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Investigation}} {{checkmod=@{investigation_mod}}} {{theroll=[[1d20+@{investigation_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Investigation}} {{checkmod=@{investigation_mod}}} {{theroll=[[1d20+@{investigation_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Investigation</span>
                                     </button></td>
@@ -819,7 +819,7 @@
                                     <td><button
                                         name="roll_medicine"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Medicine}} {{checkmod=@{medicine_mod}}} {{theroll=[[1d20+@{medicine_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Medicine}} {{checkmod=@{medicine_mod}}} {{theroll=[[1d20+@{medicine_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Medicine</span>
                                     </button></td>
@@ -834,7 +834,7 @@
                                     <td><button
                                         name="roll_nature"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Nature}} {{checkmod=@{nature_mod}}} {{theroll=[[1d20+@{nature_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Nature}} {{checkmod=@{nature_mod}}} {{theroll=[[1d20+@{nature_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Nature</span>
                                     </button></td>
@@ -849,7 +849,7 @@
                                     <td><button
                                         name="roll_perception"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Perception}} {{checkmod=@{perception_mod}}} {{theroll=[[1d20+@{perception_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Perception}} {{checkmod=@{perception_mod}}} {{theroll=[[1d20+@{perception_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Perception</span>
                                     </button></td>
@@ -864,7 +864,7 @@
                                     <td><button
                                         name="roll_persuasion"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Persuasion}} {{checkmod=@{persuasion_mod}}} {{theroll=[[1d20+@{persuasion_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Persuasion}} {{checkmod=@{persuasion_mod}}} {{theroll=[[1d20+@{persuasion_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Persuasion</span>
                                     </button></td>
@@ -879,7 +879,7 @@
                                     <td><button
                                         name="roll_psionics"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Psionics}} {{checkmod=@{psionics_mod}}} {{theroll=[[1d20+@{psionics_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Psionics}} {{checkmod=@{psionics_mod}}} {{theroll=[[1d20+@{psionics_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Psionics</span>
                                     </button></td>
@@ -894,7 +894,7 @@
                                     <td><button
                                         name="roll_stealth"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Stealth}} {{checkmod=@{stealth_mod}}} {{theroll=[[1d20+@{stealth_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Stealth}} {{checkmod=@{stealth_mod}}} {{theroll=[[1d20+@{stealth_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Stealth</span>
                                     </button></td>
@@ -909,7 +909,7 @@
                                     <td><button
                                         name="roll_survival"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Survival}} {{checkmod=@{survival_mod}}} {{theroll=[[1d20+@{survival_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Survival}} {{checkmod=@{survival_mod}}} {{theroll=[[1d20+@{survival_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Survival</span>
                                     </button></td>
@@ -924,7 +924,7 @@
                                     <td><button
                                         name="roll_technology"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{char_name}}} {{checktype=Skill}} {{checkname=Technology}} {{checkmod=@{technology_mod}}} {{theroll=[[1d20+@{technology_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Technology}} {{checkmod=@{technology_mod}}} {{theroll=[[1d20+@{technology_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Technology</span>
                                     </button></td>
@@ -1139,7 +1139,7 @@
                                             <button
                                                 name="roll_damage"
                                                 type="roll"
-                                                value="&{template:damage} {{charname=@{char_name}}} {{damagetype=@{attack_damagetype}}} {{calculation=@{attack_damagefinalcalc}}} {{theroll=[[@{attack_damagefinalcalc}]]}}">
+                                                value="&{template:damage} {{charname=@{character_name}}} {{damagetype=@{attack_damagetype}}} {{calculation=@{attack_damagefinalcalc}}} {{theroll=[[@{attack_damagefinalcalc}]]}}">
                                                 <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                                 <span>Damage</span>
                                             </button>
@@ -1339,7 +1339,7 @@
                                             <button
                                                 name="roll_technique_description"
                                                 type="roll"
-                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{technique_name}}} {{desc=@{technique_desc}}}">
+                                                value="&{template:description} {{charname=@{character_name}}} {{subjectname=@{technique_name}}} {{desc=@{technique_desc}}}">
                                                 <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
                                             </button>
                                         </div>
@@ -1395,7 +1395,7 @@
                                             <button
                                                 name="roll_passive_description"
                                                 type="roll"
-                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{passive_name}}} {{subtype=@{passive_source} Bonus}} {{desc=@{passive_desc}}}">
+                                                value="&{template:description} {{charname=@{character_name}}} {{subjectname=@{passive_name}}} {{subtype=@{passive_source} Bonus}} {{desc=@{passive_desc}}}">
                                                 <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
                                             </button>
                                         </div>
@@ -3194,7 +3194,7 @@
                                             <button
                                                 name="roll_mod_description"
                                                 type="roll"
-                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{mod_name}}} {{subtype=@{mod_type} Mod}} {{desc=@{mod_desc}}} {{amount=}} {{amountmax=}}">
+                                                value="&{template:description} {{charname=@{character_name}}} {{subjectname=@{mod_name}}} {{subtype=@{mod_type} Mod}} {{desc=@{mod_desc}}} {{amount=}} {{amountmax=}}">
                                                 <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
                                             </button>
                                         </div>
@@ -3396,7 +3396,7 @@
                                             <button
                                                 name="roll_inventory_description"
                                                 type="roll"
-                                                value="&{template:description} {{charname=@{char_name}}} {{subjectname=@{inventory_name}}} {{desc=@{inventory_desc}}} {{amount=@{inventory_amount}}} {{amountmax=@{inventory_amount|max}}}">
+                                                value="&{template:description} {{charname=@{character_name}}} {{subjectname=@{inventory_name}}} {{desc=@{inventory_desc}}} {{amount=@{inventory_amount}}} {{amountmax=@{inventory_amount|max}}}">
                                                 <img src="https://www.d20helix.com/img/icon_speech.png" alt="Describe in Chat" class="icon">
                                             </button>
                                         </div>
@@ -3474,7 +3474,7 @@
 
         <ul>
             <li>d20 Helix System</li>
-            <li>Character Sheet v1.1.0</li>
+            <li>Character Sheet v1.1.1</li>
         </ul>
         <div class="attributions">
             <span>This work includes material taken from the System Reference Document 5.1 (“SRD 5.1”) by Wizards of the Coast LLC, available at https://dnd.wizards.com/resources/systems-reference-document.</span>
@@ -3621,18 +3621,18 @@
             "hitdice",
             "hitdice_type",
             "end_mod",
-            "char_name"
+            "character_name"
         ], (values) => {
             if (values.hitdice > 0) {
                 setAttrs({
                     hitdice: Math.max(0, (values.hitdice - 1)) // Reduce the hit dice count by 1
                 });
-                startRoll("&{template:hitdie} {{charname=" + values.char_name + "}} {{dietype=" + values.hitdice_type + "}} {{endmod=" + values.end_mod + "}} {{theroll=[[1" + values.hitdice_type + "+" + values.end_mod + "]]}}", (results) => {
+                startRoll("&{template:hitdie} {{charname=" + values.character_name + "}} {{dietype=" + values.hitdice_type + "}} {{endmod=" + values.end_mod + "}} {{theroll=[[1" + values.hitdice_type + "+" + values.end_mod + "]]}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             } else {
                 // Not enough Hit Dice to make the roll
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=Hit Dice}} {{desc=Unable roll a hit die: None left!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=Hit Dice}} {{desc=Unable roll a hit die: None left!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3659,18 +3659,18 @@
             "repeating_attacks_attack_type",
             "repeating_attacks_attack_ammo",
             "repeating_attacks_attack_mod",
-            "char_name"
+            "character_name"
         ], (values) => {
             if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo > 0)) {
                 setAttrs({
                     repeating_attacks_attack_ammo: Math.max(0, (values.repeating_attacks_attack_ammo - 1)) // Reduce the ammo amount by 1
                 });
-                startRoll("&{template:attack} {{charname=" + values.char_name + "}} {{attackname=" + values.repeating_attacks_attack_name + "}} {{attackdesc=" + values.repeating_attacks_attack_desc + "}} {{attackmod=" + values.repeating_attacks_attack_mod + "}} {{theroll=[[1d20+" + values.repeating_attacks_attack_mod + "]]}}", (results) => {
+                startRoll("&{template:attack} {{charname=" + values.character_name + "}} {{attackname=" + values.repeating_attacks_attack_name + "}} {{attackdesc=" + values.repeating_attacks_attack_desc + "}} {{attackmod=" + values.repeating_attacks_attack_mod + "}} {{theroll=[[1d20+" + values.repeating_attacks_attack_mod + "]]}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             } else {
                 // Not enough ammo to make the attack
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to attack: No ammo loaded!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to attack: No ammo loaded!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3686,14 +3686,14 @@
             "repeating_attacks_attack_ammo_max",
             "repeating_attacks_attack_unlimited_reloads",
             "repeating_attacks_attack_ammoreloads",
-            "char_name"
+            "character_name"
         ], (values) => {
             if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo == values.repeating_attacks_attack_ammo_max)) {
                 return; // Melee weapons and weapons with full ammo don't need reloads
             } else {
                 if ((values.repeating_attacks_attack_unlimited_reloads == 0) && (values.repeating_attacks_attack_ammoreloads == 0)) {
                     // If reloads are tracked and there aren't any left, the reload can't happen
-                    startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to reload: No reloads remaining!}}", (results) => {
+                    startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to reload: No reloads remaining!}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                 } else {
@@ -3716,7 +3716,7 @@
             "repeating_abilities_ability_stat",
             "repeating_abilities_ability_rolltype",
             "repeating_abilities_ability_mod",
-            "char_name"
+            "character_name"
         ], (values) => {
             if (values.ap >= values.repeating_abilities_ability_apcost) {
                 setAttrs({
@@ -3726,25 +3726,25 @@
                 switch (values.repeating_abilities_ability_rolltype) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitymod=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}} {{theroll=[[1d20+" + values.repeating_abilities_ability_mod + "]]}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitymod=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}} {{theroll=[[1d20+" + values.repeating_abilities_ability_mod + "]]}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydc=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydc=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         //Assume 'none' if not a recognised value
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                 }
             } else {
                 // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}} {{subjectname=" + values.repeating_abilities_ability_name + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_abilities_ability_name + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3765,26 +3765,26 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
             switch (values.repeating_powers0_power_rolltype0) {
                 case "attack":
                     // Attack
-                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
                 case "difficulty":
                     // Difficulty Check
-                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
                 default:
                     // Description only
-                    startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
                         finishRoll(results.rollId); // Required before it gets posted to chat
                     });
                     break;
@@ -3803,7 +3803,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -3815,26 +3815,26 @@
                 switch (values.repeating_powers1_power_rolltype1) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers1_power_name1 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers1_power_name1 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3852,7 +3852,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -3864,26 +3864,26 @@
                 switch (values.repeating_powers2_power_rolltype2) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers2_power_name2 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers2_power_name2 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3901,7 +3901,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -3913,26 +3913,26 @@
                 switch (values.repeating_powers3_power_rolltype3) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers3_power_name3 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers3_power_name3 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3950,7 +3950,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -3962,26 +3962,26 @@
                 switch (values.repeating_powers4_power_rolltype4) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers4_power_name4 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers4_power_name4 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -3999,7 +3999,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -4011,26 +4011,26 @@
                 switch (values.repeating_powers5_power_rolltype5) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers5_power_name5 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers5_power_name5 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -4048,7 +4048,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -4060,26 +4060,26 @@
                 switch (values.repeating_powers6_power_rolltype6) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers6_power_name6 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers6_power_name6 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -4097,7 +4097,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -4109,26 +4109,26 @@
                 switch (values.repeating_powers7_power_rolltype7) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers7_power_name7 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers7_power_name7 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -4146,7 +4146,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -4158,26 +4158,26 @@
                 switch (values.repeating_powers8_power_rolltype8) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers8_power_name8 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers8_power_name8 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
@@ -4195,7 +4195,7 @@
             "power_attackbonus_extra",
             "power_dc",
             "power_dc_extra",
-            "char_name"
+            "character_name"
         ], (values) => {
             const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
             const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
@@ -4207,26 +4207,26 @@
                 switch (values.repeating_powers9_power_rolltype9) {
                     case "attack":
                         // Attack
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     case "difficulty":
                         // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                     default:
                         // Description only
-                        startRoll("&{template:ability} {{charname=" + values.char_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
                             finishRoll(results.rollId); // Required before it gets posted to chat
                         });
                         break;
                 }
             } else {
                 // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.char_name + "}}  {{subjectname=" + values.repeating_powers9_power_name9 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers9_power_name9 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             }
