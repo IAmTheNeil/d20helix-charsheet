@@ -592,6 +592,27 @@
 
                             <table>
 
+                                <tr class="final">
+                                    <td class="first"><input type="checkbox" name="attr_initiative_prof" unchecked></td>
+                                    <td><button
+                                        name="roll_initiative"
+                                        type="roll"
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Initiative}} {{checkmod=@{initiative_mod}}} {{theroll=[[1d20+@{initiative_mod} &{tracker}]]}}">
+                                        <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
+                                        <span>Initiative</span>
+                                    </button></td>
+                                    <td class="smalltext">
+                                        <span>AGI</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_initiative_extra"/>
+                                    </td>
+                                    <td class="last"><input readonly type="number" value="0" name="attr_initiative_mod"/></td>
+                                </tr>
+
+                            </table>
+                            <hr>
+                            <table>
+
                                 <tr>
                                     <td class="first"><input type="checkbox" name="attr_constitution_prof" unchecked></td>
                                     <td><button
@@ -601,9 +622,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Constitution</span>
                                     </button></td>
-                                    <td class="smalltext">END</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_constitution_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>END</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_constitution_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_constitution_mod"/></td>
                                 </tr>
 
@@ -616,13 +639,15 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Evasion</span>
                                     </button></td>
-                                    <td class="smalltext">AGI</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_evasion_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>AGI</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_evasion_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_evasion_mod"/></td>
                                 </tr>
 
-                                <tr>
+                                <tr class="final">
                                     <td class="first"><input type="checkbox" name="attr_mentaldefense_prof" unchecked></td>
                                     <td><button
                                         name="roll_mentaldefense"
@@ -631,9 +656,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Mental Defense</span>
                                     </button></td>
-                                    <td class="smalltext">WIT</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_mentaldefense_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>WIT</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_mentaldefense_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_mentaldefense_mod"/></td>
                                 </tr>
 
@@ -658,9 +685,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Athletics</span>
                                     </button></td>
-                                    <td class="smalltext">STR</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_athletics_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>STR</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_athletics_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_athletics_mod"/></td>
                                 </tr>
 
@@ -673,9 +702,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Acrobatics</span>
                                     </button></td>
-                                    <td class="smalltext">AGI</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_acrobatics_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>AGI</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_acrobatics_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_acrobatics_mod"/></td>
                                 </tr>
 
@@ -688,9 +719,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Creature Handling</span>
                                     </button></td>
-                                    <td class="smalltext">WIT</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_creaturehandling_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>WIT</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_creaturehandling_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_creaturehandling_mod"/></td>
                                 </tr>
 
@@ -703,9 +736,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Culture</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_culture_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_culture_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_culture_mod"/></td>
                                 </tr>
 
@@ -718,9 +753,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Deception</span>
                                     </button></td>
-                                    <td class="smalltext">PRS</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_deception_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>PRS</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_deception_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_deception_mod"/></td>
                                 </tr>
 
@@ -733,9 +770,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Driving</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_driving_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_driving_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_driving_mod"/></td>
                                 </tr>
 
@@ -748,9 +787,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Fast Hands</span>
                                     </button></td>
-                                    <td class="smalltext">AGI</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_fasthands_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>AGI</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_fasthands_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_fasthands_mod"/></td>
                                 </tr>
 
@@ -763,9 +804,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>History</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_history_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_history_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_history_mod"/></td>
                                 </tr>
 
@@ -778,9 +821,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Insight</span>
                                     </button></td>
-                                    <td class="smalltext">WIT</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_insight_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>WIT</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_insight_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_insight_mod"/></td>
                                 </tr>
 
@@ -793,9 +838,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Intimidation</span>
                                     </button></td>
-                                    <td class="smalltext">PRS</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_intimidation_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>PRS</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_intimidation_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_intimidation_mod"/></td>
                                 </tr>
 
@@ -808,9 +855,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Investigation</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_investigation_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_investigation_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_investigation_mod"/></td>
                                 </tr>
 
@@ -823,9 +872,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Medicine</span>
                                     </button></td>
-                                    <td class="smalltext">WIT</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_medicine_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>WIT</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_medicine_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_medicine_mod"/></td>
                                 </tr>
 
@@ -838,9 +889,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Nature</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_nature_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_nature_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_nature_mod"/></td>
                                 </tr>
 
@@ -853,9 +906,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Perception</span>
                                     </button></td>
-                                    <td class="smalltext">WIT</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_perception_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>WIT</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_perception_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_perception_mod"/></td>
                                 </tr>
 
@@ -868,9 +923,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Persuasion</span>
                                     </button></td>
-                                    <td class="smalltext">PRS</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_persuasion_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>PRS</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_persuasion_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_persuasion_mod"/></td>
                                 </tr>
 
@@ -883,9 +940,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Psionics</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_psionics_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_psionics_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_psionics_mod"/></td>
                                 </tr>
 
@@ -898,9 +957,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Stealth</span>
                                     </button></td>
-                                    <td class="smalltext">AGI</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_stealth_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>AGI</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_stealth_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_stealth_mod"/></td>
                                 </tr>
 
@@ -913,13 +974,15 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Survival</span>
                                     </button></td>
-                                    <td class="smalltext">WIT</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_survival_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>WIT</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_survival_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_survival_mod"/></td>
                                 </tr>
 
-                                <tr>
+                                <tr class="final">
                                     <td class="first"><input type="checkbox" name="attr_technology_prof" unchecked></td>
                                     <td><button
                                         name="roll_technology"
@@ -928,9 +991,11 @@
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Technology</span>
                                     </button></td>
-                                    <td class="smalltext">KNW</td>
-                                    <td>+</td>
-                                    <td><input type="number" min="-10" max="10" value="0" name="attr_technology_extra"/></td>
+                                    <td class="smalltext">
+                                        <span>KNW</span>
+                                        <span>+</span>
+                                        <input type="number" min="-10" max="10" value="0" name="attr_technology_extra"/>
+                                    </td>
                                     <td class="last"><input readonly type="number" value="0" name="attr_technology_mod"/></td>
                                 </tr>
 
@@ -1307,7 +1372,7 @@
                             <h2>Abilities</h2>
 
                             <!-- Expandable Basic Abilities Table -->
-                            <details>
+                            <details closed>
                                 <summary>Basic Abilities</summary>
                                 <p>Basic abilities apply instantly and don't require concentration.</p>
                                 <table>
@@ -4892,6 +4957,8 @@
             "fasthands_extra",
             "history_prof",
             "history_extra",
+            "initiative_prof",
+            "initiative_extra",
             "insight_prof",
             "insight_extra",
             "intimidation_prof",
@@ -4959,6 +5026,10 @@
                 ((values.history_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0)
                 + (parseInt(values.knw_mod) || 0)
                 + (parseInt(values.history_extra) || 0);
+            let initiative_mod =
+                ((values.initiative_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0)
+                + (parseInt(values.agi_mod) || 0)
+                + (parseInt(values.initiative_extra) || 0);
             let insight_mod =
                 ((values.insight_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0)
                 + (parseInt(values.wit_mod) || 0)
@@ -5018,6 +5089,7 @@
                 evasion_mod: evasion_mod,
                 fasthands_mod: fasthands_mod,
                 history_mod: history_mod,
+                initiative_mod: initiative_mod,
                 insight_mod: insight_mod,
                 passive_insight: insight_mod + 10, // Passives have a base of 10
                 intimidation_mod: intimidation_mod,
@@ -5321,12 +5393,12 @@
     });
 
     // When any skill proficiencies change
-    on("change:athletics_prof change:acrobatics_prof change:constitution_prof change:creaturehandling_prof change:culture_prof change:deception_prof change:driving_prof change:evasion_prof change:fasthands_prof change:history_prof change:insight_prof change:intimidation_prof change:investigation_prof change:medicine_prof change:mentaldefense_prof change:nature_prof change:perception_prof change:persuasion_prof change:psionics_prof change:stealth_prof change:survival_prof change:technology_prof", function() {
+    on("change:athletics_prof change:acrobatics_prof change:constitution_prof change:creaturehandling_prof change:culture_prof change:deception_prof change:driving_prof change:evasion_prof change:fasthands_prof change:history_prof change:initiative_prof change:insight_prof change:intimidation_prof change:investigation_prof change:medicine_prof change:mentaldefense_prof change:nature_prof change:perception_prof change:persuasion_prof change:psionics_prof change:stealth_prof change:survival_prof change:technology_prof", function() {
         recalculateSkillMods();
     });
 
     // When any skill extra bonuses change
-    on("change:athletics_extra change:acrobatics_extra change:constitution_extra change:creaturehandling_extra change:culture_extra change:deception_extra change:driving_extra change:evasion_extra change:fasthands_extra change:history_extra change:insight_extra change:intimidation_extra change:investigation_extra change:medicine_extra change:mentaldefense_extra change:nature_extra change:perception_extra change:persuasion_extra change:psionics_extra change:stealth_extra change:survival_extra change:technology_extra", function() {
+    on("change:athletics_extra change:acrobatics_extra change:constitution_extra change:creaturehandling_extra change:culture_extra change:deception_extra change:driving_extra change:evasion_extra change:fasthands_extra change:history_extra change:initiative_extra change:insight_extra change:intimidation_extra change:investigation_extra change:medicine_extra change:mentaldefense_extra change:nature_extra change:perception_extra change:persuasion_extra change:psionics_extra change:stealth_extra change:survival_extra change:technology_extra", function() {
         recalculateSkillMods();
     });
 
