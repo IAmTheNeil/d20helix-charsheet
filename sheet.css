@@ -529,7 +529,7 @@ div.charactersheet div.rollstyle {
 
 div.charactersheet div.rollstyle label {
     color: var(--secondarybackground);
-    width: 10em;
+    width: 11em;
     padding: 6px;
     text-align: center;
 }
