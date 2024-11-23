@@ -124,6 +124,10 @@ div#tab-content { /* Overall width limits for the entire sheet itself */
     min-width: 650pt;
 }
 
+div.largedialog.characterviewer {
+    padding: 0;
+}
+
 div.charactersheet .incomplete {
     border: 1px solid red !important; /* Marked as 'important' in order to always override any other border settings */
 }
@@ -490,6 +494,62 @@ div.charactersheet .mediumfield {
 }
 div.charactersheet .longfield {
     width: 12em;
+}
+
+/* Advantage/Disadvantage Toggle */
+
+div.charactersheet div.rollstyle input[type="radio"] { /* Hide each radio button's 'bullet' */
+    position: absolute;
+    left: -999em;
+    visibility: hidden;
+    display: none;
+}
+
+div.charactersheet div.rollstyle {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 20px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+    background-color: var(--nearblack);
+    color: var(--secondarybackground);
+    z-index: 99;
+    clip-path: polygon( /* Clips the div's visible path down to a trapezoid, with indentations of 10% width */
+        0 0,
+        100% 0,
+        98% 100%,
+        2% 100%
+    );
+}
+
+div.charactersheet div.rollstyle label {
+    color: var(--secondarybackground);
+    width: 10em;
+    padding: 6px;
+    text-align: center;
+}
+div.charactersheet div.rollstyle label:hover {
+    background-color: var(--midfont);
+}
+
+div.charactersheet div.rollstyle input[type="radio"] + label img.icon {
+    display: none;
+    visibility: hidden;
+}
+
+/* Style the currently selected item */
+div.charactersheet div.rollstyle input[type="radio"]:checked + label {
+    background-color: var(--highlightText);
+    color: black;
+}
+div.charactersheet div.rollstyle input[type="radio"]:checked + label img.icon {
+    display: inline-block;
+    visibility: visible;
 }
 
 /* Headings */
@@ -1168,7 +1228,8 @@ div.charactersheet div.skills table td.first {
 div.charactersheet div.skills table td.last {
     text-align: right;
 }
-div.charactersheet div.skills table td button[type=roll] {
+div.charactersheet div.skills table td button[type=roll],
+div.charactersheet div.skills table td button[type=action] {
     width: 92%;
 }
 div.charactersheet div.skills table input[readonly] {
@@ -1880,6 +1941,14 @@ Roll Templates
     font-size: x-large;
     font-weight: bold;
     border: none;
+}
+.sheet-rolltemplate-check span.sheet-muted span.inlinerollresult,
+.sheet-rolltemplate-attack span.sheet-muted span.inlinerollresult,
+.sheet-rolltemplate-damage span.sheet-muted span.inlinerollresult,
+.sheet-rolltemplate-ability span.sheet-muted span.inlinerollresult,
+.sheet-rolltemplate-hitdie span.sheet-muted span.inlinerollresult {
+    /*Semi-Transparent version of regular mid-font color*/
+    color: #88888888;
 }
 .sheet-rolltemplate-check span.inlinerollresult.fullcrit,
 .sheet-rolltemplate-attack span.inlinerollresult.fullcrit,

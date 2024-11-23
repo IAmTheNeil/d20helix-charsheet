@@ -2,6 +2,26 @@
 
 <link rel="stylesheet" href="sheet.css">
 
+<!-- Advantage/Disadvantage Toggle -->
+<!-- These options directly relate to the values which get passed to the roll template -->
+<div class="rollstyle">
+    <input type="radio" name="attr_roll_style" value="{{disadvantage=1}}" id="disadvantage" aria-controls="disadvantage">
+    <label class="rollstyle" for="disadvantage">
+        <img src="https://www.d20helix.com/img/icon_rollstyle_disadvantage.png" alt="" class="icon">
+        Disadvantage
+    </label>
+    <input type="radio" name="attr_roll_style" value="{{normal=1}}" id="normal" aria-controls="normal" checked>
+    <label class="rollstyle" for="normal">
+        <img src="https://www.d20helix.com/img/icon_rollstyle_normal.png" alt="" class="icon">
+        Normal Rolls
+    </label>
+    <input type="radio" name="attr_roll_style" value="{{advantage=1}}" id="advantage" aria-controls="advantage">
+    <label class="rollstyle" for="advantage">
+        <img src="https://www.d20helix.com/img/icon_rollstyle_advantage.png" alt="" class="icon">
+        Advantage
+    </label>
+</div>
+
 <!-- NPC Toggle (The checkbox mustn't be within any tags in order for the ~ selector to properly hide all other elements) -->
 <span class="npctoggle">Non-Player Character?</span>
 <input type="checkbox" class="npctoggle" unchecked name="attr_char_isnpc"/>
@@ -158,7 +178,7 @@
                 <button
                     type="roll"
                     name="roll_str"
-                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Strength}} {{checkmod=@{str_mod}}} {{theroll=[[1d20+@{str_mod}]]}}"> <!-- Uses the Roll20 Journal's default character_name field (the one shown to players), rather than the more 'secret' one on the custom sheet itself -->
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Strength}} {{checkmod=@{str_mod}}} @{roll_style} {{roll1=[[1d20+@{str_mod}]]}} {{roll2=[[1d20+@{str_mod}]]}}"> <!-- Uses the Roll20 Journal's default character_name field (the one shown to players), rather than the more 'secret' one on the custom sheet itself -->
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>STR</span>
                 </button>
@@ -179,7 +199,7 @@
                 <button
                     type="roll"
                     name="roll_agi"
-                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Agility}} {{checkmod=@{agi_mod}}} {{theroll=[[1d20+@{agi_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Agility}} {{checkmod=@{agi_mod}}} @{roll_style} {{roll1=[[1d20+@{agi_mod}]]}} {{roll2=[[1d20+@{agi_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>AGI</span>
                 </button>
@@ -200,7 +220,7 @@
                 <button
                     type="roll"
                     name="roll_end"
-                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Endurance}} {{checkmod=@{end_mod}}} {{theroll=[[1d20+@{end_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Endurance}} {{checkmod=@{end_mod}}} @{roll_style} {{roll1=[[1d20+@{end_mod}]]}} {{roll2=[[1d20+@{end_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>END</span>
                 </button>
@@ -221,7 +241,7 @@
                 <button
                     type="roll"
                     name="roll_wit"
-                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Wits}} {{checkmod=@{wit_mod}}} {{theroll=[[1d20+@{wit_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Wits}} {{checkmod=@{wit_mod}}} @{roll_style} {{roll1=[[1d20+@{wit_mod}]]}} {{roll2=[[1d20+@{wit_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>WIT</span>
                 </button>
@@ -241,7 +261,7 @@
                 <button
                     type="roll"
                     name="roll_knw"
-                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Knowledge}} {{checkmod=@{knw_mod}}} {{theroll=[[1d20+@{knw_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Knowledge}} {{checkmod=@{knw_mod}}} @{roll_style} {{roll1=[[1d20+@{knw_mod}]]}} {{roll2=[[1d20+@{knw_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>KNW</span>
                 </button>
@@ -262,7 +282,7 @@
                 <button
                     type="roll"
                     name="roll_prs"
-                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Presence}} {{checkmod=@{prs_mod}}} {{theroll=[[1d20+@{prs_mod}]]}}">
+                    value="&{template:check} {{charname=@{character_name}}} {{checktype=Stat}} {{checkname=Presence}} {{checkmod=@{prs_mod}}} @{roll_style} {{roll1=[[1d20+@{prs_mod}]]}} {{roll2=[[1d20+@{prs_mod}]]}}">
                     <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                     <span>PRS</span>
                 </button>
@@ -594,13 +614,14 @@
 
                                 <tr class="final">
                                     <td class="first"><input type="checkbox" name="attr_initiative_prof" unchecked></td>
-                                    <td><button
-                                        name="roll_initiative"
-                                        type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Initiative}} {{checkmod=@{initiative_mod}}} {{theroll=[[1d20+@{initiative_mod} &{tracker}]]}}">
-                                        <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
-                                        <span>Initiative</span>
-                                    </button></td>
+                                    <td>
+                                        <button
+                                            name="act_rollinitiative"
+                                            type="action">
+                                            <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
+                                            <span>Initiative</span>   
+                                        </button>
+                                    </td>
                                     <td class="smalltext">
                                         <span>AGI</span>
                                         <span>+</span>
@@ -618,7 +639,7 @@
                                     <td><button
                                         name="roll_constitution"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Constitution}} {{checkmod=@{constitution_mod}}} {{theroll=[[1d20+@{constitution_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Constitution}} {{checkmod=@{constitution_mod}}} @{roll_style} {{roll1=[[1d20+@{constitution_mod}]]}} {{roll2=[[1d20+@{constitution_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Constitution</span>
                                     </button></td>
@@ -635,7 +656,7 @@
                                     <td><button
                                         name="roll_evasion"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Evasion}} {{checkmod=@{evasion_mod}}} {{theroll=[[1d20+@{evasion_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Evasion}} {{checkmod=@{evasion_mod}}} @{roll_style} {{roll1=[[1d20+@{evasion_mod}]]}} {{roll2=[[1d20+@{evasion_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Evasion</span>
                                     </button></td>
@@ -652,7 +673,7 @@
                                     <td><button
                                         name="roll_mentaldefense"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Mental Defense}} {{checkmod=@{mentaldefense_mod}}} {{theroll=[[1d20+@{mentaldefense_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Mental Defense}} {{checkmod=@{mentaldefense_mod}}} @{roll_style} {{roll1=[[1d20+@{mentaldefense_mod}]]}} {{roll2=[[1d20+@{mentaldefense_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Mental Defense</span>
                                     </button></td>
@@ -681,7 +702,7 @@
                                     <td><button
                                         name="roll_athletics"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Athletics}} {{checkmod=@{athletics_mod}}} {{theroll=[[1d20+@{athletics_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Athletics}} {{checkmod=@{athletics_mod}}} @{roll_style} {{roll1=[[1d20+@{athletics_mod}]]}} {{roll2=[[1d20+@{athletics_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Athletics</span>
                                     </button></td>
@@ -698,7 +719,7 @@
                                     <td><button
                                         name="roll_acrobatics"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Acrobatics}} {{checkmod=@{acrobatics_mod}}} {{theroll=[[1d20+@{acrobatics_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Acrobatics}} {{checkmod=@{acrobatics_mod}}} @{roll_style} {{roll1=[[1d20+@{acrobatics_mod}]]}} {{roll2=[[1d20+@{acrobatics_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Acrobatics</span>
                                     </button></td>
@@ -715,7 +736,7 @@
                                     <td><button
                                         name="roll_creaturehandling"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Creature Handling}} {{checkmod=@{creaturehandling_mod}}} {{theroll=[[1d20+@{creaturehandling_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Creature Handling}} {{checkmod=@{creaturehandling_mod}}} @{roll_style} {{roll1=[[1d20+@{creaturehandling_mod}]]}} {{roll2=[[1d20+@{creaturehandling_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Creature Handling</span>
                                     </button></td>
@@ -732,7 +753,7 @@
                                     <td><button
                                         name="roll_culture"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Culture}} {{checkmod=@{culture_mod}}} {{theroll=[[1d20+@{culture_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Culture}} {{checkmod=@{culture_mod}}} @{roll_style} {{roll1=[[1d20+@{culture_mod}]]}} {{roll2=[[1d20+@{culture_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Culture</span>
                                     </button></td>
@@ -749,7 +770,7 @@
                                     <td><button
                                         name="roll_deception"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Deception}} {{checkmod=@{deception_mod}}} {{theroll=[[1d20+@{deception_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Deception}} {{checkmod=@{deception_mod}}} @{roll_style} {{roll1=[[1d20+@{deception_mod}]]}} {{roll2=[[1d20+@{deception_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Deception</span>
                                     </button></td>
@@ -766,7 +787,7 @@
                                     <td><button
                                         name="roll_driving"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Driving}} {{checkmod=@{driving_mod}}} {{theroll=[[1d20+@{driving_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Driving}} {{checkmod=@{driving_mod}}} @{roll_style} {{roll1=[[1d20+@{driving_mod}]]}} {{roll2=[[1d20+@{driving_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Driving</span>
                                     </button></td>
@@ -783,7 +804,7 @@
                                     <td><button
                                         name="roll_fasthands"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Fast Hands}} {{checkmod=@{fasthands_mod}}} {{theroll=[[1d20+@{fasthands_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Fast Hands}} {{checkmod=@{fasthands_mod}}} @{roll_style} {{roll1=[[1d20+@{fasthands_mod}]]}} {{roll2=[[1d20+@{fasthands_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Fast Hands</span>
                                     </button></td>
@@ -800,7 +821,7 @@
                                     <td><button
                                         name="roll_history"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=History}} {{checkmod=@{history_mod}}} {{theroll=[[1d20+@{history_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=History}} {{checkmod=@{history_mod}}} @{roll_style} {{roll1=[[1d20+@{history_mod}]]}} {{roll2=[[1d20+@{history_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>History</span>
                                     </button></td>
@@ -817,7 +838,7 @@
                                     <td><button
                                         name="roll_insight"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Insight}} {{checkmod=@{insight_mod}}} {{theroll=[[1d20+@{insight_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Insight}} {{checkmod=@{insight_mod}}} @{roll_style} {{roll1=[[1d20+@{insight_mod}]]}} {{roll2=[[1d20+@{insight_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Insight</span>
                                     </button></td>
@@ -834,7 +855,7 @@
                                     <td><button
                                         name="roll_intimidation"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Intimidation}} {{checkmod=@{intimidation_mod}}} {{theroll=[[1d20+@{intimidation_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Intimidation}} {{checkmod=@{intimidation_mod}}} @{roll_style} {{roll1=[[1d20+@{intimidation_mod}]]}} {{roll2=[[1d20+@{intimidation_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Intimidation</span>
                                     </button></td>
@@ -851,7 +872,7 @@
                                     <td><button
                                         name="roll_investigation"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Investigation}} {{checkmod=@{investigation_mod}}} {{theroll=[[1d20+@{investigation_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Investigation}} {{checkmod=@{investigation_mod}}} @{roll_style} {{roll1=[[1d20+@{investigation_mod}]]}} {{roll2=[[1d20+@{investigation_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Investigation</span>
                                     </button></td>
@@ -868,7 +889,7 @@
                                     <td><button
                                         name="roll_medicine"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Medicine}} {{checkmod=@{medicine_mod}}} {{theroll=[[1d20+@{medicine_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Medicine}} {{checkmod=@{medicine_mod}}} @{roll_style} {{roll1=[[1d20+@{medicine_mod}]]}} {{roll2=[[1d20+@{medicine_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Medicine</span>
                                     </button></td>
@@ -885,7 +906,7 @@
                                     <td><button
                                         name="roll_nature"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Nature}} {{checkmod=@{nature_mod}}} {{theroll=[[1d20+@{nature_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Nature}} {{checkmod=@{nature_mod}}} @{roll_style} {{roll1=[[1d20+@{nature_mod}]]}} {{roll2=[[1d20+@{nature_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Nature</span>
                                     </button></td>
@@ -902,7 +923,7 @@
                                     <td><button
                                         name="roll_perception"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Perception}} {{checkmod=@{perception_mod}}} {{theroll=[[1d20+@{perception_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Perception}} {{checkmod=@{perception_mod}}} @{roll_style} {{roll1=[[1d20+@{perception_mod}]]}} {{roll2=[[1d20+@{perception_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Perception</span>
                                     </button></td>
@@ -919,7 +940,7 @@
                                     <td><button
                                         name="roll_persuasion"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Persuasion}} {{checkmod=@{persuasion_mod}}} {{theroll=[[1d20+@{persuasion_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Persuasion}} {{checkmod=@{persuasion_mod}}} @{roll_style} {{roll1=[[1d20+@{persuasion_mod}]]}} {{roll2=[[1d20+@{persuasion_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Persuasion</span>
                                     </button></td>
@@ -936,7 +957,7 @@
                                     <td><button
                                         name="roll_psionics"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Psionics}} {{checkmod=@{psionics_mod}}} {{theroll=[[1d20+@{psionics_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Psionics}} {{checkmod=@{psionics_mod}}} @{roll_style} {{roll1=[[1d20+@{psionics_mod}]]}} {{roll2=[[1d20+@{psionics_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Psionics</span>
                                     </button></td>
@@ -953,7 +974,7 @@
                                     <td><button
                                         name="roll_stealth"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Stealth}} {{checkmod=@{stealth_mod}}} {{theroll=[[1d20+@{stealth_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Stealth}} {{checkmod=@{stealth_mod}}} @{roll_style} {{roll1=[[1d20+@{stealth_mod}]]}} {{roll2=[[1d20+@{stealth_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Stealth</span>
                                     </button></td>
@@ -970,7 +991,7 @@
                                     <td><button
                                         name="roll_survival"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Survival}} {{checkmod=@{survival_mod}}} {{theroll=[[1d20+@{survival_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Survival}} {{checkmod=@{survival_mod}}} @{roll_style} {{roll1=[[1d20+@{survival_mod}]]}} {{roll2=[[1d20+@{survival_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Survival</span>
                                     </button></td>
@@ -987,7 +1008,7 @@
                                     <td><button
                                         name="roll_technology"
                                         type="roll"
-                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Technology}} {{checkmod=@{technology_mod}}} {{theroll=[[1d20+@{technology_mod}]]}}">
+                                        value="&{template:check} {{charname=@{character_name}}} {{checktype=Skill}} {{checkname=Technology}} {{checkmod=@{technology_mod}}} @{roll_style} {{roll1=[[1d20+@{technology_mod}]]}} {{roll2=[[1d20+@{technology_mod}]]}}">
                                         <img src="https://www.d20helix.com/img/icon_roll.png" alt="Make a Roll" class="icon">
                                         <span>Technology</span>
                                     </button></td>
@@ -3742,7 +3763,42 @@
         <div class="sheet-content">
             <div class="sheet-checkname">{{checkname}}</div>
             <div class="sheet-checkmod">+ {{checkmod}}</div>
-            <div class="sheet-result">{{theroll}}</div>
+            <div class="sheet-result">
+                <!-- Advantage Rolls -->
+                {{#advantage}}
+                    {{#rollLess() roll1 roll2}}
+                        <span class="muted">{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollLess() roll1 roll2}}
+                    {{#rollTotal() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollTotal() roll1 roll2}}
+                    {{#rollLess() roll2 roll1}}
+                        <span>{{roll1}}</span>
+                        <span class="muted">{{roll2}}</span>
+                    {{/rollLess() roll2 roll1}}
+                {{/advantage}}
+                <!-- Normal Rolls -->
+                {{^advantage}}{{^disadvantage}}
+                    <span>{{roll1}}</span>
+                {{/disadvantage}}{{/advantage}}
+                <!-- Disadvantage Rolls -->
+                {{#disadvantage}}
+                    {{#rollLess() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span class="muted">{{roll2}}</span>
+                    {{/rollLess() roll1 roll2}}
+                    {{#rollTotal() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollTotal() roll1 roll2}}
+                    {{#rollLess() roll2 roll1}}
+                        <span class="muted">{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollLess() roll2 roll1}}
+                {{/disadvantage}}
+            </div>
         </div>
     </div>
 </rolltemplate>
@@ -3760,7 +3816,42 @@
             {{#attackdesc}}<div class="sheet-desc">{{attackdesc}}</div>{{/attackdesc}} <!-- Only displays this div if this optional field was provided -->
             <div class="sheet-attackmod">+ {{attackmod}}</div>
             {{#desc}}<div class="sheet-desc">{{desc}}</div>{{/desc}} <!-- Only displays this div if this optional field was provided -->
-            <div class="sheet-result">{{theroll}}</div>
+            <div class="sheet-result">
+                <!-- Advantage Rolls -->
+                {{#advantage}}
+                    {{#rollLess() roll1 roll2}}
+                        <span class="muted">{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollLess() roll1 roll2}}
+                    {{#rollTotal() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollTotal() roll1 roll2}}
+                    {{#rollLess() roll2 roll1}}
+                        <span>{{roll1}}</span>
+                        <span class="muted">{{roll2}}</span>
+                    {{/rollLess() roll2 roll1}}
+                {{/advantage}}
+                <!-- Normal Rolls -->
+                {{^advantage}}{{^disadvantage}}
+                    <span>{{roll1}}</span>
+                {{/disadvantage}}{{/advantage}}
+                <!-- Disadvantage Rolls -->
+                {{#disadvantage}}
+                    {{#rollLess() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span class="muted">{{roll2}}</span>
+                    {{/rollLess() roll1 roll2}}
+                    {{#rollTotal() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollTotal() roll1 roll2}}
+                    {{#rollLess() roll2 roll1}}
+                        <span class="muted">{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollLess() roll2 roll1}}
+                {{/disadvantage}}
+            </div>
         </div>
     </div>
 </rolltemplate>
@@ -3794,7 +3885,42 @@
             {{#abilitysubtype}}<div class="sheet-abilitystat">{{abilitysubtype}}</div>{{/abilitysubtype}} <!-- Only displays this div if this optional field was provided -->
             {{#abilitydesc}}<div class="sheet-desc">{{abilitydesc}}</div>{{/abilitydesc}} <!-- Only displays this div if this optional field was provided -->
             {{#abilitymod}}<div class="sheet-abilitymod">+ {{abilitymod}}</div>{{/abilitymod}} <!-- Only displays this div if this optional field was provided -->
-            {{#theroll}}<div class="sheet-result">{{theroll}}</div>{{/theroll}} <!-- Only displays this div if this optional field was provided -->
+            {{#roll1}}<div class="sheet-result">
+                <!-- Advantage Rolls -->
+                {{#advantage}}
+                    {{#rollLess() roll1 roll2}}
+                        <span class="muted">{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollLess() roll1 roll2}}
+                    {{#rollTotal() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollTotal() roll1 roll2}}
+                    {{#rollLess() roll2 roll1}}
+                        <span>{{roll1}}</span>
+                        <span class="muted">{{roll2}}</span>
+                    {{/rollLess() roll2 roll1}}
+                {{/advantage}}
+                <!-- Normal Rolls -->
+                {{^advantage}}{{^disadvantage}}
+                    <span>{{roll1}}</span>
+                {{/disadvantage}}{{/advantage}}
+                <!-- Disadvantage Rolls -->
+                {{#disadvantage}}
+                    {{#rollLess() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span class="muted">{{roll2}}</span>
+                    {{/rollLess() roll1 roll2}}
+                    {{#rollTotal() roll1 roll2}}
+                        <span>{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollTotal() roll1 roll2}}
+                    {{#rollLess() roll2 roll1}}
+                        <span class="muted">{{roll1}}</span>
+                        <span>{{roll2}}</span>
+                    {{/rollLess() roll2 roll1}}
+                {{/disadvantage}}
+            </div>{{/roll1}} <!-- Only displays this div if this optional field was provided -->
             {{#abilitydc}}<div class="sheet-result"><span>DC: {{abilitydc}}</span></div>{{/abilitydc}} <!-- Only displays this div if this optional field was provided -->
             {{#abilityisconcentration}}<div class="sheet-concentration"><span>Concentration</span></div>{{/abilityisconcentration}} <!-- Only displays this div if this optional field was provided -->
         </div>
@@ -3852,769 +3978,23 @@
     </div>
 </rolltemplate>
 
+<rolltemplate class="sheet-rolltemplate-initiative">
+    <span>Setting Initiative to {{theroll}}</span>
+</rolltemplate>
+
 <!-- Worker Scripts -->
 <!-- In order for these to work, they must all be within one script tag with the exact type of "text/worker" -->
 
 <script type="text/worker">
 
-    // Action Buttons
-
-    // Using Hit Dice
-    on("clicked:usehitdie", (eventInfo) => {
-        getAttrs( [
-            "hitdice",
-            "hitdice_type",
-            "end_mod",
-            "character_name"
-        ], (values) => {
-            if (values.hitdice > 0) {
-                setAttrs({
-                    hitdice: Math.max(0, (values.hitdice - 1)) // Reduce the hit dice count by 1
-                });
-                startRoll("&{template:hitdie} {{charname=" + values.character_name + "}} {{dietype=" + values.hitdice_type + "}} {{endmod=" + values.end_mod + "}} {{theroll=[[1" + values.hitdice_type + "+" + values.end_mod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough Hit Dice to make the roll
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=Hit Dice}} {{desc=Unable roll a hit die: None left!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-
-    // Clearing Stun Damage
-    on("clicked:clearstun", (eventInfo) => {
-        getAttrs( [
-            "stundamage",
-            "hp_max"
-        ], (values) => {
-            setAttrs({
-                stundamage: Math.max(0, (values.stundamage - Math.ceil(values.hp_max/2))) // Reduce the stun damage by up to half the character's total HP
-            });
-        });
-    });
-
-    // Attacking
-    on("clicked:repeating_attacks:useattack", (eventInfo) => {
-        getAttrs( [
-            "repeating_attacks_attack_name",
-            "repeating_attacks_attack_desc",
-            "repeating_attacks_attack_type",
-            "repeating_attacks_attack_ammo",
-            "repeating_attacks_attack_mod",
-            "character_name"
-        ], (values) => {
-            if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo > 0)) {
-                setAttrs({
-                    repeating_attacks_attack_ammo: Math.max(0, (values.repeating_attacks_attack_ammo - 1)) // Reduce the ammo amount by 1
-                });
-                startRoll("&{template:attack} {{charname=" + values.character_name + "}} {{attackname=" + values.repeating_attacks_attack_name + "}} {{attackdesc=" + values.repeating_attacks_attack_desc + "}} {{attackmod=" + values.repeating_attacks_attack_mod + "}} {{theroll=[[1d20+" + values.repeating_attacks_attack_mod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough ammo to make the attack
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to attack: No ammo loaded!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-
-    // Reloading
-    on("clicked:repeating_attacks:reload", (eventInfo) => {
-        getAttrs( [
-            "repeating_attacks_attack_name",
-            "repeating_attacks_attack_type",
-            "repeating_attacks_attack_ammo",
-            "repeating_attacks_attack_ammo_max",
-            "repeating_attacks_attack_unlimited_reloads",
-            "repeating_attacks_attack_ammoreloads",
-            "character_name"
-        ], (values) => {
-            if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo == values.repeating_attacks_attack_ammo_max)) {
-                return; // Melee weapons and weapons with full ammo don't need reloads
-            } else {
-                if ((values.repeating_attacks_attack_unlimited_reloads == 0) && (values.repeating_attacks_attack_ammoreloads == 0)) {
-                    // If reloads are tracked and there aren't any left, the reload can't happen
-                    startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to reload: No reloads remaining!}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat
-                    });
-                } else {
-                    setAttrs({
-                        repeating_attacks_attack_ammo: values.repeating_attacks_attack_ammo_max, // Refill the loaded amount
-                        repeating_attacks_attack_ammoreloads: Math.max(0, (values.repeating_attacks_attack_ammoreloads - 1)) // Reduce the reloads by 1
-                    });
-                }
-            }
-        });
-    });
-
-    // Performing basic abilities (hard-coded)
-    on("clicked:usecalledshot", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "character_name"
-        ], (values) => {
-            const abilityName = 'Called Shot';
-            const abilityStat = 'AGI';
-            const abilityDesc = 'Use this ability to make a called shot against a target within your weapon range.';
-            const apCost = 1; // The appropriate AP cost for this ability
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:usedistract", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "character_name"
-        ], (values) => {
-            const abilityName = 'Distract';
-            const abilityStat = 'PRS';
-            const abilityDesc = 'Draw the attention of creature within range (provided that they can hear you). The target receives the distracted condition until the end of its next turn.';
-            const apCost = 1; // The appropriate AP cost for this ability
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:usegrapple", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "character_name",
-            "str_mod",
-            "athletics_prof",
-            "athletics_extra",
-            "prof_bonus"
-        ], (values) => {
-            const abilityName = 'Grapple';
-            const abilityStat = 'STR';
-            const abilityMod = ((values.athletics_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0) + (parseInt(values.str_mod) || 0) + (parseInt(values.athletics_extra) || 0);
-            const abilityDesc = 'Use this ability to replace a melee attack with a special grapple attack, provided that the target is within your reach and not more than one size category larger.\nUsing at least one free hand, the character will try to seize there target by making a grapple check instead of an attack roll. A grapple check is a contest of the characters Athletics vs. their targets Athletics or Acrobatics (targets choice).\nIf successful, the target will receive the grappled condition, though the grappler can choose to release them as a free action at any time. It can be dragged with the grappler when they move; but their speed is halved (unless the creature is 2+ sizes smaller).\nA grappled creature can use its major action to escape, provided it succeeds on an Athletics or Acrobatics contest against the grapplers Athletics.';
-            const apCost = 0; // The appropriate AP cost for this ability
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + abilityMod + "}} {{abilitydesc=" + abilityDesc + "}} {{theroll=[[1d20+" + abilityMod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:useshove", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "character_name",
-            "str_mod",
-            "athletics_prof",
-            "athletics_extra",
-            "prof_bonus"
-        ], (values) => {
-            const abilityName = 'Shove';
-            const abilityStat = 'STR';
-            const abilityMod = ((values.athletics_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0) + (parseInt(values.str_mod) || 0) + (parseInt(values.athletics_extra) || 0);
-            const abilityDesc = 'Use this ability to replace a melee attack with a special shove attack, provided that the target is within your reach and not more than one size category larger.\nA shove check is a contest of the characters Athletics vs. their targets Athletics or Acrobatics (targets choice). If the shove succeeds, the character can choose to either knock their target prone, or push it 1m away from them.';
-            const apCost = 0; // The appropriate AP cost for this ability
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + abilityMod + "}} {{abilitydesc=" + abilityDesc + "}} {{theroll=[[1d20+" + abilityMod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:useshieldbash", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "character_name",
-            "str_mod",
-            "prof_bonus"
-        ], (values) => {
-            const abilityName = 'Shield Bash';
-            const abilityStat = 'STR';
-            const statMod = parseInt(values.str_mod) || 0;
-            const profBonus = parseInt(values.prof_bonus) || 0;
-            const fullMod = statMod + profBonus;
-            const abilityDesc = 'When equipped with a shield, use this ability to hit a target within melee range with it. Make a melee attack roll: on a hit, the target takes 1d6 + your STR modifier as Blunt Force damage.\nThe target must succeed on a DC 15 Constitution save or be pushed back 1m.';
-            const apCost = 1; // The appropriate AP cost for this ability
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + fullMod + "}} {{abilitydesc=" + abilityDesc + "}} {{theroll=[[1d20+" + fullMod + "]]}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            } else {
-                // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-
-    // Performing specialist abilities (dynamic repeating list)
-    on("clicked:repeating_abilities:useability", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_abilities_ability_name",
-            "repeating_abilities_ability_desc",
-            "repeating_abilities_ability_apcost",
-            "repeating_abilities_ability_stat",
-            "repeating_abilities_ability_rolltype",
-            "repeating_abilities_ability_mod",
-            "character_name"
-        ], (values) => {
-            if (values.ap >= values.repeating_abilities_ability_apcost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - values.repeating_abilities_ability_apcost)) // Reduce the AP amount by the required amount
-                });
-
-                switch (values.repeating_abilities_ability_rolltype) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitymod=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}} {{theroll=[[1d20+" + values.repeating_abilities_ability_mod + "]]}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydc=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        //Assume 'none' if not a recognised value
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                }
-            } else {
-                // Not enough AP to use the ability
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_abilities_ability_name + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-
-    // Performing psi-powers
-    // Includes one function for each psi-power tier, because they are implmented as different repeating sections
-    on("clicked:repeating_powers0:usepower0", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers0_power_name0",
-            "repeating_powers0_power_desc0",
-            "repeating_powers0_psidiscipline0",
-            "repeating_powers0_power_rolltype0",
-            "repeating_powers0_power_concentration0",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            switch (values.repeating_powers0_power_rolltype0) {
-                case "attack":
-                    // Attack
-                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat
-                    });
-                    break;
-                case "difficulty":
-                    // Difficulty Check
-                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat
-                    });
-                    break;
-                default:
-                    // Description only
-                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
-                        finishRoll(results.rollId); // Required before it gets posted to chat
-                    });
-                    break;
-            }
-        });
-    });
-    on("clicked:repeating_powers1:usepower1", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers1_power_name1",
-            "repeating_powers1_power_desc1",
-            "repeating_powers1_psidiscipline1",
-            "repeating_powers1_power_rolltype1",
-            "repeating_powers1_power_concentration1",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 1; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers1_power_rolltype1) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers1_power_name1 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers2:usepower2", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers2_power_name2",
-            "repeating_powers2_power_desc2",
-            "repeating_powers2_psidiscipline2",
-            "repeating_powers2_power_rolltype2",
-            "repeating_powers2_power_concentration2",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 3; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers2_power_rolltype2) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers2_power_name2 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers3:usepower3", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers3_power_name3",
-            "repeating_powers3_power_desc3",
-            "repeating_powers3_psidiscipline3",
-            "repeating_powers3_power_rolltype3",
-            "repeating_powers3_power_concentration3",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 5; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers3_power_rolltype3) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers3_power_name3 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers4:usepower4", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers4_power_name4",
-            "repeating_powers4_power_desc4",
-            "repeating_powers4_psidiscipline4",
-            "repeating_powers4_power_rolltype4",
-            "repeating_powers4_power_concentration4",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 7; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers4_power_rolltype4) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers4_power_name4 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers5:usepower5", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers5_power_name5",
-            "repeating_powers5_power_desc5",
-            "repeating_powers5_psidiscipline5",
-            "repeating_powers5_power_rolltype5",
-            "repeating_powers5_power_concentration5",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 9; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers5_power_rolltype5) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers5_power_name5 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers6:usepower6", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers6_power_name6",
-            "repeating_powers6_power_desc6",
-            "repeating_powers6_psidiscipline6",
-            "repeating_powers6_power_rolltype6",
-            "repeating_powers6_power_concentration6",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 11; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers6_power_rolltype6) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers6_power_name6 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers7:usepower7", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers7_power_name7",
-            "repeating_powers7_power_desc7",
-            "repeating_powers7_psidiscipline7",
-            "repeating_powers7_power_rolltype7",
-            "repeating_powers7_power_concentration7",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 13; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers7_power_rolltype7) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers7_power_name7 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers8:usepower8", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers8_power_name8",
-            "repeating_powers8_power_desc8",
-            "repeating_powers8_power_psidiscipline8",
-            "repeating_powers8_power_rolltype8",
-            "repeating_powers8_power_concentration8",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 15; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers8_power_rolltype8) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers8_power_name8 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-    on("clicked:repeating_powers9:usepower9", (eventInfo) => {
-        getAttrs( [
-            "ap",
-            "repeating_powers9_power_name9",
-            "repeating_powers9_power_desc9",
-            "repeating_powers9_psidiscipline9",
-            "repeating_powers9_power_rolltype9",
-            "repeating_powers9_power_concentration9",
-            "power_attackbonus",
-            "power_attackbonus_extra",
-            "power_dc",
-            "power_dc_extra",
-            "character_name"
-        ], (values) => {
-            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
-            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
-            const apCost = 17; // The appropriate AP cost for this tier
-            if (values.ap >= apCost) {
-                setAttrs({
-                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
-                });
-                switch (values.repeating_powers9_power_rolltype9) {
-                    case "attack":
-                        // Attack
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{theroll=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    case "difficulty":
-                        // Difficulty Check
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                    default:
-                        // Description only
-                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
-                            finishRoll(results.rollId); // Required before it gets posted to chat
-                        });
-                        break;
-                }
-            } else {
-                // Not enough AP to use the power
-                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers9_power_name9 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
-                    finishRoll(results.rollId); // Required before it gets posted to chat
-                });
-            }
-        });
-    });
-
     // Helper functions, to determining appropriate values based on input
+
+    function setTurnOrder(value) {
+        // Because the roll output can't be completely hidden, whisper the roll to the GM to avoid cluttering players' chat
+        startRoll("/w gm &{template:initiative} {{theroll=[[" + value + " &{tracker}]]}}", (results) => {
+            finishRoll(results.rollId); // Required before it gets posted to chat
+        });
+    };
 
     // Determine the name of the hit dice for each specific NPC size category
     function hitDiceForSize(sizeName) {
@@ -5200,6 +4580,803 @@
             });
         });
     };
+
+    // Action Buttons
+
+    // Using Hit Dice
+    on("clicked:usehitdie", (eventInfo) => {
+        getAttrs( [
+            "hitdice",
+            "hitdice_type",
+            "end_mod",
+            "character_name"
+        ], (values) => {
+            if (values.hitdice > 0) {
+                setAttrs({
+                    hitdice: Math.max(0, (values.hitdice - 1)) // Reduce the hit dice count by 1
+                });
+                startRoll("&{template:hitdie} {{charname=" + values.character_name + "}} {{dietype=" + values.hitdice_type + "}} {{endmod=" + values.end_mod + "}} {{theroll=[[1" + values.hitdice_type + "+" + values.end_mod + "]]}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough Hit Dice to make the roll
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=Hit Dice}} {{desc=Unable roll a hit die: None left!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+
+    // Clearing Stun Damage
+    on("clicked:clearstun", (eventInfo) => {
+        getAttrs( [
+            "stundamage",
+            "hp_max"
+        ], (values) => {
+            setAttrs({
+                stundamage: Math.max(0, (values.stundamage - Math.ceil(values.hp_max/2))) // Reduce the stun damage by up to half the character's total HP
+            });
+        });
+    });
+
+    // Attacking
+    on("clicked:repeating_attacks:useattack", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "repeating_attacks_attack_name",
+            "repeating_attacks_attack_desc",
+            "repeating_attacks_attack_type",
+            "repeating_attacks_attack_ammo",
+            "repeating_attacks_attack_mod",
+            "character_name"
+        ], (values) => {
+            if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo > 0)) {
+                setAttrs({
+                    repeating_attacks_attack_ammo: Math.max(0, (values.repeating_attacks_attack_ammo - 1)) // Reduce the ammo amount by 1
+                });
+                startRoll("&{template:attack} {{charname=" + values.character_name + "}} {{attackname=" + values.repeating_attacks_attack_name + "}} {{attackdesc=" + values.repeating_attacks_attack_desc + "}} {{attackmod=" + values.repeating_attacks_attack_mod + "}} " + values.roll_style + " {{roll1=[[1d20+" + values.repeating_attacks_attack_mod + "]]}} {{roll2=[[1d20+" + values.repeating_attacks_attack_mod + "]]}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough ammo to make the attack
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to attack: No ammo loaded!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+
+    // Reloading
+    on("clicked:repeating_attacks:reload", (eventInfo) => {
+        getAttrs( [
+            "repeating_attacks_attack_name",
+            "repeating_attacks_attack_type",
+            "repeating_attacks_attack_ammo",
+            "repeating_attacks_attack_ammo_max",
+            "repeating_attacks_attack_unlimited_reloads",
+            "repeating_attacks_attack_ammoreloads",
+            "character_name"
+        ], (values) => {
+            if ((values.repeating_attacks_attack_type == "melee") || (values.repeating_attacks_attack_ammo == values.repeating_attacks_attack_ammo_max)) {
+                return; // Melee weapons and weapons with full ammo don't need reloads
+            } else {
+                if ((values.repeating_attacks_attack_unlimited_reloads == 0) && (values.repeating_attacks_attack_ammoreloads == 0)) {
+                    // If reloads are tracked and there aren't any left, the reload can't happen
+                    startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_attacks_attack_name + "}} {{desc=Unable to reload: No reloads remaining!}}", (results) => {
+                        finishRoll(results.rollId); // Required before it gets posted to chat
+                    });
+                } else {
+                    setAttrs({
+                        repeating_attacks_attack_ammo: values.repeating_attacks_attack_ammo_max, // Refill the loaded amount
+                        repeating_attacks_attack_ammoreloads: Math.max(0, (values.repeating_attacks_attack_ammoreloads - 1)) // Reduce the reloads by 1
+                    });
+                }
+            }
+        });
+    });
+
+    // Performing basic abilities (hard-coded)
+    on("clicked:usecalledshot", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Called Shot';
+            const abilityStat = 'AGI';
+            const abilityDesc = 'Use this ability to make a called shot against a target within your weapon range.';
+            const apCost = 1; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:usedistract", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Distract';
+            const abilityStat = 'PRS';
+            const abilityDesc = 'Draw the attention of creature within range (provided that they can hear you). The target receives the distracted condition until the end of its next turn.';
+            const apCost = 1; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:usegrapple", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name",
+            "str_mod",
+            "athletics_prof",
+            "athletics_extra",
+            "prof_bonus"
+        ], (values) => {
+            const abilityName = 'Grapple';
+            const abilityStat = 'STR';
+            const abilityMod = ((values.athletics_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0) + (parseInt(values.str_mod) || 0) + (parseInt(values.athletics_extra) || 0);
+            const abilityDesc = 'Use this ability to replace a melee attack with a special grapple attack, provided that the target is within your reach and not more than one size category larger.\nUsing at least one free hand, the character will try to seize there target by making a grapple check instead of an attack roll. A grapple check is a contest of the characters Athletics vs. their targets Athletics or Acrobatics (targets choice).\nIf successful, the target will receive the grappled condition, though the grappler can choose to release them as a free action at any time. It can be dragged with the grappler when they move; but their speed is halved (unless the creature is 2+ sizes smaller).\nA grappled creature can use its major action to escape, provided it succeeds on an Athletics or Acrobatics contest against the grapplers Athletics.';
+            const apCost = 0; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + abilityMod + "}} {{abilitydesc=" + abilityDesc + "}} " + values.roll_style + " {{roll1=[[1d20+" + abilityMod + "]]}} {{roll2=[[1d20+" + abilityMod + "]]}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:useshove", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name",
+            "str_mod",
+            "athletics_prof",
+            "athletics_extra",
+            "prof_bonus"
+        ], (values) => {
+            const abilityName = 'Shove';
+            const abilityStat = 'STR';
+            const abilityMod = ((values.athletics_prof == 0) ? 0 : parseInt(values.prof_bonus) || 0) + (parseInt(values.str_mod) || 0) + (parseInt(values.athletics_extra) || 0);
+            const abilityDesc = 'Use this ability to replace a melee attack with a special shove attack, provided that the target is within your reach and not more than one size category larger.\nA shove check is a contest of the characters Athletics vs. their targets Athletics or Acrobatics (targets choice). If the shove succeeds, the character can choose to either knock their target prone, or push it 1m away from them.';
+            const apCost = 0; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + abilityMod + "}} {{abilitydesc=" + abilityDesc + "}} " + values.roll_style + " {{roll1=[[1d20+" + abilityMod + "]]}} {{roll2=[[1d20+" + abilityMod + "]]}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:useshieldbash", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name",
+            "str_mod",
+            "prof_bonus"
+        ], (values) => {
+            const abilityName = 'Shield Bash';
+            const abilityStat = 'STR';
+            const statMod = parseInt(values.str_mod) || 0;
+            const profBonus = parseInt(values.prof_bonus) || 0;
+            const fullMod = statMod + profBonus;
+            const abilityDesc = 'When equipped with a shield, use this ability to hit a target within melee range with it. Make a melee attack roll: on a hit, the target takes 1d6 + your STR modifier as Blunt Force damage.\nThe target must succeed on a DC 15 Constitution save or be pushed back 1m.';
+            const apCost = 1; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + fullMod + "}} {{abilitydesc=" + abilityDesc + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullMod + "]]}} {{roll2=[[1d20+" + fullMod + "]]}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+
+    // Initiative rolls (including tracker integration)
+    on("clicked:rollinitiative", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "initiative_mod",
+            "character_name"
+        ], (values) => {
+            startRoll("&{template:check} {{charname=" + values.character_name + "}} {{checktype=Skill}} {{checkname=Initiative}} {{checkmod=" + values.initiative_mod + "}} " + values.roll_style + " {{roll1=[[1d20+" + values.initiative_mod + "]]}} {{roll2=[[1d20+" + values.initiative_mod + "]]}}", (results) => {
+                finishRoll(results.rollId); // Required before it gets posted to chat
+                // Work out which roll's value should be used, then send it to the tracker
+                const result1 = results.results.roll1.result;
+                const result2 = results.results.roll2.result;
+                if (values.roll_style.includes("disadvantage")) { // Check for this one first, because otherwise, 'advantage' would also trigger as a substring for '{{disadvantage}}'
+                    setTurnOrder(Math.min(result1, result2));
+                } else if (values.roll_style.includes("advantage")) {
+                    setTurnOrder(Math.max(result1, result2));
+                } else {
+                    setTurnOrder(result1);
+                }
+            });
+        });
+    });
+
+    // Performing specialist abilities (dynamic repeating list)
+    on("clicked:repeating_abilities:useability", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_abilities_ability_name",
+            "repeating_abilities_ability_desc",
+            "repeating_abilities_ability_apcost",
+            "repeating_abilities_ability_stat",
+            "repeating_abilities_ability_rolltype",
+            "repeating_abilities_ability_mod",
+            "character_name"
+        ], (values) => {
+            if (values.ap >= values.repeating_abilities_ability_apcost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - values.repeating_abilities_ability_apcost)) // Reduce the AP amount by the required amount
+                });
+
+                switch (values.repeating_abilities_ability_rolltype) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitymod=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}} " + values.roll_style + " {{roll1=[[1d20+" + values.repeating_abilities_ability_mod + "]]}} {{roll2=[[1d20+" + values.repeating_abilities_ability_mod + "]]}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydc=" + values.repeating_abilities_ability_mod + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        //Assume 'none' if not a recognised value
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + values.repeating_abilities_ability_name + "}} {{abilitysubtype=" + values.repeating_abilities_ability_stat + "}} {{abilitydesc=" + values.repeating_abilities_ability_desc + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                }
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + values.repeating_abilities_ability_name + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+
+    // Performing psi-powers
+    // Includes one function for each psi-power tier, because they are implmented as different repeating sections
+    on("clicked:repeating_powers0:usepower0", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers0_power_name0",
+            "repeating_powers0_power_desc0",
+            "repeating_powers0_psidiscipline0",
+            "repeating_powers0_power_rolltype0",
+            "repeating_powers0_power_concentration0",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            switch (values.repeating_powers0_power_rolltype0) {
+                case "attack":
+                    // Attack
+                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                        finishRoll(results.rollId); // Required before it gets posted to chat
+                    });
+                    break;
+                case "difficulty":
+                    // Difficulty Check
+                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                        finishRoll(results.rollId); // Required before it gets posted to chat
+                    });
+                    break;
+                default:
+                    // Description only
+                    startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers0_power_name0 + "}} {{abilitysubtype=" + values.repeating_powers0_psidiscipline0 + "}} {{abilitydesc=" + values.repeating_powers0_power_desc0 + "}} {{abilityisconcentration=" + ((values.repeating_powers0_power_concentration0 == 0) ? "" : "Yes") + "}}", (results) => {
+                        finishRoll(results.rollId); // Required before it gets posted to chat
+                    });
+                    break;
+            }
+        });
+    });
+    on("clicked:repeating_powers1:usepower1", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers1_power_name1",
+            "repeating_powers1_power_desc1",
+            "repeating_powers1_psidiscipline1",
+            "repeating_powers1_power_rolltype1",
+            "repeating_powers1_power_concentration1",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 1; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers1_power_rolltype1) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers1_power_name1 + "}} {{abilitysubtype=" + values.repeating_powers1_psidiscipline1 + "}} {{abilitydesc=" + values.repeating_powers1_power_desc1 + "}} {{abilityisconcentration=" + ((values.repeating_powers1_power_concentration1 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers1_power_name1 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers2:usepower2", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers2_power_name2",
+            "repeating_powers2_power_desc2",
+            "repeating_powers2_psidiscipline2",
+            "repeating_powers2_power_rolltype2",
+            "repeating_powers2_power_concentration2",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 3; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers2_power_rolltype2) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers2_power_name2 + "}} {{abilitysubtype=" + values.repeating_powers2_psidiscipline2 + "}} {{abilitydesc=" + values.repeating_powers2_power_desc2 + "}} {{abilityisconcentration=" + ((values.repeating_powers2_power_concentration2 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers2_power_name2 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers3:usepower3", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers3_power_name3",
+            "repeating_powers3_power_desc3",
+            "repeating_powers3_psidiscipline3",
+            "repeating_powers3_power_rolltype3",
+            "repeating_powers3_power_concentration3",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 5; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers3_power_rolltype3) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers3_power_name3 + "}} {{abilitysubtype=" + values.repeating_powers3_psidiscipline3 + "}} {{abilitydesc=" + values.repeating_powers3_power_desc3 + "}} {{abilityisconcentration=" + ((values.repeating_powers3_power_concentration3 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers3_power_name3 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers4:usepower4", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers4_power_name4",
+            "repeating_powers4_power_desc4",
+            "repeating_powers4_psidiscipline4",
+            "repeating_powers4_power_rolltype4",
+            "repeating_powers4_power_concentration4",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 7; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers4_power_rolltype4) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers4_power_name4 + "}} {{abilitysubtype=" + values.repeating_powers4_psidiscipline4 + "}} {{abilitydesc=" + values.repeating_powers4_power_desc4 + "}} {{abilityisconcentration=" + ((values.repeating_powers4_power_concentration4 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers4_power_name4 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers5:usepower5", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers5_power_name5",
+            "repeating_powers5_power_desc5",
+            "repeating_powers5_psidiscipline5",
+            "repeating_powers5_power_rolltype5",
+            "repeating_powers5_power_concentration5",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 9; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers5_power_rolltype5) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers5_power_name5 + "}} {{abilitysubtype=" + values.repeating_powers5_psidiscipline5 + "}} {{abilitydesc=" + values.repeating_powers5_power_desc5 + "}} {{abilityisconcentration=" + ((values.repeating_powers5_power_concentration5 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers5_power_name5 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers6:usepower6", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers6_power_name6",
+            "repeating_powers6_power_desc6",
+            "repeating_powers6_psidiscipline6",
+            "repeating_powers6_power_rolltype6",
+            "repeating_powers6_power_concentration6",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 11; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers6_power_rolltype6) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers6_power_name6 + "}} {{abilitysubtype=" + values.repeating_powers6_psidiscipline6 + "}} {{abilitydesc=" + values.repeating_powers6_power_desc6 + "}} {{abilityisconcentration=" + ((values.repeating_powers6_power_concentration6 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers6_power_name6 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers7:usepower7", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers7_power_name7",
+            "repeating_powers7_power_desc7",
+            "repeating_powers7_psidiscipline7",
+            "repeating_powers7_power_rolltype7",
+            "repeating_powers7_power_concentration7",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 13; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers7_power_rolltype7) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers7_power_name7 + "}} {{abilitysubtype=" + values.repeating_powers7_psidiscipline7 + "}} {{abilitydesc=" + values.repeating_powers7_power_desc7 + "}} {{abilityisconcentration=" + ((values.repeating_powers7_power_concentration7 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers7_power_name7 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers8:usepower8", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers8_power_name8",
+            "repeating_powers8_power_desc8",
+            "repeating_powers8_power_psidiscipline8",
+            "repeating_powers8_power_rolltype8",
+            "repeating_powers8_power_concentration8",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 15; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers8_power_rolltype8) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers8_power_name8 + "}} {{abilitysubtype=" + values.repeating_powers8_psidiscipline8 + "}} {{abilitydesc=" + values.repeating_powers8_power_desc8 + "}} {{abilityisconcentration=" + ((values.repeating_powers8_power_concentration8 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers8_power_name8 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:repeating_powers9:usepower9", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "repeating_powers9_power_name9",
+            "repeating_powers9_power_desc9",
+            "repeating_powers9_psidiscipline9",
+            "repeating_powers9_power_rolltype9",
+            "repeating_powers9_power_concentration9",
+            "power_attackbonus",
+            "power_attackbonus_extra",
+            "power_dc",
+            "power_dc_extra",
+            "character_name"
+        ], (values) => {
+            const fullAttackBonus = (parseInt(values.power_attackbonus) || 0)  + (parseInt(values.power_attackbonus_extra) || 0); // Add in any manual extras to the attack bonus
+            const fullDC = (parseInt(values.power_dc) || 0)  + (parseInt(values.power_dc_extra) || 0); // Add in any manual extras to the save DC
+            const apCost = 17; // The appropriate AP cost for this tier
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                switch (values.repeating_powers9_power_rolltype9) {
+                    case "attack":
+                        // Attack
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitymod=" + fullAttackBonus + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} " + values.roll_style + " {{roll1=[[1d20+" + fullAttackBonus + "]]}} {{roll2=[[1d20+" + fullAttackBonus + "]]}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    case "difficulty":
+                        // Difficulty Check
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydc=" + fullDC + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                    default:
+                        // Description only
+                        startRoll("&{template:ability} {{charname=" + values.character_name + "}}  {{abilitytype=Psi-Power}} {{abilityname=" + values.repeating_powers9_power_name9 + "}} {{abilitysubtype=" + values.repeating_powers9_psidiscipline9 + "}} {{abilitydesc=" + values.repeating_powers9_power_desc9 + "}} {{abilityisconcentration=" + ((values.repeating_powers9_power_concentration9 == 0) ? "" : "Yes") + "}}", (results) => {
+                            finishRoll(results.rollId); // Required before it gets posted to chat
+                        });
+                        break;
+                }
+            } else {
+                // Not enough AP to use the power
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}}  {{subjectname=" + values.repeating_powers9_power_name9 + "}} {{desc=Unable to use Psi-Power: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
 
     // Calculations for individual rows in repeating sections (<fieldset>)
     // In order to avoid the need to manually pull row IDs, these functions have been kept within the parent listeners - Roll20 handles them automatically within listeners
