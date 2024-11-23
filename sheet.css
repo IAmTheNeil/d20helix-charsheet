@@ -71,7 +71,8 @@
 
 :root {
     --nearblack: #555;
-    --shadowgray: dimgray;
+    --shadowgray: rgba(0, 0, 0, 0.5);
+    --inactivetabs: dimgray;
     --background: white;
     --secondarybackground: #ddd;
     --lightfont: #ddd;
@@ -498,6 +499,16 @@ div.charactersheet .longfield {
 
 /* Advantage/Disadvantage Toggle */
 
+/* Needs a separate div so that the other can use clip-path without cutting the shadow */
+div.charactersheet div.shadowed {
+    filter: drop-shadow(0 1px 3px var(--shadowgray));
+    margin: 0;
+    position: fixed;
+    top: 0;
+    right: 20px;
+    z-index: 99;
+}
+
 div.charactersheet div.rollstyle input[type="radio"] { /* Hide each radio button's 'bullet' */
     position: absolute;
     left: -999em;
@@ -506,10 +517,8 @@ div.charactersheet div.rollstyle input[type="radio"] { /* Hide each radio button
 }
 
 div.charactersheet div.rollstyle {
+    position: relative;
     margin: 0;
-    position: fixed;
-    top: 0;
-    right: 20px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -518,7 +527,6 @@ div.charactersheet div.rollstyle {
     text-align: center;
     background-color: var(--nearblack);
     color: var(--secondarybackground);
-    z-index: 99;
     clip-path: polygon( /* Clips the div's visible path down to a trapezoid, with indentations of 10% width */
         0 0,
         100% 0,
@@ -911,7 +919,7 @@ div.charactersheet div.tabbed-view label.tab-heading {
     cursor: pointer;
     min-width: 14em;
     text-align: center;
-    background: var(--shadowgray);
+    background: var(--inactivetabs);
     color: var(--lightfont);
     clip-path: polygon( /* Clips the div's visible path down to a trapezoid, with indentations of 10% width */
         10% 0,
