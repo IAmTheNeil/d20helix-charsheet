@@ -3992,8 +3992,8 @@
     // Helper functions, to determining appropriate values based on input
 
     function setTurnOrder(value) {
-        // Because the roll output can't be completely hidden, whisper the roll to the GM to avoid cluttering players' chat
-        startRoll("/w gm &{template:initiative} {{theroll=[[" + value + " &{tracker}]]}}", (results) => {
+        // The exclamation point means the roll will be sent as an API command, thereby not appearing in the chat
+        startRoll("! &{template:initiative} {{theroll=[[" + value + " &{tracker}]]}}", (results) => {
             finishRoll(results.rollId); // Required before it gets posted to chat
         });
     };
