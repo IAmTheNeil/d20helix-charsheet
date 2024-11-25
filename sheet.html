@@ -1410,13 +1410,43 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            Aim
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent leanright">
+                                                    <div class="stretchyholder">
+                                                        <p>Use this ability to line up your next shot on a specific target within your weapon&apos;s range.</p>
+                                                        <p>Although you cannot make an attack as part of the same major action, the next attack roll you make with a ranged weapon against that target (even on a subsequent turn) will receive a +4 bonus (provided you are proficient with that weapon). This effect cannot be stacked.</p>
+                                                        <p>If you perform any other major action, minor action, or free action after aiming, or move 1m or further, the bonus will be lost. Also, if you take any damage whilst aiming, you must succeed at a Constitution check (DC 10, or half the damage received — whichevers higher), or lose the bonus.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td>AGI</td>
+                                        <td>0</td>
+                                        <td>Creature</td>
+                                        <td>&ndash;</td>
+                                        <td>Major Action</td>
+                                        <td>
+                                            <div class="stretchyholder">
+                                                <button
+                                                    name="act_useaim"
+                                                    type="action">
+                                                    <img src="https://www.d20helix.com/img/icon_use.png" alt="More Info" class="icon">
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             Called Shot
                                             <label class="hastooltip">
                                                 <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
                                                 <input type="checkbox" class="tooltipcontrol" unchecked>
                                                 <div class="tooltipcontent leanright">
                                                     <div class="stretchyholder">
-                                                        <p>Use this ability to make a called shot against a target within your weapon range.</p>
+                                                        <p>Use this ability to make a called shot against a target within your weapon&apos;s range.</p>
                                                     </div>
                                                 </div>
                                             </label>
@@ -1424,12 +1454,99 @@
                                         <td>AGI</td>
                                         <td>1</td>
                                         <td>Creature</td>
-                                        <td>(Varies)</td>
+                                        <td>&ndash;</td>
                                         <td>Major Action</td>
                                         <td>
                                             <div class="stretchyholder">
                                                 <button
                                                     name="act_usecalledshot"
+                                                    type="action">
+                                                    <img src="https://www.d20helix.com/img/icon_use.png" alt="More Info" class="icon">
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Dash
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent leanright">
+                                                    <div class="stretchyholder">
+                                                        <p>Use this ability to gain additional movement for the round, equal to your current Speed.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td>AGI</td>
+                                        <td>0</td>
+                                        <td>Self</td>
+                                        <td>&ndash;</td>
+                                        <td>Major Action</td>
+                                        <td>
+                                            <div class="stretchyholder">
+                                                <button
+                                                    name="act_usedash"
+                                                    type="action">
+                                                    <img src="https://www.d20helix.com/img/icon_use.png" alt="More Info" class="icon">
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Defend
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent leanright">
+                                                    <div class="stretchyholder">
+                                                        <p>Use this ability to focus entirely on avoiding attacks until the start of your next turn (when the effect ceases).</p>
+                                                        <p>When a character is defending, they make Evasion checks with advantage, and visible enemies attacking them must roll their attacks with disadvantage.</p>
+                                                        <p>You lose these benefits if you become incapacitated, or if your speed drops to 0m.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td>AGI</td>
+                                        <td>0</td>
+                                        <td>Self</td>
+                                        <td>&ndash;</td>
+                                        <td>Major Action</td>
+                                        <td>
+                                            <div class="stretchyholder">
+                                                <button
+                                                    name="act_usedefend"
+                                                    type="action">
+                                                    <img src="https://www.d20helix.com/img/icon_use.png" alt="More Info" class="icon">
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Disengage
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent leanright">
+                                                    <div class="stretchyholder">
+                                                        <p>Use this ability to focus on putting distance between you and nearby threats.</p>
+                                                        <p>Until the start of your next turn (when the effect ceases), you will not trigger opportunity attacks against you by moving.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td>AGI</td>
+                                        <td>0</td>
+                                        <td>Self</td>
+                                        <td>&ndash;</td>
+                                        <td>Major Action</td>
+                                        <td>
+                                            <div class="stretchyholder">
+                                                <button
+                                                    name="act_usedisengage"
                                                     type="action">
                                                     <img src="https://www.d20helix.com/img/icon_use.png" alt="More Info" class="icon">
                                                 </button>
@@ -1472,11 +1589,11 @@
                                                 <input type="checkbox" class="tooltipcontrol" unchecked>
                                                 <div class="tooltipcontent leanright">
                                                     <div class="stretchyholder">
-                                                        <p>Use this ability to replace a melee attack with a special 'grapple' attack, provided that the target is within your reach and not more than one size category larger.</p>
+                                                        <p>Use this ability to replace a melee attack with a special &apos;grapple&apos; attack, provided that the target is within your reach and not more than one size category larger.</p>
                                                         <p>If a character gets to make more than one attack within the Attack action, this grapple will replace just one of those attacks.</p>
-                                                        <p>Using at least one free hand, the character will try to seize there target by making a grapple check instead of an attack roll. A grapple check is a contest of the character's Athletics vs. their targets Athletics or Acrobatics (target's choice).</p>
+                                                        <p>Using at least one free hand, the character will try to seize there target by making a grapple check instead of an attack roll. A grapple check is a contest of the character&apos;s Athletics vs. their target&apos;s Athletics or Acrobatics (target&apos;s choice).</p>
                                                         <p>If successful, the target will receive the grappled condition, though the grappler can choose to release them as a free action at any time. It can be dragged with the grappler when they move; but their speed is halved (unless the creature is 2+ sizes smaller).</p>
-                                                        <p>A grappled creature can use its major action to escape, provided it succeeds on an Athletics or Acrobatics contest against the grappler's Athletics.</p>
+                                                        <p>A grappled creature can use its major action to escape, provided it succeeds on an Athletics or Acrobatics contest against the grappler&apos;s Athletics.</p>
                                                     </div>
                                                 </div>
                                             </label>
@@ -1498,15 +1615,44 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            Hide
+                                            <label class="hastooltip">
+                                                <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
+                                                <input type="checkbox" class="tooltipcontrol" unchecked>
+                                                <div class="tooltipcontent leanright">
+                                                    <div class="stretchyholder">
+                                                        <p>Use this ability to attempt concealing yourself from those around you.</p>
+                                                        <p>Make a Stealth check. The director will use this to determine whether or not you successfully hide from enemies who were previously aware of you.</p>
+                                                    </div>
+                                                </div>
+                                            </label>
+                                        </td>
+                                        <td>AGI</td>
+                                        <td>0</td>
+                                        <td>Self</td>
+                                        <td>&ndash;</td>
+                                        <td>Major Action</td>
+                                        <td>
+                                            <div class="stretchyholder">
+                                                <button
+                                                    name="act_usehide"
+                                                    type="action">
+                                                    <img src="https://www.d20helix.com/img/icon_use.png" alt="More Info" class="icon">
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             Shove
                                             <label class="hastooltip">
                                                 <img src="https://www.d20helix.com/img/icon_info.png" alt="More Info" class="icon">
                                                 <input type="checkbox" class="tooltipcontrol" unchecked>
                                                 <div class="tooltipcontent leanright">
                                                     <div class="stretchyholder">
-                                                        <p>Use this ability to replace a melee attack with a special 'shove' attack, provided that the target is within your reach and not more than one size category larger.</p>
+                                                        <p>Use this ability to replace a melee attack with a special &apos;shove&apos; attack, provided that the target is within your reach and not more than one size category larger.</p>
                                                         <p>If a character gets to make more than one attack within the Attack action, this shove will replace just one of those attacks.</p>
-                                                        <p>A shove check is a contest of the character's Athletics vs. their targets Athletics or Acrobatics (target's choice). If the shove succeeds, the character can choose to either knock their target prone, or push it 1m away from them.</p>
+                                                        <p>A shove check is a contest of the character&apos;s Athletics vs. their target&apos;s Athletics or Acrobatics (target&apos;s choice). If the shove succeeds, the character can choose to either knock their target prone, or push it 1m away from them.</p>
                                                     </div>
                                                 </div>
                                             </label>
@@ -4678,6 +4824,31 @@
     });
 
     // Performing basic abilities (hard-coded)
+    on("clicked:useaim", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Aim';
+            const abilityStat = 'AGI';
+            const abilityDesc = 'Use this ability to line up your next shot on a specific target within your weapons range.\nAlthough you cannot make an attack as part of the same major action, the next attack roll you make with a ranged weapon against that target (even on a subsequent turn) will receive a +4 bonus (provided you are proficient with that weapon). This effect cannot be stacked.\nIf you perform any other major action, minor action, or free action after aiming, or move 1m or further, the bonus will be lost. Also, if you take any damage whilst aiming, you must succeed at a Constitution check (DC 10, or half the damage received — whichevers higher), or lose the bonus.';
+            const apCost = 0; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
     on("clicked:usecalledshot", (eventInfo) => {
         getAttrs( [
             "roll_style",
@@ -4688,6 +4859,81 @@
             const abilityStat = 'AGI';
             const abilityDesc = 'Use this ability to make a called shot against a target within your weapon range.';
             const apCost = 1; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:usedash", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Dash';
+            const abilityStat = 'AGI';
+            const abilityDesc = 'Use this ability to gain additional movement for the round, equal to your current Speed.';
+            const apCost = 0; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:usedefend", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Defend';
+            const abilityStat = 'AGI';
+            const abilityDesc = 'Use this ability to focus entirely on avoiding attacks until the start of your next turn (when the effect ceases).\nWhen a character is defending, they make Evasion checks with advantage, and visible enemies attacking them must roll their attacks with disadvantage.\nYou lose these benefits if you become incapacitated, or if your speed drops to 0m.';
+            const apCost = 0; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:usedisengage", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Disengage';
+            const abilityStat = 'AGI';
+            const abilityDesc = 'Use this ability to focus on putting distance between you and nearby threats.\nUntil the start of your next turn (when the effect ceases), you will not trigger opportunity attacks against you by moving.';
+            const apCost = 0; // The appropriate AP cost for this ability
             if (values.ap >= apCost) {
                 setAttrs({
                     ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
@@ -4748,6 +4994,31 @@
                     ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
                 });
                 startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitymod=" + abilityMod + "}} {{abilitydesc=" + abilityDesc + "}} " + values.roll_style + " {{roll1=[[1d20+" + abilityMod + "]]}} {{roll2=[[1d20+" + abilityMod + "]]}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            } else {
+                // Not enough AP to use the ability
+                startRoll("&{template:warning} {{charname=" + values.character_name + "}} {{subjectname=" + abilityName + "}} {{desc=Unable to use Ability: Not enough AP remaining!}}", (results) => {
+                    finishRoll(results.rollId); // Required before it gets posted to chat
+                });
+            }
+        });
+    });
+    on("clicked:usehide", (eventInfo) => {
+        getAttrs( [
+            "roll_style",
+            "ap",
+            "character_name"
+        ], (values) => {
+            const abilityName = 'Hide';
+            const abilityStat = 'AGI';
+            const abilityDesc = 'Use this ability to attempt concealing yourself from those around you.\nMake a Stealth check. The director will use this to determine whether or not you successfully hide from enemies who were previously aware of you.';
+            const apCost = 0; // The appropriate AP cost for this ability
+            if (values.ap >= apCost) {
+                setAttrs({
+                    ap: Math.max(0, (values.ap - apCost)) // Reduce the AP amount by the required amount
+                });
+                startRoll("&{template:ability} {{charname=" + values.character_name + "}} {{abilitytype=Ability}} {{abilityname=" + abilityName + "}} {{abilitysubtype=" + abilityStat + "}} {{abilitydesc=" + abilityDesc + "}}", (results) => {
                     finishRoll(results.rollId); // Required before it gets posted to chat
                 });
             } else {
