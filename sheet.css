@@ -186,7 +186,8 @@ div.charactersheet ul.infolist li {
     width: 140px;
     height: 60px;
 }
-div.charactersheet ul.infolist li input {
+div.charactersheet ul.infolist li input,
+div.charactersheet ul.infolist li span.textblock {
     text-align: center;
     font-size: medium;
     font-weight: bold;
@@ -1069,6 +1070,7 @@ div.charactersheet li.mortality table {
     justify-content: center;
     align-items: center;
 }
+div.charactersheet div.vitals ul span.textblock,
 div.charactersheet div.vitals ul input[readonly],
 div.charactersheet div.core ul input[readonly] {
     background: none;
